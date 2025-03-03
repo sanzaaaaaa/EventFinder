@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registrati">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrazione"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_gravity="center"
+        android:textSize="40dp"
+        android:id="@+id/registratiText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:id="@+id/registratiNomeEdit" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cognome"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:id="@+id/registratiCognomeEdit" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gmail"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:id="@+id/registratiGmailEdit"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data di nascita"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:id="@+id/registratiNascitaEdit"
+        android:inputType="date"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:id="@+id/registratiPwEdit"
+        android:inputType="numberPassword"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Registrati"
+        android:layout_marginTop="20dp"
+        android:id="@+id/registratiBtn"
+        android:backgroundTint="@android:color/holo_red_light"/>
+
+
+</LinearLayout>
