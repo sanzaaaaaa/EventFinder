@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
     tools:context=".MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,13 +17,33 @@
         app:menu="@menu/bottom_navigation_menu"
         app:labelVisibilityMode="unlabeled"/>
 
-    <TextView
+    <Button
+        android:id="@+id/loginHomeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hello world!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Accedi/registrati" />
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginHomeBtn"
+        android:hint="Cerca qui gli eventi"
+        android:layout_marginTop="15dp"
+        android:id="@+id/barraRicercaHome"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/iconaricerca"
+        android:layout_alignRight="@+id/barraRicercaHome"
+        android:layout_below="@id/loginHomeBtn"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="200dp"
+        android:id="@+id/iconaRicercaHome"/>
+
+   
+
 
 </RelativeLayout>
