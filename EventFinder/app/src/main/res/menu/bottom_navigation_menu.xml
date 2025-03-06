@@ -12,9 +12,9 @@
         android:title="Login"/>
 
     <item
-        android:id="@+id/amici"
-        android:icon="@drawable/ic_amici"
-        android:title="Amici"/>
+        android:id="@+id/preferiti"
+        android:icon="@drawable/ic_preferiti"
+        android:title="Preferiti"/>
 
     <item
         android:id="@+id/profilo"
