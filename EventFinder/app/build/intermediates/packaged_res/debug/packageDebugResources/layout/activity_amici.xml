@@ -7,10 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Amici">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="60dp" />
-
     <TextView
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -29,8 +25,8 @@
         android:layout_height="600dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="174dp"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginTop="177dp"
+        android:layout_marginBottom="-3dp" />
 
     <EditText
         android:layout_width="331dp"
@@ -38,8 +34,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="621dp" />
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="597dp"
+        android:background="@drawable/vecteezy_element_search_icon_23956562" />
 
 
 </RelativeLayout>

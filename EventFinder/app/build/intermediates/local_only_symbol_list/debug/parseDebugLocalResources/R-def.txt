@@ -13,6 +13,7 @@ drawable ic_prenotazioni
 drawable ic_profilo
 drawable iconaricerca
 drawable iconautente
+drawable vecteezy_element_search_icon_23956562
 id artistaInfoEvento
 id barraRicercaHome
 id bottom_navigation
