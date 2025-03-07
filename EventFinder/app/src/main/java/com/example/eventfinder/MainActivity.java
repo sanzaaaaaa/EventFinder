@@ -20,19 +20,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_menu);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.eventi) {
-                    startActivity(new Intent(MainActivity.this, PaginaEventi.class));
-                    return true;
-                } else if (item.getItemId() == R.id.login) {
-                    startActivity(new Intent(MainActivity.this, PaginaLogin.class));
+        if (item.getItemId() == R.id.login) {
+                    startActivity(new Intent(MainActivity.this, Registrati.class));
                     return true;
                 } else if (item.getItemId() == R.id.amici) {
-                    startActivity(new Intent(MainActivity.this, Amici.class));
+                    startActivity(new Intent(MainActivity.this, Preferiti.class));
                     return true;
                 } else if (item.getItemId() == R.id.profilo) {
                     startActivity(new Intent(MainActivity.this, Profilo.class));
