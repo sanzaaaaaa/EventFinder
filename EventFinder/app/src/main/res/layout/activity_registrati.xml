@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,65 +9,72 @@
     tools:context=".Registrati">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/registratiText"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:text="Registrazione"
-        android:textColor="@android:color/holo_red_light"
-        android:layout_gravity="center"
-        android:textSize="40dp"
-        android:id="@+id/registratiText" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="444dp"
+        android:text="REGISTRAZIONE"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_width="221dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/edittext"
+        android:hint="  Nome"
         android:id="@+id/registratiNomeEdit" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Cognome"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_width="221dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/edittext"
+        android:hint="  Cognome"
         android:id="@+id/registratiCognomeEdit" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Gmail"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_width="221dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/edittext"
+        android:hint="   Email"
         android:id="@+id/registratiGmailEdit"
         android:inputType="textEmailAddress"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Data di nascita"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_width="221dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/edittext"
+        android:hint="  Data di nascita"
         android:id="@+id/registratiNascitaEdit"
         android:inputType="date"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_width="221dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/edittext"
+        android:hint="  Password"
         android:id="@+id/registratiPwEdit"
         android:inputType="numberPassword"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="221dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
         android:text="Registrati"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="450dp"
         android:id="@+id/registratiBtn"
-        android:backgroundTint="@android:color/holo_red_light"/>
+        android:backgroundTint="@android:color/holo_red_dark"/>
 
 
-</LinearLayout>
+</RelativeLayout>
