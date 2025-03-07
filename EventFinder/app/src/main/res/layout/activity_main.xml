@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
     tools:context=".MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,6 +17,7 @@
 
     <Button
         android:id="@+id/loginHomeBtn"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:layout_width="wrap_content"
 
