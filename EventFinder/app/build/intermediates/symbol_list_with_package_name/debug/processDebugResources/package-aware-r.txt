@@ -3017,6 +3017,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable eventlogo_transparent
+drawable ic_amici
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3026,9 +3027,11 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_eventi
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_login
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -3036,7 +3039,11 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_preferiti
+drawable ic_prenotazioni
+drawable ic_profilo
 drawable ic_search_black_24
+drawable iconaricerca
 drawable iconautente
 drawable indeterminate_static
 drawable m3_avd_hide_password
@@ -3114,6 +3121,7 @@ drawable notify_panel_notification_icon_bg
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable vecteezy_element_search_icon_23956562
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -3204,6 +3212,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id axisRelative
+id barraRicercaHome
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3212,6 +3221,7 @@ id below
 id bestChoice
 id blocking
 id bottom
+id bottom_navigation
 id bounce
 id bounceBoth
 id bounceEnd
@@ -3303,6 +3313,7 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id eventi
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3342,6 +3353,7 @@ id horizontal
 id horizontal_only
 id icon
 id icon_group
+id iconaRicercaHome
 id ifRoom
 id ignore
 id ignoreRequest
@@ -3371,6 +3383,8 @@ id linear
 id listMode
 id list_item
 id listaPreferiti
+id login
+id loginHomeBtn
 id luogoInfoEvento
 id m3_side_sheet
 id main
@@ -3485,7 +3499,9 @@ id percent
 id pin
 id position
 id postLayout
+id preferiti
 id pressed
+id profilo
 id progress_circular
 id progress_horizontal
 id radio
@@ -3756,6 +3772,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_amici
 layout activity_info_eventi
 layout activity_main
 layout activity_preferiti
@@ -3840,6 +3857,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu bottom_navigation_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

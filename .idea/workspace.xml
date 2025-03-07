@@ -22,12 +22,12 @@
     &quot;assignee&quot;: &quot;Carol04k&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/sanzaaaaaa/EventFinder.git&quot;,
-    &quot;accountId&quot;: &quot;abaf5881-e7b0-4081-8ef8-d380a7002c32&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/sanzaaaaaa/EventFinder.git",
+    "accountId": "3d8cfebe-7045-4733-90af-da34517f01cb"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -46,7 +46,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/EventFinder/EventFinder",
+    "last_opened_file_path": "C:/EventFinder",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>

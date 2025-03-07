@@ -12,20 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EventFinder"
         tools:targetApi="31">
-
-
-      <activity
-            android:name=".Preferiti"
+        <activity
+            android:name=".Amici"
             android:exported="false" />
         <activity
-            android:name=".Profilo" />
-
-      <activity
+            android:name=".Preferiti"
+            android:exported="false" />
+        <activity android:name=".Profilo" />
+        <activity
             android:name=".InfoEventi"
             android:exported="false" />
         <activity
             android:name=".Registrati"
-
             android:exported="false" />
         <activity
             android:name=".MainActivity"
