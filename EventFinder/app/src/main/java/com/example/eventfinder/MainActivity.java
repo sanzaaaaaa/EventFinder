@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.login) {
                     startActivity(new Intent(MainActivity.this, Registrati.class));
                     return true;
-                } else if (item.getItemId() == R.id.amici) {
+                } else if (item.getItemId() == R.id.btnLogout) { // attenzione modificato provvisoriamente
                     startActivity(new Intent(MainActivity.this, Preferiti.class));
                     return true;
                 } else if (item.getItemId() == R.id.profilo) {
