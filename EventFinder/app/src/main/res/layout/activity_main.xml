@@ -32,10 +32,16 @@
         android:layout_below="@+id/loginHomeBtn"
         android:layout_alignParentStart="true"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:text="Cerca qui gli eventi"
-        app:titleTextColor="@color/white" />
+        android:text="Cerca qui gli eventi" />
+
+    <ListView
+        android:id="@+id/listViewHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchBarHome" />
+
 
 
 </RelativeLayout>
