@@ -36,15 +36,15 @@
         android:layout_marginTop="177dp"
         android:layout_marginBottom="-3dp" />
 
-    <EditText
-        android:layout_width="331dp"
-        android:layout_height="46dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="597dp"
-        android:background="@drawable/vecteezy_element_search_icon_23956562" />
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/searchBarHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@android:color/white"
+        android:text="Cerca..." />
 
 
 </RelativeLayout>
