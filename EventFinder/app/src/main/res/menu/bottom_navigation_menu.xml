@@ -12,7 +12,7 @@
         android:title="Preferiti"/>
 
     <item
-        android:id="@+id/biglietto"
+        android:id="@+id/biglietti"
         android:icon="@drawable/iconabiglietto"
         android:title="Biglietto"/>
 

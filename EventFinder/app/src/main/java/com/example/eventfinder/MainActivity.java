@@ -29,37 +29,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.listViewHome);
+        listView = findViewById(R.id.listView);
         Button loginButtonHome = findViewById(R.id.loginHomeBtn);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.oggetti_listview, R.id.oggettiListView, eventiList);
         listView.setAdapter(arrayAdapter);
 
-        /*BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        loginButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.login) {
+                if (item.getItemId() == R.id.login) {
                     startActivity(new Intent(MainActivity.this, Registrati.class));
                     return true;
-                } else if (item.getItemId() == R.id.btnLogout) { // attenzione modificato provvisoriamente
+                } else if (item.getItemId() == R.id.preferiti) { // attenzione modificato provvisoriamente
                     startActivity(new Intent(MainActivity.this, Preferiti.class));
+                    return true;
+                } else if (item.getItemId() == R.id.biglietti) {
+                    startActivity(new Intent(MainActivity.this, Biglietti.class));
                     return true;
                 } else if (item.getItemId() == R.id.profilo) {
                     startActivity(new Intent(MainActivity.this, Profilo.class));
                     return true;
                 }
-                return false;  // Default case
-            }
-
-        }); */
-        loginButtonHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Login.class);
-                startActivity(intent);
-            }
+                    return false;
+                }
         });
     }
-    }
+}
+
