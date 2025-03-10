@@ -6,47 +6,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginLeft="20dp"
     tools:context=".InfoEventi">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/immagineEvento" />
 
     <TextView
+        android:id="@+id/titoloInfoEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/immagineEvento"
         android:text="Titolo evento"
-        android:id="@+id/titoloInfoEvento"
-        android:layout_below="@+id/immagineEvento" />
-
+        android:textSize="34sp"
+        android:textStyle="bold" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="data e orario"
         android:id="@+id/dataInfoEvento"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/titoloInfoEvento"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="luogo"
+        android:layout_marginLeft="10dp"
         android:id="@+id/luogoInfoEvento"
         android:layout_below="@+id/dataInfoEvento"/>
 
     <TextView
+        android:id="@+id/categoriaInfoEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="categoria evento"
-        android:id="@+id/categoriaInfoEvento"
-        android:layout_below="@+id/luogoInfoEvento"/>
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/luogoInfoEvento"
+        android:text="categoria evento" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="info sull'evento"
         android:id="@+id/infoEvento"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/categoriaInfoEvento"/>
 
     <TextView
@@ -54,37 +62,55 @@
         android:layout_height="wrap_content"
         android:text="info sull'artista"
         android:id="@+id/artistaInfoEvento"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/infoEvento"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Invita amici"
-        android:layout_marginTop="20dp"
         android:id="@+id/invAmiciBtn"
-        android:layout_below="@id/artistaInfoEvento"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/invAmiciBtn"
-        android:layout_marginTop="20dp">
+        android:layout_below="@id/artistaInfoEvento"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/buttoninvitefriends"
+        android:text="Invita amici"
+        android:textColor="#575757"
+        app:strokeColor="#FFFFFF" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="650dp">
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prezzo"/>
-
-        <Button
+            android:id="@+id/textPrezzo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Compra"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="Prezzo" />
+
+        <TextView
+            android:id="@+id/textdataora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textPrezzo"
+            android:layout_marginLeft="10dp"
+            android:text="Data - ora " />
+
+        <Button
             android:id="@+id/compraBtn"
-            android:layout_marginLeft="40dp"/>
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="220dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Acquista biglietti"
+            android:textStyle="bold" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>
