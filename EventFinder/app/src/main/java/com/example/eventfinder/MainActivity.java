@@ -3,6 +3,8 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -15,10 +17,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    ListView listView;
+
+    //array di eventi
+    String eventiList[] = {"evento 1", "evento 2", "evento 3"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        listView = findViewById(R.id.listViewHome);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.oggetti_listview, R.id.oggettiListView, eventiList);
+        listView.setAdapter(arrayAdapter);
 
         /*BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
