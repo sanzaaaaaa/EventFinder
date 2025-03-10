@@ -68,6 +68,7 @@
 
 
     <Button
+        android:id="@+id/registrati"
         android:layout_width="288dp"
         android:layout_height="45dp"
         android:backgroundTint="#00FFFFFF"

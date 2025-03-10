@@ -3,7 +3,9 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listView = findViewById(R.id.listViewHome);
+        Button loginButtonHome = findViewById(R.id.loginHomeBtn);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.oggetti_listview, R.id.oggettiListView, eventiList);
         listView.setAdapter(arrayAdapter);
@@ -51,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }); */
-        
+        loginButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Login.class);
+                startActivity(intent);
+            }
+        });
     }
-}
+    }
