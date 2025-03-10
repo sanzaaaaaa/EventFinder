@@ -11,19 +11,28 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Qui troverai i tuoi eventi preferiti"
-        android:gravity="center"
-        android:textSize="25sp"
         android:layout_marginTop="50dp"
-        />
+        android:gravity="center"
+        android:text="Preferiti"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/listaPreferiti"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
         android:layout_marginBottom="60dp"
         />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu"
+        app:labelVisibilityMode="unlabeled"/>
+
 
 
 

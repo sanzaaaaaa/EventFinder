@@ -35,14 +35,15 @@
         android:hint="  Email"
          />
 
-        <EditText
-            android:id="@id/textLogin"
-            android:layout_width="221dp"
-            android:layout_height="37dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="350dp"
-            android:background="@drawable/edittext"
-            android:hint="  Password" />
+    <EditText
+        android:id="@id/textLogin"
+        android:layout_width="221dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/edittext"
+        android:hint="  Password"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/login"
