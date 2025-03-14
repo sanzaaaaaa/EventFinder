@@ -9,14 +9,12 @@
     tools:context=".Registrati">
 
 
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="1dp"
-        android:background="@drawable/progetto_senza_titolo__1_"
-        android:visibility="visible" />
+        android:layout_marginBottom="-41dp"
+        android:background="@drawable/ondaloginregister" />
 
     <TextView
         android:id="@+id/registratiText"
@@ -85,5 +83,6 @@
         android:layout_marginTop="450dp"
         android:id="@+id/registratiBtn"
         android:backgroundTint="@android:color/holo_red_dark"/>
+
 
 </RelativeLayout>
