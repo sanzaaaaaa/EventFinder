@@ -29,8 +29,8 @@ public class Preferiti extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.login) {
-                    startActivity(new Intent(Preferiti.this, Registrati.class));
+                if (item.getItemId() == R.id.home) {
+                    startActivity(new Intent(Preferiti.this, MainActivity.class));
                     return true;
                 } else if (item.getItemId() == R.id.preferiti) { // attenzione modificato provvisoriamente
                     startActivity(new Intent(Preferiti.this, Preferiti.class));
