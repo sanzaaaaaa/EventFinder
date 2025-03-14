@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5edb0924-bde0-491a-ade4-ef066237506f" name="Changes" comment="" />
+    <list default="true" id="5edb0924-bde0-491a-ade4-ef066237506f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,12 +25,12 @@
     &quot;assignee&quot;: &quot;Carol04k&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/sanzaaaaaa/EventFinder.git",
-    "accountId": "3d8cfebe-7045-4733-90af-da34517f01cb"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sanzaaaaaa/EventFinder.git&quot;,
+    &quot;accountId&quot;: &quot;3d8cfebe-7045-4733-90af-da34517f01cb&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -46,7 +49,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/EventFinder",
+    "last_opened_file_path": "C:/Users/MatteoNelloZappa/OneDrive - ITS Angelo Rizzoli/Documenti/GitHub/EventFinder/EventFinder",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
