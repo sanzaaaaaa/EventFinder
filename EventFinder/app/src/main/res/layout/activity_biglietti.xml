@@ -13,6 +13,8 @@
         android:layout_height="90dp"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_menu"
+        app:itemIconTint="@color/bottom_navigation_selector"
+        app:itemTextColor="@color/bottom_navigation_selector"
         app:labelVisibilityMode="unlabeled"/>
 
     <Button
