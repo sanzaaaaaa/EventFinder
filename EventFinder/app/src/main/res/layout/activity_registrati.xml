@@ -81,6 +81,7 @@
         android:layout_centerHorizontal="true"
         android:text="Registrati"
         android:layout_marginTop="450dp"
+        android:textColor="@color/white"
         android:id="@+id/registratiBtn"
         android:backgroundTint="@android:color/holo_red_dark"/>
 

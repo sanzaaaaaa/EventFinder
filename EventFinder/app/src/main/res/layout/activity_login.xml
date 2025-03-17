@@ -57,6 +57,7 @@
         android:layout_marginTop="450dp"
         android:backgroundTint="@android:color/holo_red_dark"
         android:shadowColor="#0B0A0A"
+        android:textColor="@color/white"
         android:text="login"
         android:textStyle="bold" />
 
@@ -69,7 +70,7 @@
         android:layout_marginTop="500dp"
         android:backgroundTint="#00FFFFFF"
         android:text="non sei registrato? registrati"
-        android:textColor="#454141" />
+        android:textColor="@color/white" />
 
 
 </RelativeLayout>

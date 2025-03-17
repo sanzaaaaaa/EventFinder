@@ -59,6 +59,12 @@ public class Profilo extends AppCompatActivity {
                 return false;
             }
         });
+
+        sezAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(Profilo.this, Amici.class);
+            startActivity(amici);
+        });
+
     }
 }
 
