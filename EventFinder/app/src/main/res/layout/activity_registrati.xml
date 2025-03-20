@@ -51,7 +51,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="300dp"
         android:background="@drawable/edittext"
-        android:hint="   Email"
+        android:hint="Email"
         android:id="@+id/registratiGmailEdit"
         android:inputType="textEmailAddress"/>
 
@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="350dp"
         android:background="@drawable/edittext"
-        android:hint="  Data di nascita"
+        android:hint="Data di nascita"
         android:id="@+id/registratiNascitaEdit"
         android:inputType="date"/>
 
@@ -71,9 +71,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"
         android:background="@drawable/edittext"
-        android:hint="  Password"
+        android:hint="Password"
         android:id="@+id/registratiPwEdit"
-        android:inputType="numberPassword"/>
+        android:inputType="textPassword"/>
 
     <Button
         android:layout_width="221dp"
@@ -81,6 +81,7 @@
         android:layout_centerHorizontal="true"
         android:text="Registrati"
         android:layout_marginTop="450dp"
+        android:textColor="@color/white"
         android:id="@+id/registratiBtn"
         android:backgroundTint="@android:color/holo_red_dark"/>
 

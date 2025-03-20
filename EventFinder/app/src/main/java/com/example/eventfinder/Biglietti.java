@@ -33,8 +33,8 @@ public class Biglietti extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.login) {
-                    startActivity(new Intent(Biglietti.this, Registrati.class));
+                if (item.getItemId() == R.id.home) {
+                    startActivity(new Intent(Biglietti.this, MainActivity.class));
                     return true;
                 } else if (item.getItemId() == R.id.preferiti) { // attenzione modificato provvisoriamente
                     startActivity(new Intent(Biglietti.this, Preferiti.class));

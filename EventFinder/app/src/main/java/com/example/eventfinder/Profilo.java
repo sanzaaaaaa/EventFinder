@@ -43,8 +43,8 @@ public class Profilo extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.login) {
-                    startActivity(new Intent(Profilo.this, Registrati.class));
+                if (item.getItemId() == R.id.home) {
+                    startActivity(new Intent(Profilo.this, MainActivity.class));
                     return true;
                 } else if (item.getItemId() == R.id.preferiti) { // attenzione modificato provvisoriamente
                     startActivity(new Intent(Profilo.this, Preferiti.class));
@@ -59,6 +59,12 @@ public class Profilo extends AppCompatActivity {
                 return false;
             }
         });
+
+        sezAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(Profilo.this, Amici.class);
+            startActivity(amici);
+        });
+
     }
 }
 

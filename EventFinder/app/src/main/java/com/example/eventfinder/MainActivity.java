@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.login) {
-                    startActivity(new Intent(MainActivity.this, Registrati.class));
+                if (item.getItemId() == R.id.home) {
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
                     return true;
                 } else if (item.getItemId() == R.id.preferiti) { // attenzione modificato provvisoriamente
                     startActivity(new Intent(MainActivity.this, Preferiti.class));
