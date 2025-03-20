@@ -15,6 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.eventfinder.modelli.Eventi;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Biglietti extends AppCompatActivity {
@@ -78,20 +79,20 @@ public class Biglietti extends AppCompatActivity {
                 "Prenotazione 3 - 25 Febbraio 2025"
         };
         // Crea gli ArrayAdapter per le ListView
-        ArrayAdapter<String> adapterInProgramma = new ArrayAdapter<>(this,
-                R.layout.list_item_text,
-                R.id.textViewItem,
+       /* ArrayAdapter<Eventi> adapterInProgramma = new ArrayAdapter<>(this,
+                R.layout.lista_eventi,
+                R.id.eventiTitolo,
                 prenotazioniInProgramma
         );
 
-        ArrayAdapter<String> adapterInPassate = new ArrayAdapter<>(this,
-                R.layout.list_item_text,
-                R.id.textViewItem,
+        ArrayAdapter<Eventi> adapterInPassate = new ArrayAdapter<>(this,
+                R.layout.lista_eventi,
+                R.id.eventiTitolo,
                 prenotazioniInPassate
         );
 
         // Imposta gli adapter per le ListView
         inProgramma.setAdapter(adapterInProgramma);
-        giaPassati.setAdapter(adapterInPassate);
+        giaPassati.setAdapter(adapterInPassate); */
     }
 }

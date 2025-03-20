@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -18,26 +20,25 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.eventfinder.modelli.Eventi;
+import com.example.eventfinder.modelli.EventiAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView;
-
-    //array di eventi
-    String eventiList[] = {"evento 1", "evento 2", "evento 3"};
+    private ListView listView;
+    List<Eventi> eventiList;
+    private EventiAdapter eventiAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.listView);
         Button loginButtonHome = findViewById(R.id.loginHomeBtn);
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.oggetti_listview, R.id.oggettiListView, eventiList);
-        listView.setAdapter(arrayAdapter);
-
         loginButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,27 +47,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        ListView listView = findViewById(R.id.eventiListView);
 
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+
+        eventiList = new ArrayList<Eventi>();
+        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/linkin-park-biglietti.jpg", "Linkin Park",
+                "mar 24 giugno, 16:00", "Ippodromo SNAI La Maura"));
+        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/teaser/222x222/2024/nazzi-nuova-storia-biglietti.jpg", "Stefano Nazzi - Indagini Live - Una nuova storia",
+                "gio 03 Aprile, 21:01", "Teatro Arcimboldi"));
+
+        eventiAdapter = new EventiAdapter(this, eventiList);
+        listView.setAdapter(eventiAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.home) {
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
-                    return true;
-                } else if (item.getItemId() == R.id.preferiti) { // attenzione modificato provvisoriamente
-                    startActivity(new Intent(MainActivity.this, Preferiti.class));
-                    return true;
-                } else if (item.getItemId() == R.id.biglietti) {
-                    startActivity(new Intent(MainActivity.this, Biglietti.class));
-                    return true;
-                } else if (item.getItemId() == R.id.profilo) {
-                    startActivity(new Intent(MainActivity.this, Profilo.class));
-                    return true;
-                }
-                    return false;
-                }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "tu sei: " + eventiList.get(position), Toast.LENGTH_LONG).show();
+
+                Intent infoIntent = new Intent(MainActivity.this, InfoEventi.class);
+                infoIntent.putExtra("luogo", eventiList.get(position).getLuogo());
+                startActivity(infoIntent);
+            }
         });
     }
 }
+
 

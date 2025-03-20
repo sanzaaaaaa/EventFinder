@@ -40,7 +40,7 @@
         android:text="Cerca qui gli eventi" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/eventiListView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/searchBarHome"
