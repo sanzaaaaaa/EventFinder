@@ -5,23 +5,16 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_menu"
-        app:itemIconTint="@color/bottom_navigation_selector"
-        app:itemTextColor="@color/bottom_navigation_selector"
-        app:labelVisibilityMode="unlabeled"/>
+
 
 
 
     <Button
         android:id="@+id/loginHomeBtn"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@android:color/holo_red_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +38,43 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/searchBarHome"
         />
+
+    <ImageButton
+        android:id="@+id/btnhome"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="850sp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/iconahome"
+        android:title="Home"/>
+
+    <ImageButton
+        android:id="@+id/preferiti"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="850sp"
+        android:layout_marginLeft="110dp"
+        android:src="@drawable/iconapreferiti"
+        android:title="Preferiti"/>
+
+    <ImageButton
+        android:id="@+id/biglietti"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="850sp"
+        android:layout_marginLeft="210dp"
+        android:src="@drawable/iconabiglietto"
+        android:title="Biglietto"/>
+
+
+    <ImageButton
+        android:id="@+id/profilo"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="850sp"
+        android:layout_marginLeft="310dp"
+        android:src="@drawable/ic_profilo"
+        android:title="Profilo"/>
 
 
 
