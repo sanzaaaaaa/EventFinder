@@ -34,8 +34,8 @@
             android:name=".InfoEventiLp"
             android:exported="false" />
         <activity
-            android:name=".Registrati"
-            android:exported="false" />
+            android:name="com.example.eventfinder.modelli.Registrati"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
