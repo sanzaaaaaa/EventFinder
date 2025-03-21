@@ -38,27 +38,7 @@ public class Profilo extends AppCompatActivity {
                 .load(R.drawable.iconautente) // Inserisci il nome della tua GIF nella cartella drawable
                 .into(profilo); // Imposta la GIF nell'ImageView
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.home) {
-                    startActivity(new Intent(Profilo.this, MainActivity.class));
-                    return true;
-                } else if (item.getItemId() == R.id.preferiti) { // attenzione modificato provvisoriamente
-                    startActivity(new Intent(Profilo.this, Preferiti.class));
-                    return true;
-                } else if (item.getItemId() == R.id.biglietti) {
-                    startActivity(new Intent(Profilo.this, Biglietti.class));
-                    return true;
-                } else if (item.getItemId() == R.id.profilo) {
-                    startActivity(new Intent(Profilo.this, Profilo.class));
-                    return true;
-                }
-                return false;
-            }
-        });
 
         sezAmici.setOnClickListener(v -> {
             Intent amici = new Intent(Profilo.this, Amici.class);

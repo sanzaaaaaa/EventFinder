@@ -29,30 +29,12 @@ public class Biglietti extends AppCompatActivity {
         ListView inProgramma = findViewById(R.id.listaInProgramma);
         ListView giaPassati = findViewById(R.id.listaPassati);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.home) {
-                    startActivity(new Intent(Biglietti.this, MainActivity.class));
-                    return true;
-                } else if (item.getItemId() == R.id.preferiti) { // attenzione modificato provvisoriamente
-                    startActivity(new Intent(Biglietti.this, Preferiti.class));
-                    return true;
-                } else if (item.getItemId() == R.id.biglietti) {
-                    startActivity(new Intent(Biglietti.this, Biglietti.class));
-                    return true;
-                } else if (item.getItemId() == R.id.profilo) {
-                    startActivity(new Intent(Biglietti.this, Profilo.class));
-                    return true;
-                }
-                return false;
-            }
-        });
+
+
 
         // Imposta la visibilità iniziale
-        inProgramma.setVisibility(View.VISIBLE);
+        /* inProgramma.setVisibility(View.VISIBLE);
         giaPassati.setVisibility(View.GONE);
 
         // Imposta i listener per i bottoni
