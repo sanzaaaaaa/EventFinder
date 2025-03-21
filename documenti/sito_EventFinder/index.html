@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventFinder</title>
+
+    <!-- Stile personalizzato -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="Logo.png" alt="Logo Evento">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#eventi">Eventi</a></li>
+                    <li><a href="#biglietti">Amici</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                </ul>
+            </nav>
+            <a href="#Login/Register" class="cta">Login/Register</a>
+        </div>
+    </header>
+
+    <!-- Sezione Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Benvenuto su EventFinder!</h2>
+            <p>Scopri i migliori eventi vicino a te! Concerti, festival, conferenze e tanto altro... Trova l'evento perfetto, prenota i tuoi biglietti e vivi un'esperienza indimenticabile.</p>
+            <h3>Non perdere l'occasione, inizia subito la tua avventura!</h3>
+        </div>
+    </section>
+
+    <!-- Carosello -->
+    <section class="carousel-section">
+        <div class="container">
+            <h2>Eventi consigliati</h2>
+            <div class="carousel-container">
+                <div class="carousel-slides">
+                    <div class="carousel-item active">
+                        <img src="prova 1.png" alt="Evento 1">
+                        <div class="caption">
+                            <h5>Concerto live</h5>
+                            <p>Maggiore evento musicale dell'anno.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="prova 2.png" alt="Evento 2">
+                        <div class="caption">
+                            <h5>Festival estivo</h5>
+                            <p>Un'esperienza unica sotto le stelle.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="prova 3.png" alt="Evento 3">
+                        <div class="caption">
+                            <h5>Evento esclusivo</h5>
+                            <p>Solo per veri intenditori di musica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pulsanti di navigazione -->
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Evento Speciale | Contattaci sui social</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript esterno -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+
