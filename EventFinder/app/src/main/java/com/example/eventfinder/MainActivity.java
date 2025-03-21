@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.nav_biglietti) {
             selectedFragment = new BigliettiFragment();
         } else if (itemId == R.id.nav_profilo) {
-            selectedFragment = new ProfiloFragment();
+            selectedFragment = new ProfiloFragment(this);
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
