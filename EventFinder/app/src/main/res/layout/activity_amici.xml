@@ -9,12 +9,13 @@
 
 
     <Button
-        android:layout_width="38dp"
-        android:layout_height="31dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/icons8_cerchiato_su_a_sinistra_2_24"
         android:id="@+id/btnBack"
-        android:background="@drawable/icons8_indietro_16" />
+        android:backgroundTint="@color/black"/>
 
     <TextView
         android:layout_width="150dp"

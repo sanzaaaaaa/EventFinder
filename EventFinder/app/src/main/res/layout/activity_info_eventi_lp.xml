@@ -8,10 +8,18 @@
     android:orientation="vertical"
     tools:context=".InfoEventiLp">
 
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/icons8_cerchiato_su_a_sinistra_2_24" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:id="@+id/immagineEvento" />
 
     <TextView
@@ -71,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/artistaInfoEvento"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttoninvitefriends"
         android:text="Invita amici"

@@ -71,7 +71,7 @@
         android:layout_marginTop="500dp"
         android:backgroundTint="#00FFFFFF"
         android:text="non sei registrato? registrati"
-        android:textColor="@color/white" />
+        android:textColor="#353232" />
 
 
 </RelativeLayout>

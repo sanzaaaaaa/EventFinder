@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ctx, "tu sei: " + eventiList.get(position), Toast.LENGTH_LONG).show();
+                //Toast.makeText(ctx, "tu sei: " + eventiList.get(position), Toast.LENGTH_LONG).show();
 
                 Intent infoIntent = new Intent(ctx, InfoEventiLp.class);
                 infoIntent.putExtra("luogo", eventiList.get(position).getLuogo());
