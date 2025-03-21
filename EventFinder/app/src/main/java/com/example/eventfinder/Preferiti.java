@@ -23,7 +23,6 @@ public class Preferiti extends AppCompatActivity {
         setContentView(R.layout.activity_preferiti);
 
 
-        ListView preferiti = findViewById(R.id.listaPreferiti);
 
 
 

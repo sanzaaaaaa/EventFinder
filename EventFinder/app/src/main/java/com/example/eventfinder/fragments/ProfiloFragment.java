@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import com.example.eventfinder.R;
 
 public class ProfiloFragment extends Fragment {
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -22,6 +24,8 @@ public class ProfiloFragment extends Fragment {
 
 
         return inflater.inflate(R.layout.fragment_profilo, container, false);
+
+
 
     }
 }
