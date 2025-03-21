@@ -39,43 +39,6 @@
         android:layout_below="@+id/searchBarHome"
         />
 
-    <ImageButton
-        android:id="@+id/btnhome"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="850sp"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/iconahome"
-        android:title="Home"/>
-
-    <ImageButton
-        android:id="@+id/preferiti"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="850sp"
-        android:layout_marginLeft="110dp"
-        android:src="@drawable/iconapreferiti"
-        android:title="Preferiti"/>
-
-    <ImageButton
-        android:id="@+id/biglietti"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="850sp"
-        android:layout_marginLeft="210dp"
-        android:src="@drawable/iconabiglietto"
-        android:title="Biglietto"/>
-
-
-    <ImageButton
-        android:id="@+id/profilo"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="850sp"
-        android:layout_marginLeft="310dp"
-        android:src="@drawable/ic_profilo"
-        android:title="Profilo"/>
-
-
+   
 
 </RelativeLayout>

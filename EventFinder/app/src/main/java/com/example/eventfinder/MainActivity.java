@@ -39,30 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageButton home = findViewById(R.id.btnhome);
-        ImageButton Prefe = findViewById(R.id.preferiti);
-        ImageButton Biglietti = findViewById(R.id.biglietti);
-        ImageButton Profilo = findViewById(R.id.profilo);
 
-        home.setOnClickListener(v -> {
-            Intent activityHome = new Intent(MainActivity.this , MainActivity.class);
-            startActivity(activityHome);
-        });
-
-        Prefe.setOnClickListener(v -> {
-            Intent activityPrefe = new Intent(MainActivity.this, Preferiti.class);
-            startActivity(activityPrefe);
-        });
-
-        Biglietti.setOnClickListener(v -> {
-            Intent activityBiglietti = new Intent(MainActivity.this, com.example.eventfinder.Biglietti.class);
-            startActivity(activityBiglietti);
-        });
-
-        Profilo.setOnClickListener(v -> {
-            Intent activityProfilo = new Intent(MainActivity.this, com.example.eventfinder.Profilo.class);
-            startActivity(activityProfilo);
-        });
 
         Button loginButtonHome = findViewById(R.id.loginHomeBtn);
         loginButtonHome.setOnClickListener(new View.OnClickListener() {
