@@ -1,4 +1,4 @@
-package com.example.eventfinder;
+package com.example.eventfinder.modelli;
 
 
 import retrofit2.Retrofit;
