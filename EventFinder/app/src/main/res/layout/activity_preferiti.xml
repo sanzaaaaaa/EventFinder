@@ -31,15 +31,5 @@
         android:elevation="6dp"
         android:padding="12dp" />
     <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_menu"
-        app:labelVisibilityMode="unlabeled"
-        android:backgroundTint="@android:color/white"
-        app:itemIconTint="@color/bottom_navigation_selector"
-        app:itemTextColor="@color/bottom_navigation_selector"
-        android:elevation="10dp" />
+
 </RelativeLayout>
