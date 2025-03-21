@@ -5,15 +5,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static Retrofit retrofit;
+    private static final String BASE_URL = "http://127.0.0.1:5000/";
+    private static Retrofit retrofit = null;
 
-    public static Retrofit getRetrofitInstance() {
+    public static ApiService getApiService() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://127.0.0.1:5000/")
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return retrofit;
+        return retrofit.create(ApiService.class);
     }
 }
