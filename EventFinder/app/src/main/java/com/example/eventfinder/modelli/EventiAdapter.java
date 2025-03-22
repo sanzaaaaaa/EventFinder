@@ -42,6 +42,10 @@ public class EventiAdapter extends ArrayAdapter<Eventi> {
                 .load(eventi.getUrlImage())
                 .into(eventiImageView);
 
+        eventiTitolo.setText(eventi.getTitolo());
+        eventiData.setText(eventi.getData());
+        eventiLuogo.setText(eventi.getLuogo());
+
         return convertView;
     }
 }

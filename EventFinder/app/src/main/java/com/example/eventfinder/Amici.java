@@ -3,12 +3,15 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.eventfinder.fragments.ProfiloFragment;
 
 public class Amici extends AppCompatActivity {
 
@@ -17,11 +20,11 @@ public class Amici extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amici);
 
-        Button back = findViewById(R.id.btnBack);
+        ImageButton back = findViewById(R.id.btnBack);
 
 
         back.setOnClickListener(v -> {
-            Intent dietro = new Intent(Amici.this, Profilo.class);
+            Intent dietro = new Intent(Amici.this, MainActivity.class);
             startActivity(dietro);
         });
     }
