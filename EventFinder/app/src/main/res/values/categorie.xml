@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categorie_array">
+        <item>Concerti</item>
+        <item>Teatro</item>
+        <item>Festival</item>
+        <item>Sport</item>
+        <item>Stand-up Commedy</item>
+    </string-array>
+</resources>

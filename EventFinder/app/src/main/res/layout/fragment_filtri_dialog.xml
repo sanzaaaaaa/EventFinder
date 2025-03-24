@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <Spinner
+        android:id="@+id/spinner_categoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarTextColor="@android:color/holo_red_dark"
+        android:calendarViewShown="true"
+        android:datePickerMode="calendar" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autocomplete_luogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Inserisci città" />
+
+
+    <SeekBar
+        android:id="@+id/seekbar_prezzo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_applica"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Applica Filtri"
+        android:backgroundTint="@android:color/holo_red_dark"
+        />
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset Filtri"
+        android:backgroundTint="@android:color/holo_red_dark"
+        />
+
+</LinearLayout>

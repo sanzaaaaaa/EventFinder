@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,15 @@ public class HomeFragment extends Fragment {
 
         SearchView cerca = rootView.findViewById(R.id.searchView);
         Button loginButtonHome = rootView.findViewById(R.id.loginHomeBtn);
+
+        ImageButton btnFiltro = rootView.findViewById(R.id.btnFiltro);
+
+        // Imposta il listener per aprire il DialogFragment
+        btnFiltro.setOnClickListener(v -> {
+            FiltriDialogFragment filtriDialog = new FiltriDialogFragment();
+            filtriDialog.show(getParentFragmentManager(), "FiltriDialog");
+        });
+
         loginButtonHome.setOnClickListener(view -> {
             Intent intent = new Intent(ctx, Login.class);
             startActivity(intent);

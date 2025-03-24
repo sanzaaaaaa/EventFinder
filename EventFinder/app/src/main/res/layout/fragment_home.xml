@@ -17,6 +17,7 @@
 
 
     <ImageButton
+        android:id="@+id/btnFiltro"
         android:layout_width="79dp"
         android:layout_height="79dp"
         android:layout_alignParentStart="true"
