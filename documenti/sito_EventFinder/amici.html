@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amici - EventFinder</title>
+
+    <!-- Stile personalizzato -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="Logo.png" alt="Logo Evento">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="eventi.html">Eventi</a></li>
+                    <li><a href="amici.html" class="active">Amici</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+            </nav>
+            <a href="login.html" class="cta">Login/Register</a>
+        </div>
+    </header>
+
+    <!-- Sezione Amici -->
+    <section class="amici-section">
+        <div class="container">
+            <h2>I tuoi amici</h2>
+
+            <!-- Barra di ricerca amici -->
+            <div class="search-box">
+                <input type="text" id="searchAmici" placeholder="Cerca un amico..." onkeyup="searchAmici()">
+            </div>
+
+            <!-- Lista amici -->
+            <ul class="amici-list" id="listaAmici">
+                <li>banu cingaleseee <button onclick="rimuoviAmico(this)">❌</button></li>
+                <li>carolina rumena <button onclick="rimuoviAmico(this)">❌</button></li>
+                <li>teo motori <button onclick="rimuoviAmico(this)">❌</button></li>
+                <li>gigi di Concha <button onclick="rimuoviAmico(this)">❌</button></li>
+            </ul>
+
+            <!-- Form per aggiungere amici -->
+            <div class="add-amico">
+                <input type="text" id="nomeAmico" placeholder="Aggiungi un nuovo amico">
+                <button onclick="aggiungiAmico()">➕ Aggiungi</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Evento Speciale | Contattaci sui social</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

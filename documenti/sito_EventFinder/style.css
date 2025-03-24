@@ -147,3 +147,82 @@ footer {
 footer .container {
     text-align: center;
 }
+
+/* Sezione Amici */
+.amici-section {
+    padding: 50px 0;
+}
+
+/* Barra di ricerca amici */
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    width: 250px;
+}
+
+.search-box input:focus {
+    border-color: #ff0000;
+}
+
+/* Lista amici */
+.amici-list {
+    list-style: none;
+    padding: 0;
+}
+
+.amici-list li {
+    background: #f8f8f8;
+    padding: 10px;
+    margin: 5px auto;
+    width: 50%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Pulsanti */
+.amici-list button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.amici-list button:hover {
+    background: darkred;
+}
+
+/* Aggiungere un amico */
+.add-amico {
+    margin-top: 20px;
+}
+
+.add-amico input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.add-amico button {
+    padding: 8px 15px;
+    border: none;
+    background: green;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-amico button:hover {
+    background: darkgreen;
+}
