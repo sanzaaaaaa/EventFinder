@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".InfoEventiLp">
+    tools:context=".InfoEventi">
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -87,33 +87,33 @@
         app:strokeColor="#FFFFFF" />
 
 
-        <TextView
-            android:id="@+id/textPrezzo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="660dp"
-            android:layout_marginLeft="20dp"
-            android:text="Prezzo" />
+    <TextView
+        android:id="@+id/textPrezzo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="660dp"
+        android:layout_marginLeft="20dp"
+        android:text="Prezzo" />
 
-        <TextView
-            android:id="@+id/textdataora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="680dp"
-            android:text="Data - ora " />
+    <TextView
+        android:id="@+id/textdataora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="680dp"
+        android:text="Data - ora " />
 
-        <Button
-            android:id="@+id/compraBtn"
-            android:layout_width="170dp"
-            android:layout_alignParentEnd="true"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="660dp"
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Acquista biglietti"
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/compraBtn"
+        android:layout_width="170dp"
+        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="660dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Acquista biglietti"
+        android:textStyle="bold" />
 
 
 

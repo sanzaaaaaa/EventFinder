@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.nav_preferiti) {
             selectedFragment = new PreferitiFragment();
         } else if (itemId == R.id.nav_biglietti) {
-            selectedFragment = new BigliettiFragment();
+            selectedFragment = new BigliettiFragment(this);
         } else if (itemId == R.id.nav_profilo) {
             selectedFragment = new ProfiloFragment(this);
         }

@@ -18,7 +18,6 @@ public class EventiAdapter extends ArrayAdapter<Eventi> {
 
     public EventiAdapter(Context context,  List<Eventi> eventiList) {
         super(context, 0, eventiList);
-
         this.context = context;
     }
 
