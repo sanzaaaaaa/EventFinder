@@ -5,14 +5,6 @@
     android:background="@color/white">
 
 
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="350dp"
-        android:layout_below="@+id/loginHomeBtn"
-        android:background="@drawable/filtro"/>
-
     <ImageView
         android:layout_height="50dp"
         android:layout_width="match_parent"
@@ -23,6 +15,15 @@
         android:layout_below="@+id/loginHomeBtn"
         />
 
+
+    <ImageButton
+        android:layout_width="79dp"
+        android:layout_height="79dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="337dp"
+        android:layout_marginTop="63dp"
+        android:background="@drawable/filtro2" />
 
     <Button
         android:id="@+id/loginHomeBtn"
@@ -44,7 +45,7 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        android:layout_width="380dp"
+        android:layout_width="336dp"
         android:layout_marginTop="15dp"
         android:layout_height="40dp"
         android:layout_marginRight="5dp"
