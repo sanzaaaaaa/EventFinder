@@ -1,3 +1,10 @@
+
+drop schema if exists eventfinder;
+
+create schema if not exists eventfinder;
+
+use eventfinder;
+
 create table Utenti(
 id INT AUTO_INCREMENT  PRIMARY KEY,
 nome VARCHAR (200) NOT NULL,

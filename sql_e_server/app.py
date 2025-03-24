@@ -10,7 +10,7 @@ connection = pymysql.connect(
     host='localhost',
     user='root',
     password='1234',
-    database='mydb',
+    database='eventfinder',
     autocommit=True,
     cursorclass=pymysql.cursors.DictCursor
 )
@@ -59,9 +59,6 @@ def register():
     except pymysql.MySQLError as e:
         return jsonify({'message': f'Errore durante la registrazione: {str(e)}'}), 500
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -83,3 +80,10 @@ def login():
                 return jsonify({'message': 'Password errata'}), 401
         else:
             return jsonify({'message': 'Email non trovata'}), 404
+        
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
