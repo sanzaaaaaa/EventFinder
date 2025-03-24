@@ -50,7 +50,15 @@ public class HomeFragment extends Fragment {
         });
 
         listView = rootView.findViewById(R.id.eventiListView);
-
+        cerca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!cerca.isIconified()) {
+                    return;
+                }
+                cerca.setIconified(false);
+            }
+        });
         // Popola la lista degli eventi
         eventiList = new ArrayList<>();
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/linkin-park-biglietti.jpg", "Linkin Park", "mar 24 giugno, 16:00", "Ippodromo SNAI La Maura"));
