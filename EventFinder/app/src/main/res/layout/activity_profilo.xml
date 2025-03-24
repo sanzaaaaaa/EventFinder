@@ -117,10 +117,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:backgroundTint="#CC0000" />
-<<<<<<< Updated upstream
 
 
-=======
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -128,6 +127,6 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_menu"
         app:labelVisibilityMode="unlabeled"/>
->>>>>>> Stashed changes
+
 
 </RelativeLayout>
