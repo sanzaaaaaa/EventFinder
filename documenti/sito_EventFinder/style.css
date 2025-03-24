@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Contenitore principale per la simmetria */
+/* Contenitore principale */
 .container {
     width: 80%;
     max-width: 1200px;
@@ -32,10 +32,12 @@ header .container {
     align-items: center;
 }
 
+/* Logo */
 .logo img {
     height: 60px;
 }
 
+/* Navbar */
 nav ul {
     list-style: none;
     display: flex;
@@ -53,6 +55,23 @@ nav ul li a {
 nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
+}
+
+/* Barra di ricerca */
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-box input:focus {
+    border-color: #ff0000;
 }
 
 /* Pulsante Call-to-Action */
@@ -82,70 +101,40 @@ nav ul li a:hover {
     max-width: 800px;
 }
 
-/* Sezione Carosello */
-.carousel-section {
+/* Sezione Griglia */
+.grid-section {
     padding: 50px 0;
 }
 
-.carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    overflow: hidden;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
-.carousel-slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    min-width: 100%;
-    position: relative;
-}
-
-.carousel-item img {
-    width: 100%;
+.grid-item {
+    background: #f8f8f8;
     border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: 0.3s;
 }
 
-/* Didascalia */
-.caption {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.grid-item p {
     padding: 10px;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 5px;
-}
-
-/* Pulsanti di navigazione */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 50%;
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-.prev:hover, .next:hover {
-    background: rgba(0, 0, 0, 0.8);
+    font-weight: bold;
 }
 
 /* Footer */
@@ -158,4 +147,3 @@ footer {
 footer .container {
     text-align: center;
 }
-
