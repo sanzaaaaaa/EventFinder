@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Colore del testo -->
+        <item name="android:textColor">@android:color/white</item>
+        <!-- Colore di sfondo -->
+        <item name="android:background">#ba160c</item>
+        <!-- Colore dell'icona -->
+        <item name="android:textColorHint">#BBBBBB</item>
 
+        <!-- Colore del bordo -->
+        <item name="android:queryBackground">?android:attr/selectableItemBackground</item>
+    </style>
 </resources>
