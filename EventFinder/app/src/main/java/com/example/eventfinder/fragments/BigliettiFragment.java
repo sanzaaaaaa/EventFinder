@@ -106,6 +106,6 @@ public class BigliettiFragment extends Fragment {
 
         giaPassati.setAdapter(adapter2);
 
-         return rootView;
+        return rootView;
     }
 }
