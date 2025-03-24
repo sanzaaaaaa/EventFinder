@@ -6,17 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
-import com.example.eventfinder.InfoEventiLp;
+import com.example.eventfinder.InfoEventi;
 import com.example.eventfinder.Login;
 import com.example.eventfinder.R;
 import com.example.eventfinder.modelli.Eventi;
@@ -68,7 +66,7 @@ public class HomeFragment extends Fragment {
 
         // Gestisci il click su un elemento della lista
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            Intent infoIntent = new Intent(ctx, InfoEventiLp.class);
+            Intent infoIntent = new Intent(ctx, InfoEventi.class);
             infoIntent.putExtra("luogo", eventiListFiltered.get(position).getLuogo());
             startActivity(infoIntent);
         });
