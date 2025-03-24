@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cineteca</title>
+        <link rel="stylesheet" href="/static/styles.css">
+    </head>
+
+<body>
+
+    <div class="container row">
+
+        <table>
+            <tr>
+                <th>nome</th>
+                <th>cognome</th>
+                <th>email</th>
+                <th>data di nascita</th>
+                <th>password</th>
+
+
+            </tr>
+            {% for utenti in listautenti %}
+            <tr>
+                <td>{{utenti.nome}}</td>
+                <td>{{utenti.cognome}}</td>
+                <td>{{utenti.email}}</td>
+                <td>{{utenti.data_di_nascita}}</td>
+                <td>{{utenti.password_hash}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+
+
+        <form action="/insert" method="POST">
+            Nome: <input type="text" name="nome">
+            Cognome: <input type="text" name="cognome">
+            Email: <input type="text" name="email">
+            Data di nascita: <input type="date" name="data_di_nascita">
+            Password: <input type="text" name="password_hash">
+
+            <input type="submit" value="Inserisci">
+
+
+        </form>
+
+    </div>
+    
+
+
+
+
+
+</body>
+</html>
