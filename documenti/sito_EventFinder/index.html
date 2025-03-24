@@ -24,6 +24,10 @@
                     <li><a href="#contatti">Contatti</a></li>
                 </ul>
             </nav>
+            <!-- Barra di ricerca -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cerca eventi..." onkeyup="searchEvents()">
+            </div>
             <a href="#Login/Register" class="cta">Login/Register</a>
         </div>
     </header>
@@ -41,40 +45,40 @@
     <section class="grid-section">
         <div class="container">
             <h2>Eventi consigliati</h2>
-            <div class="grid">
+            <div class="grid" id="eventGrid">
                 <div class="grid-item">
                     <a href="#">
-                        <img src="prova1.png" alt="Evento 1">
+                        <img src="prova1.png" alt="Concerto live">
                         <p>Concerto live</p>
                     </a>
                 </div>
                 <div class="grid-item">
                     <a href="#">
-                        <img src="prova2.png" alt="Evento 2">
+                        <img src="prova2.png" alt="Festival estivo">
                         <p>Festival estivo</p>
                     </a>
                 </div>
                 <div class="grid-item">
                     <a href="#">
-                        <img src="prova3.png" alt="Evento 3">
+                        <img src="prova3.png" alt="Evento esclusivo">
                         <p>Evento esclusivo</p>
                     </a>
                 </div>
                 <div class="grid-item">
                     <a href="#">
-                        <img src="prova1.png" alt="Evento 4">
+                        <img src="prova1.png" alt="Notte della musica">
                         <p>Notte della musica</p>
                     </a>
                 </div>
                 <div class="grid-item">
                     <a href="#">
-                        <img src="prova2.png" alt="Evento 5">
+                        <img src="prova2.png" alt="Spettacolo dal vivo">
                         <p>Spettacolo dal vivo</p>
                     </a>
                 </div>
                 <div class="grid-item">
                     <a href="#">
-                        <img src="prova3.png" alt="Evento 6">
+                        <img src="prova3.png" alt="Dj Set Esclusivo">
                         <p>Dj Set Esclusivo</p>
                     </a>
                 </div>
@@ -88,6 +92,9 @@
             <p>&copy; 2025 Evento Speciale | Contattaci sui social</p>
         </div>
     </footer>
+
+    <!-- JavaScript per la ricerca -->
+    <script src="script.js"></script>
 
 </body>
 </html>

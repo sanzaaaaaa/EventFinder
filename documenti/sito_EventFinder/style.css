@@ -32,10 +32,12 @@ header .container {
     align-items: center;
 }
 
+/* Logo */
 .logo img {
     height: 60px;
 }
 
+/* Navbar */
 nav ul {
     list-style: none;
     display: flex;
@@ -53,6 +55,23 @@ nav ul li a {
 nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
+}
+
+/* Barra di ricerca */
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-box input:focus {
+    border-color: #ff0000;
 }
 
 /* Pulsante Call-to-Action */
