@@ -32,8 +32,7 @@
             android:layout_marginLeft="10dp"
             android:layout_below="@+id/eventiTitolo"
             android:layout_marginTop="3dp"
-            android:text="giorno , ora"
-            android:textColor="@color/design_default_color_error" />
+            android:text="giorno , ora" />
 
         <TextView
             android:id="@+id/eventiLuogo"
