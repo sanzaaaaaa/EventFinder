@@ -42,4 +42,13 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/iconaPreferitiHome"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:src="@drawable/iconapreferitihome"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"/>
+
+
 </LinearLayout>

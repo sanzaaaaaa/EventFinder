@@ -2,10 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
 
     <ImageView
+        android:id="@+id/sideBarImageView"
         android:layout_height="50dp"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
@@ -51,9 +53,10 @@
         android:layout_height="40dp"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="15dp"
-        android:layout_below="@+id/loginHomeBtn"
-        android:theme="@style/SearchViewStyle"
-        android:queryHint="Cerca..." />
+        android:queryHint="Cerca qui gli eventi"
+        app:iconifiedByDefault="false"
+        android:layout_below="@+id/loginHomeBtn">
+    </androidx.appcompat.widget.SearchView>
 
 
 
