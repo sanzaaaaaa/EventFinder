@@ -69,4 +69,5 @@ public class EventiAdapter extends ArrayAdapter<Eventi> {
 
         return convertView;
     }
+
 }
