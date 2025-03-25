@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,7 +30,7 @@ public class HomeFragment extends Fragment {
     private ListView listView;
     private List<Eventi> eventiList;
     private EventiAdapter eventiAdapter;
-    private List<Eventi> eventiListFiltered; // Lista per gli eventi filtrati
+    //private List<Eventi> eventiListFiltered; // Lista per gli eventi filtrati
     private Context ctx = null;
 
     public HomeFragment(Context ctx) {
@@ -70,6 +71,8 @@ public class HomeFragment extends Fragment {
                 cerca.setIconified(false);
             }
         });
+
+        
         // Popola la lista degli eventi
         eventiList = new ArrayList<>();
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/linkin-park-biglietti.jpg", "Linkin Park", "mar 24 giugno, 16:00", "Ippodromo SNAI La Maura"));
@@ -88,20 +91,24 @@ public class HomeFragment extends Fragment {
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore"));
 
         // Inizializza la lista filtrata uguale alla lista originale
-        eventiListFiltered = new ArrayList<>(eventiList);
+
 
         // Configura l'adapter
-        eventiAdapter = new EventiAdapter(ctx, eventiListFiltered);
+        //eventiAdapter = new EventiAdapter(ctx, eventiListFiltered);
+        eventiAdapter = new EventiAdapter(ctx, eventiList);
         listView.setAdapter(eventiAdapter);
 
         // Gestisci il click su un elemento della lista
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            Intent infoIntent = new Intent(ctx, InfoEventi.class);
-            infoIntent.putExtra("luogo", eventiListFiltered.get(position).getLuogo());
-            startActivity(infoIntent);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent infoIntent = new Intent(ctx, InfoEventi.class);
+                infoIntent.putExtra("luogo", eventiList.get(position).getLuogo());
+                startActivity(infoIntent);
+            }
         });
 
-        cerca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        /*cerca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -112,13 +119,13 @@ public class HomeFragment extends Fragment {
                 filterList(newText);
                 return true;
             }
-        });
+        });*/
 
         return rootView;
     }
 
 
-    private void filterList(String query) {
+    /*private void filterList(String query) {
         eventiListFiltered.clear();
 
         if (query.isEmpty()) {
@@ -131,5 +138,5 @@ public class HomeFragment extends Fragment {
             }
         }
         eventiAdapter.notifyDataSetChanged();
-    }
+    }*/
 }
