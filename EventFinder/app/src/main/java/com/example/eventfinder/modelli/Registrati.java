@@ -32,7 +32,7 @@ public class Registrati extends AppCompatActivity {
             registratiBtn = findViewById(R.id.registratiBtn);
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:5000/")
+                    .baseUrl("http://192.168.0.118:5000/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
