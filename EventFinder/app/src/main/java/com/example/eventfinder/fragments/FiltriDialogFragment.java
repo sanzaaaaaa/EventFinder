@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eventfinder.R;
 
@@ -23,38 +25,62 @@ public class FiltriDialogFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_filtri_dialog, container, false);
 
+
+        SeekBar seekBar = view.findViewById(R.id.seekbar_prezzo);
+        TextView txtPrezzo = view.findViewById(R.id.txt_prezzo);
+
+
+        seekBar.setMax(35);
+        seekBar.setProgress(0);
+
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int prezzoMassimo = 350 - (progress * 10);
+
+
+                txtPrezzo.setText("Prezzo massimo: " + prezzoMassimo);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+
         Spinner categoriaSpinner = view.findViewById(R.id.spinner_categoria);
-        DatePicker datePicker = view.findViewById(R.id.date_picker);
-        AutoCompleteTextView luogoTextView = view.findViewById(R.id.autocomplete_luogo);
-        SeekBar prezzoSeekBar = view.findViewById(R.id.seekbar_prezzo);
-        Button btnApplica = view.findViewById(R.id.btn_applica);
-        Button btnReset = view.findViewById(R.id.btn_reset);
-
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        Spinner categoriaSpinner = view.findViewById(R.id.spinner_categoria);
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.categorie_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoriaSpinner.setAdapter(adapter);
 
+
+
+
         Button btnApplica = view.findViewById(R.id.btn_applica);
         btnApplica.setOnClickListener(v -> {
-            // Logica per applicare i filtri
+            String prezzo = txtPrezzo.getText().toString(); // Leggi il prezzo
+
+
+
+
+            dismiss();
         });
+
 
         Button btnReset = view.findViewById(R.id.btn_reset);
         btnReset.setOnClickListener(v -> {
-            // Logica per resettare i filtri
+
+            seekBar.setProgress(0);
+            txtPrezzo.setText("Prezzo massimo: 350");
         });
+
+        return view;
     }
-}
+    }
