@@ -1,69 +1,70 @@
 package com.example.eventfinder.modelli;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eventfinder.R;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Registrati extends AppCompatActivity {
-        private EditText registratiNomeEdit, registratiCognomeEdit, registratiGmailEdit, registratiNascitaEdit, registratiPwEdit;
-        private Button registratiBtn;
+    private EditText nome, cognome, email, data_di_nascita, password;
+    private Button registratiBtn;
+    private ApiService apiService;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_registrati);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registrati);
 
-            registratiNomeEdit = findViewById(R.id.registratiNomeEdit);
-            registratiCognomeEdit = findViewById(R.id.registratiCognomeEdit);
-            registratiGmailEdit = findViewById(R.id.registratiGmailEdit);
-            registratiNascitaEdit = findViewById(R.id.registratiNascitaEdit);
-            registratiPwEdit = findViewById(R.id.registratiPwEdit);
-            registratiBtn = findViewById(R.id.registratiBtn);
+        nome = findViewById(R.id.registratiNomeEdit);
+        cognome = findViewById(R.id.registratiCognomeEdit);
+        email = findViewById(R.id.registratiGmailEdit);
+        data_di_nascita = findViewById(R.id.registratiNascitaEdit);
+        password = findViewById(R.id.registratiPwEdit);
 
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.0.118:5000/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+        registratiBtn = findViewById(R.id.registratiBtn);
 
-            ApiService apiService = retrofit.create(ApiService.class);
+        apiService = RetrofitClient.getApiService().create(ApiService.class);
 
-            registratiBtn.setOnClickListener(v -> {
-                String nome = registratiNomeEdit.getText().toString();
-                String cognome = registratiCognomeEdit.getText().toString();
-                String email = registratiGmailEdit.getText().toString();
-                String dataNascita = registratiNascitaEdit.getText().toString();
-                String password = registratiPwEdit.getText().toString();
+        registratiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerUser();
+            }
 
-                utenti user = new utenti(nome, cognome, email, dataNascita, password);
-                Call<ResponseBody> call = apiService.registerUser(user);
+        });
 
-                call.enqueue(new Callback<>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(Registrati.this, "Registrazione completata!", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else {
-                            Toast.makeText(Registrati.this, "Errore nella registrazione!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(Registrati.this, "Errore di connessione!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            });
-        }
     }
+    private void registerUser() {
+        String n = nome.getText().toString();
+        String c = cognome.getText().toString();
+        String e = email.getText().toString();
+        String d = data_di_nascita.getText().toString();
+        String p = password.getText().toString();
+
+        Utente nuovoUtente = new Utente(n,c,e,d,p);
+        Call<Void> call = apiService.registerUser(nuovoUtente);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(Registrati.this,"OK",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(Registrati.this,"Something went wrong...",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+}

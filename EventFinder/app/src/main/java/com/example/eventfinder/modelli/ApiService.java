@@ -3,13 +3,13 @@ package com.example.eventfinder.modelli;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
-import okhttp3.ResponseBody;
 
 
 public interface ApiService {
     @POST("/register")
-    Call<ResponseBody> registerUser(@Body utenti user);
+    Call<Void> registerUser(@Body Utente user);
 
     @POST("/login")
-    Call<ResponseBody> loginUser(@Body utenti user);
+    Call<Void> loginUser(@Body Utente user);
+
 }
