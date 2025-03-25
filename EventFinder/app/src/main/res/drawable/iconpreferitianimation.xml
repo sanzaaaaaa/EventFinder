@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/ic_preferNoAnim"
+        android:drawable="@drawable/ic_pref_not_filled" />
+
+    <item android:id="@+id/ic_preferAnim"
+        android:drawable="@drawable/ic_pref_filled" />
+
+
+</layer-list>
