@@ -11,7 +11,9 @@ nome VARCHAR (200) NOT NULL,
 cognome VARCHAR (200) NOT NULL,
 email VARCHAR (200) UNIQUE NOT NULL,
 data_di_nascita date NOT NULL,
-password_hash VARCHAR(255) NOT NULL);
+password_hash
+
+ VARCHAR(255) NOT NULL);
 select * from utenti;
 
 create table eventi(
@@ -24,4 +26,7 @@ info_evento VARCHAR(255) NOT NULL,
 info_artista varchar(200) not null
 );
 
-select * from utenti;
+select * from Utenti;
+
+
+ALTER TABLE Utenti CHANGE password_hash password VARCHAR(255) NOT NULL;
