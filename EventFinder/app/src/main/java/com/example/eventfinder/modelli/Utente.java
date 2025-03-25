@@ -1,18 +1,27 @@
 package com.example.eventfinder.modelli;
 
-public class utenti {
-    private String nome;
-    private String cognome;
-    private String email;
-    private String data_di_nascita;
-    private String password_hash;
+import com.google.gson.annotations.SerializedName;
 
-    public utenti(String nome, String cognome, String email, String data_di_nascita, String password_hash) {
+public class Utente {
+    @SerializedName("id")
+    private int id;
+    @SerializedName("nome")
+    private String nome;
+    @SerializedName("cognome")
+    private String cognome;
+    @SerializedName("email")
+    private String email;
+    @SerializedName("data_di_nascita")
+    private String data_di_nascita;
+    @SerializedName("password")
+    private String password;
+
+    public Utente(String nome, String cognome, String email, String data_di_nascita, String password) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.data_di_nascita = data_di_nascita;
-        this.password_hash = password_hash;
+        this.password = password;
     }
 
     public String getNome() {
@@ -47,11 +56,11 @@ public class utenti {
         this.data_di_nascita = data_di_nascita;
     }
 
-    public String getPassword_hash() {
-        return password_hash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassword_hash(String password_hash) {
-        this.password_hash = password_hash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

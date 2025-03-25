@@ -1,30 +1,30 @@
 from flask import Flask, request, jsonify
 import pymysql
 import pymysql.cursors
-import bcrypt
 
-app = Flask(__name__)
-
-
+# Connessione al database MySQL
 connection = pymysql.connect(
     host='localhost',
     user='root',
-    password='1234',
+    password='1234',  # La password per il tuo MySQL
     database='eventfinder',
+    cursorclass=pymysql.cursors.DictCursor,
     autocommit=True,
-    cursorclass=pymysql.cursors.DictCursor
 )
+
+app = Flask(__name__)
 
 @app.route('/')
 def home():
-    query = "SELECT * FROM Utenti"
+    query = "SELECT * FROM Utenti"  # Usa la tabella 'Utenti' corretta
     with connection.cursor() as cursor:
         cursor.execute(query)
         lista = cursor.fetchall()
+    
+    # Formatta la data di nascita se presente
     for utente in lista:
         if utente['data_di_nascita']:
-            utente['data_di_nascita'] = utente['data_di_nascita'].strftime('%Y-%m-%d')
-        
+            utente['data_di_nascita'] = utente['data_di_nascita'].strftime('%Y/%m/%d')
     
     return jsonify(lista)
 
@@ -32,58 +32,44 @@ def home():
 def register():
     data = request.get_json()
 
+    # Estrai i dati dal corpo della richiesta
     nome = data.get('nome')
     cognome = data.get('cognome')
     email = data.get('email')
     data_di_nascita = data.get('data_di_nascita')
-    password_hash = data.get('password_hash')
+    password = data.get('password')  # La password è in chiaro (o può essere hashata)
 
-    check_query = "SELECT * FROM Utenti WHERE email = %s"
-    with connection.cursor() as cursor:
-        cursor.execute(check_query, (email,))
-        existing_user = cursor.fetchone()
-        if existing_user:
-            return jsonify({'message': 'Email già registrata'}), 400
-        
-        password_hash = bcrypt.hashpw(password_plain.encode('utf-8'), bcrypt.gensalt())
-
-
-    query = """
-        INSERT INTO Utenti (nome, cognome, email, data_di_nascita, password_hash) 
-        VALUES (%s, %s, %s, %s, %s)
-    """
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute(query, (nome, cognome, email, data_di_nascita, password_hash))
-        return jsonify({'message': 'Registrazione completata con successo!'}), 201
-    except pymysql.MySQLError as e:
-        return jsonify({'message': f'Errore durante la registrazione: {str(e)}'}), 500
-
+    # Inserisci i dati nel database
+    cursor = connection.cursor()
+    query = "INSERT INTO utenti (nome, cognome, email, data_di_nascita, password) VALUES (%s, %s, %s, %s, %s)"
+    cursor.execute(query, (nome, cognome, email, data_di_nascita, password))
+    connection.commit()
+    cursor.close()
+    return jsonify({"message": "Utente registrato correttamente!"}), 201
 
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    
-    email = data.get('email')
-    password_plain = data.get('password_hash')  # Password inserita dall'utente
 
-    query = "SELECT * FROM Utenti WHERE email = %s"
+    # Estrai email e password dal corpo della richiesta
+    email = data.get('email')
+    password_plain = data.get('password')  # La password inserita dall'utente
+
+    # Verifica l'utente nel database
+    query = "SELECT * FROM utenti WHERE email = %s"
     with connection.cursor() as cursor:
         cursor.execute(query, (email,))
         user = cursor.fetchone()
 
         if user:
-            stored_password = user['password_hash'].encode('utf-8')
-            if bcrypt.checkpw(password_plain.encode('utf-8'), stored_password):
+            # Confronta la password in chiaro
+            stored_password = user['password_hash']
+            if password_plain == stored_password:
                 return jsonify({'message': 'Login effettuato con successo!'}), 200
             else:
                 return jsonify({'message': 'Password errata'}), 401
         else:
             return jsonify({'message': 'Email non trovata'}), 404
-        
-
-
-
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
