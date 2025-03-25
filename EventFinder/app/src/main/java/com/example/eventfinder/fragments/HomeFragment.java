@@ -15,6 +15,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.eventfinder.InfoEventi;
@@ -26,7 +27,7 @@ import com.example.eventfinder.modelli.EventiAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends DialogFragment {
     private ListView listView;
     private List<Eventi> eventiList;
     private EventiAdapter eventiAdapter;
