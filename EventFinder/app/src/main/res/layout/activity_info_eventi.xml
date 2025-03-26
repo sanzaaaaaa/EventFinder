@@ -38,8 +38,9 @@
         android:id="@+id/iconapreferitiInfoEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/titoloInfoEvento"
-        android:layout_below="@+id/immagineEvento"
+        android:layout_toRightOf="@+id/btnBack"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="300dp"
         android:backgroundTint="#00000000"
         android:src="@drawable/ic_pref_not_filled" />
 

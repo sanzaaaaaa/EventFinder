@@ -56,7 +56,7 @@ public class Registrati extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
 
-                Toast.makeText(Registrati.this,"OK",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Registrati.this,"Registration Successful!",Toast.LENGTH_SHORT).show();
                 finish();
             }
 

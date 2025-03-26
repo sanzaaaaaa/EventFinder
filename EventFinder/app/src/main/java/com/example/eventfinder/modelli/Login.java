@@ -56,9 +56,13 @@ public class Login extends AppCompatActivity {
         private void loginUser() {
             String e = email.getText().toString();
             String p = password.getText().toString();
-            // Check if email and password are not empty
-            if (e.isEmpty() || p.isEmpty()) {
-                Toast.makeText(Login.this, "Please enter both email and password", Toast.LENGTH_SHORT).show();
+            if (e.isEmpty()) {
+                Toast.makeText(Login.this, "Please enter email", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (p.isEmpty()) {
+                Toast.makeText(Login.this, "Please enter password and email", Toast.LENGTH_SHORT).show();
                 return;
             }
 
