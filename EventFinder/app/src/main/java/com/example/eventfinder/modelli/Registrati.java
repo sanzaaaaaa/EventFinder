@@ -55,6 +55,7 @@ public class Registrati extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+
                 Toast.makeText(Registrati.this,"OK",Toast.LENGTH_SHORT).show();
                 finish();
             }

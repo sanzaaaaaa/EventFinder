@@ -9,17 +9,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import com.example.eventfinder.InfoEventi;
-import com.example.eventfinder.Login;
+import com.example.eventfinder.modelli.Login;
 import com.example.eventfinder.R;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
@@ -30,8 +28,8 @@ import java.util.List;
 public class HomeFragment extends DialogFragment {
     private ListView listView;
     private List<Eventi> eventiList;
+    private List<Eventi> eventiListFiltered; // Lista per gli eventi filtrati
     private EventiAdapter eventiAdapter;
-    //private List<Eventi> eventiListFiltered; // Lista per gli eventi filtrati
     private Context ctx = null;
 
     public HomeFragment(Context ctx) {
@@ -40,15 +38,11 @@ public class HomeFragment extends DialogFragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         SearchView cerca = rootView.findViewById(R.id.searchView);
         Button loginButtonHome = rootView.findViewById(R.id.loginHomeBtn);
-
         ImageButton btnFiltro = rootView.findViewById(R.id.btnFiltro);
 
         // Imposta il listener per aprire il DialogFragment
@@ -88,15 +82,16 @@ public class HomeFragment extends DialogFragment {
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore"));
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore"));
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore"));
+        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/dua-lipa-biglietti.jpg", "Dua Lipa - Future Nostalgia Tour", "dom 22 luglio 2025, 20:00", "Stadio Olimpico"));
+        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/lil-baby-biglietti.jpg", "Lil Baby - It's Only Me Tour", "sab 15 maggio 2025, 21:00", "Mediolanum Forum"));
 
         // Inizializza la lista filtrata uguale alla lista originale
 
+        eventiListFiltered = new ArrayList<>(eventiList);
+
 
         // Configura l'adapter
-        //eventiAdapter = new EventiAdapter(ctx, eventiListFiltered);
-        eventiAdapter = new EventiAdapter(ctx, eventiList);
+       eventiAdapter = new EventiAdapter(ctx, eventiListFiltered);
         listView.setAdapter(eventiAdapter);
 
         // Gestisci il click su un elemento della lista
@@ -109,7 +104,7 @@ public class HomeFragment extends DialogFragment {
             }
         });
 
-        /*cerca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        cerca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -120,13 +115,13 @@ public class HomeFragment extends DialogFragment {
                 filterList(newText);
                 return true;
             }
-        });*/
+        });
 
         return rootView;
     }
 
 
-    /*private void filterList(String query) {
+    private void filterList(String query) {
         eventiListFiltered.clear();
 
         if (query.isEmpty()) {
@@ -139,5 +134,5 @@ public class HomeFragment extends DialogFragment {
             }
         }
         eventiAdapter.notifyDataSetChanged();
-    }*/
+    }
 }

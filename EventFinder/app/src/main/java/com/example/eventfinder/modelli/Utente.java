@@ -23,6 +23,10 @@ public class Utente {
         this.data_di_nascita = data_di_nascita;
         this.password = password;
     }
+    public Utente(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public String getNome() {
         return nome;
