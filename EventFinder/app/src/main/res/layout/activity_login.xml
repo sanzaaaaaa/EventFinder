@@ -39,16 +39,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="350dp"
         android:background="@drawable/edittext"
-        android:hint="  Email" />
+        android:padding="10dp"
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/pswLogineditText"
         android:layout_width="221dp"
         android:layout_height="37dp"
         android:layout_centerHorizontal="true"
+        android:padding="10dp"
         android:layout_marginTop="400dp"
         android:background="@drawable/edittext"
-        android:hint="  Password"
+        android:hint="Password"
         android:inputType="textPassword" />
 
     <Button

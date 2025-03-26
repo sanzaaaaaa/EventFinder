@@ -45,7 +45,6 @@ public class HomeFragment extends DialogFragment {
         Button loginButtonHome = rootView.findViewById(R.id.loginHomeBtn);
         ImageButton btnFiltro = rootView.findViewById(R.id.btnFiltro);
 
-        // Imposta il listener per aprire il DialogFragment
         btnFiltro.setOnClickListener(v -> {
             FiltriDialogFragment filtriDialog = new FiltriDialogFragment();
             filtriDialog.show(getParentFragmentManager(), "FiltriDialog");
@@ -68,7 +67,7 @@ public class HomeFragment extends DialogFragment {
         });
 
 
-        // Popola la lista degli eventi
+
         eventiList = new ArrayList<>();
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/linkin-park-biglietti.jpg", "Linkin Park", "mar 24 giugno, 16:00", "Ippodromo SNAI La Maura"));
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/teaser/222x222/2024/nazzi-nuova-storia-biglietti.jpg", "Stefano Nazzi - Indagini Live - Una nuova storia", "gio 03 Aprile, 21:01", "Teatro Arcimboldi"));
@@ -76,20 +75,19 @@ public class HomeFragment extends DialogFragment {
         eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore"));
         eventiList.add(new Eventi("https://i.scdn.co/image/ab67616d0000b273c920263f076402b429b32606", "Artie five - tour La bella vita", "sab 20 agosto 2025, 21:00", "Mediolanum Forum"));
 
-        // Inizializza la lista filtrata uguale alla lista originale
 
         eventiListFiltered = new ArrayList<>(eventiList);
 
-
-        // Configura l'adapter
        eventiAdapter = new EventiAdapter(ctx, eventiListFiltered);
         listView.setAdapter(eventiAdapter);
 
-        // Gestisci il click su un elemento della lista
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent infoIntent = new Intent(ctx, InfoEventi.class);
+                infoIntent.putExtra("titolo", eventiList.get(position).getTitolo());
+                infoIntent.putExtra("data", eventiList.get(position).getData());
+                infoIntent.putExtra("urlImage", eventiList.get(position).getUrlImage());
                 infoIntent.putExtra("luogo", eventiList.get(position).getLuogo());
                 startActivity(infoIntent);
             }
