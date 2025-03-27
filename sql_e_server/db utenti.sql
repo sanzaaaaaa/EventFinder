@@ -26,9 +26,10 @@ info_evento VARCHAR(255) NOT NULL,
 info_artista varchar(200) not null
 );
 
-select * from Utenti;
+
 
 use eventfinder;
 
 
 ALTER TABLE Utenti CHANGE password_hash password VARCHAR(255) NOT NULL;
+
