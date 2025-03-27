@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         btnAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(HomeActivity.this, Amici.class);
+            Intent amici = new Intent(HomeActivity.this, AmiciActivity.class);
             startActivity(amici);
         });
 

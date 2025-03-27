@@ -40,7 +40,7 @@ public class Preferiti extends AppCompatActivity {
         });
 
         btnAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(Preferiti.this, Amici.class);
+            Intent amici = new Intent(Preferiti.this, AmiciActivity.class);
             startActivity(amici);
         });
 

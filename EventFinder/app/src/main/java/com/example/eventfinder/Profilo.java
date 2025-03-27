@@ -45,7 +45,7 @@ public class Profilo extends AppCompatActivity {
         });
 
         btnAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(Profilo.this, Amici.class);
+            Intent amici = new Intent(Profilo.this, AmiciActivity.class);
             startActivity(amici);
         });
 

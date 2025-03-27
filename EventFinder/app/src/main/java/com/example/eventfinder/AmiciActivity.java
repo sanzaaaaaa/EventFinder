@@ -6,6 +6,8 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.eventfinder.modelli.Amici;
+
 public class AmiciActivity extends AppCompatActivity {
 
     @Override
@@ -21,28 +23,28 @@ public class AmiciActivity extends AppCompatActivity {
         ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
 
         btnBiglietto.setOnClickListener(v -> {
-            Intent biglietto = new Intent(Amici.this, Biglietti.class);
+            Intent biglietto = new Intent(AmiciActivity.this, Biglietti.class);
             startActivity(biglietto);
         });
 
         btnPreferiti.setOnClickListener(v -> {
-            Intent preferiti = new Intent(Amici.this, Preferiti.class);
+            Intent preferiti = new Intent(AmiciActivity.this, Preferiti.class);
             startActivity(preferiti);
 
         });
 
         btnHome.setOnClickListener(v -> {
-            Intent home = new Intent(Amici.this, HomeActivity.class);
+            Intent home = new Intent(AmiciActivity.this, HomeActivity.class);
             startActivity(home);
         });
 
         btnAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(Amici.this, Amici.class);
+            Intent amici = new Intent(AmiciActivity.this, Amici.class);
             startActivity(amici);
         });
 
         btnProfilo.setOnClickListener(v -> {
-            Intent profilo = new Intent(Amici.this, Profilo.class);
+            Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
             startActivity(profilo);
         });
 

@@ -57,7 +57,7 @@ public class Biglietti extends AppCompatActivity {
         });
 
         btnAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(Biglietti.this, Amici.class);
+            Intent amici = new Intent(Biglietti.this, AmiciActivity.class);
             startActivity(amici);
         });
 
