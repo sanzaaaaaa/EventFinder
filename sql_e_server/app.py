@@ -1,12 +1,13 @@
-from flask import Flask, request, jsonify
+
+
+from flask import Flask, request, jsonify, render_template
 import pymysql
 import pymysql.cursors
 
-# Connessione al database MySQL
 connection = pymysql.connect(
     host='localhost',
     user='root',
-    password='1234',  # La password per il tuo MySQL
+    password='1234',
     database='eventfinder',
     cursorclass=pymysql.cursors.DictCursor,
     autocommit=True,
@@ -16,30 +17,34 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    query = "SELECT * FROM Utenti"  # Usa la tabella 'Utenti' corretta
+    query = "SELECT * FROM Utenti"
     with connection.cursor() as cursor:
         cursor.execute(query)
         lista = cursor.fetchall()
     
-    # Formatta la data di nascita se presente
+   
     for utente in lista:
         if utente['data_di_nascita']:
-            utente['data_di_nascita'] = utente['data_di_nascita'].strftime('%Y/%m/%d')
+            utente['data_di_nascita'] = utente['data_di_nascita'].strftime('%d/%m/%y')
     
     return jsonify(lista)
 
-@app.route('/register', methods=['POST'])
+
+
+@app.route('/api/register', methods=['POST'])
 def register():
     data = request.get_json()
 
-    # Estrai i dati dal corpo della richiesta
+
     nome = data.get('nome')
     cognome = data.get('cognome')
     email = data.get('email')
     data_di_nascita = data.get('data_di_nascita')
-    password = data.get('password')  # La password è in chiaro (o può essere hashata)
 
-    # Inserisci i dati nel database
+    print(data_di_nascita)
+    password = data.get('password')
+
+   
     cursor = connection.cursor()
     query = "INSERT INTO utenti (nome, cognome, email, data_di_nascita, password) VALUES (%s, %s, %s, %s, %s)"
     cursor.execute(query, (nome, cognome, email, data_di_nascita, password))
@@ -47,22 +52,22 @@ def register():
     cursor.close()
     return jsonify({"message": "Utente registrato correttamente!"}), 201
 
-@app.route('/login', methods=['POST'])
+@app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
 
-    # Estrai email e password dal corpo della richiesta
+  
     email = data.get('email')
-    password_plain = data.get('password')  # La password inserita dall'utente
+    password_plain = data.get('password')
 
-    # Verifica l'utente nel database
+    
     query = "SELECT * FROM utenti WHERE email = %s"
     with connection.cursor() as cursor:
         cursor.execute(query, (email,))
         user = cursor.fetchone()
 
         if user:
-            # Confronta la password in chiaro
+           
             stored_password = user['password']
             if password_plain == stored_password:
                 return jsonify({'message': 'Login effettuato con successo!'}), 200
@@ -71,5 +76,25 @@ def login():
         else:
             return jsonify({'message': 'Email non trovata'}), 404
 
+
+
+@app.route('/amici') 
+def amici():
+    return render_template('amici.html')
+
+
+
+@app.route('/eventi')
+def eventi():
+    return render_template('eventi.html')
+
+@app.route('/contatti')
+def contatti():
+    return render_template('contatti.html')
+
+@app.route('/account')
+def account():
+    return render_template('account.html')
+
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True)
+    app.run(debug=True)
