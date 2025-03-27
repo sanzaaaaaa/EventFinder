@@ -50,7 +50,7 @@ public class Registrati extends AppCompatActivity {
         String d = data_di_nascita.getText().toString();
         String p = password.getText().toString();
 
-        Utenti nuovoUtente = new Utenti(n,c,e,d,p);
+        Utente nuovoUtente = new Utente(n,c,e,d,p);
         Call<Void> call = apiService.registerUser(nuovoUtente);
         call.enqueue(new Callback<Void>() {
             @Override
