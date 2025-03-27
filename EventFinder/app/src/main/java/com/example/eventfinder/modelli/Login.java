@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.eventfinder.MainActivity;
 import com.example.eventfinder.R;
 
 import retrofit2.Call;
@@ -76,7 +75,7 @@ public class Login extends AppCompatActivity {
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Login.this, MainActivity.class);  // Change HomeActivity to your main screen activity
+                            Intent intent = new Intent(Login.this, Home.class);  // Change HomeActivity to your main screen activity
                             startActivity(intent);
                             finish();
                         } else if (response.code() == 401) {

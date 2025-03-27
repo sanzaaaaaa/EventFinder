@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.eventfinder.fragments.ProfiloFragment;
+import com.example.eventfinder.modelli.Home;
 
 public class Amici extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class Amici extends AppCompatActivity {
 
 
         back.setOnClickListener(v -> {
-            Intent dietro = new Intent(Amici.this, MainActivity.class);
+            Intent dietro = new Intent(Amici.this, Home.class);
             startActivity(dietro);
         });
     }

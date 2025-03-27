@@ -1,4 +1,4 @@
-package com.example.eventfinder;
+package com.example.eventfinder.modelli;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
 
-import com.example.eventfinder.modelli.Eventi;
-import com.example.eventfinder.modelli.EventiAdapter;
-import com.example.eventfinder.modelli.Filtri;
-import com.example.eventfinder.modelli.Login;
+import com.example.eventfinder.InfoEventi;
+import com.example.eventfinder.R;
 
 import java.util.ArrayList;
 import java.util.List;

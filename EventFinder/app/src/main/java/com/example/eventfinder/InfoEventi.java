@@ -9,8 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
-import com.example.eventfinder.fragments.HomeFragment;
+import com.example.eventfinder.modelli.Home;
 
 public class InfoEventi extends AppCompatActivity {
     private boolean isFilled = false;
@@ -44,7 +43,7 @@ public class InfoEventi extends AppCompatActivity {
 
 
         indietro.setOnClickListener(v -> {
-            Intent amici = new Intent(InfoEventi.this, MainActivity.class);
+            Intent amici = new Intent(InfoEventi.this, Home.class);
             startActivity(amici);
         });
 

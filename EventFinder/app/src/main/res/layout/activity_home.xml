@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
+
+
     <ImageView
         android:id="@+id/sideBarImageView"
         android:layout_height="50dp"
@@ -42,50 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/searchView"
-        android:layout_marginTop="70dp" />
-
-    <Button
-        android:id="@+id/btnCategoria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Categoria"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:layout_marginTop="140dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
         />
-
-    <Button
-        android:id="@+id/btnDatePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:layout_marginTop="140dp"
-        android:layout_marginLeft="120dp"
-        />
-
-    <Button
-        android:id="@+id/btnPrezzo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prezzo"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:layout_marginTop="140dp"
-        android:layout_marginLeft="215dp"
-        />
-
-    <Button
-        android:id="@+id/btnLuogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Luogo"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:layout_marginTop="140dp"
-        android:layout_marginLeft="315dp"
-        />
-
-
-
 
 
     <androidx.appcompat.widget.SearchView
