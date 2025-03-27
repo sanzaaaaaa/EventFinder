@@ -59,13 +59,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Prezzo massimo: 350"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:paddingBottom="8dp"/>
+        />
 
     <SeekBar
         android:id="@+id/seekbar_prezzo"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"/>
@@ -76,7 +77,7 @@
         android:id="@+id/btn_applica"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="Applica Filtri"
         android:backgroundTint="@android:color/holo_red_dark"
         />
