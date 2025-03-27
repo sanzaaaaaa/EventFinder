@@ -15,6 +15,7 @@ import androidx.appcompat.widget.SearchView;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
 import com.example.eventfinder.modelli.Filtri;
+import com.example.eventfinder.modelli.Login;
 
 import java.util.ArrayList;
 import java.util.List;
