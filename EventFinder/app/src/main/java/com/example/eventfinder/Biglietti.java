@@ -1,49 +1,39 @@
-package com.example.eventfinder.fragments;
+package com.example.eventfinder;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-import com.example.eventfinder.R;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class BigliettiFragment extends Fragment {
+public class Biglietti extends AppCompatActivity {
     private ListView listView;
     private List<Eventi> eventiList;
     private EventiAdapter eventiAdapter;
-    private Context ctx = null;
 
-    public BigliettiFragment(Context ctx) {
-        this.ctx = ctx;
-    }
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-         View rootView = inflater.inflate(R.layout.fragment_biglietti, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_biglietti);
 
-         Button programma = rootView.findViewById(R.id.eventiInProgramma);
-         Button passati = rootView.findViewById(R.id.eventiPassati);
-         ListView inProgramma = rootView.findViewById(R.id.listaInProgramma);
-         ListView giaPassati = rootView.findViewById(R.id.listaPassati);
+        Button programma = findViewById(R.id.eventiInProgramma);
+        Button passati = findViewById(R.id.eventiPassati);
+        ListView inProgramma = findViewById(R.id.listaInProgramma);
+        ListView giaPassati = findViewById(R.id.listaPassati);
 
-         // Imposta la visibilità iniziale
-         inProgramma.setVisibility(View.VISIBLE);
+        // Imposta la visibilità iniziale
+        inProgramma.setVisibility(View.VISIBLE);
         giaPassati.setVisibility(View.GONE);
 
         // Imposta i listener per i bottoni
@@ -86,11 +76,11 @@ public class BigliettiFragment extends Fragment {
         listaEventiPassati.add(evento2);
 
         // Crea gli ArrayAdapter per le ListView
-        EventiAdapter adapter1 = new EventiAdapter(ctx,
+        EventiAdapter adapter1 = new EventiAdapter(this,
                 listaEventiInProgramma
         );
 
-        EventiAdapter adapter2 = new EventiAdapter(ctx,
+        EventiAdapter adapter2 = new EventiAdapter(this,
                 listaEventiPassati
         );
 
@@ -105,7 +95,5 @@ public class BigliettiFragment extends Fragment {
         //giaPassati.setAdapter(adapterInPassate);
 
         giaPassati.setAdapter(adapter2);
-
-        return rootView;
     }
 }

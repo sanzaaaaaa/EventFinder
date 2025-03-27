@@ -1,4 +1,4 @@
-package com.example.eventfinder.modelli;
+package com.example.eventfinder;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.eventfinder.R;
+import com.example.eventfinder.modelli.ApiService;
+import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.Utenti;
 
 import retrofit2.Call;
 import retrofit2.Callback;

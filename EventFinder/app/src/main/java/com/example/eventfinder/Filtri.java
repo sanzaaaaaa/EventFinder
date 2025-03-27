@@ -1,4 +1,4 @@
-package com.example.eventfinder.modelli;
+package com.example.eventfinder;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.eventfinder.R;
 
 public class Filtri extends AppCompatActivity {
 
