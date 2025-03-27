@@ -6,7 +6,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Amici extends AppCompatActivity {
+public class AmiciActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class Amici extends AppCompatActivity {
         });
 
         back.setOnClickListener(v -> {
-            Intent dietro = new Intent(Amici.this, HomeActivity.class);
+            Intent dietro = new Intent(AmiciActivity.this, HomeActivity.class);
             startActivity(dietro);
         });
     }
