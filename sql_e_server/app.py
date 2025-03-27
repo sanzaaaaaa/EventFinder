@@ -34,11 +34,14 @@ def home():
 @app.route('/api/register', methods=['POST'])
 def register():
     data = request.get_json()
-  
+
+
     nome = data.get('nome')
     cognome = data.get('cognome')
     email = data.get('email')
     data_di_nascita = data.get('data_di_nascita')
+
+    print(data_di_nascita)
     password = data.get('password')
 
    
