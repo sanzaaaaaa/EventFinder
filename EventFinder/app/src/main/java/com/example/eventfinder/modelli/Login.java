@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
             }
 
 
-                Utente nuovoUtente = new Utente(e, p);
+                Utenti nuovoUtente = new Utenti(e, p);
 
                 Call<Void> call = apiService.loginUser(nuovoUtente);
         call.enqueue(new Callback<Void>() {
