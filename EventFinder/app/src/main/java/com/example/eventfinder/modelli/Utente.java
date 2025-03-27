@@ -2,7 +2,7 @@ package com.example.eventfinder.modelli;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Utenti {
+public class Utente {
     @SerializedName("id")
     private int id;
     @SerializedName("nome")
@@ -16,14 +16,14 @@ public class Utenti {
     @SerializedName("password")
     private String password;
 
-    public Utenti(String nome, String cognome, String email, String data_di_nascita, String password) {
+    public Utente(String nome, String cognome, String email, String data_di_nascita, String password) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.data_di_nascita = data_di_nascita;
         this.password = password;
     }
-    public Utenti(String email, String password) {
+    public Utente(String email, String password) {
         this.email = email;
         this.password = password;
     }

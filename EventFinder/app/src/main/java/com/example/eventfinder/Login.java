@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
-import com.example.eventfinder.modelli.Utenti;
+import com.example.eventfinder.modelli.Utente;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity {
         }
 
 
-        Utenti nuovoUtente = new Utenti(e, p);
+        Utente nuovoUtente = new Utente(e, p);
 
         Call<Void> call = apiService.loginUser(nuovoUtente);
         call.enqueue(new Callback<Void>() {
