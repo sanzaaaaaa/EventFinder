@@ -4,8 +4,7 @@ drop schema if exists eventfinder;
 create schema if not exists eventfinder;
 
 use eventfinder;
-
-ALTER TABLE Utenti CHANGE password_hash password VARCHAR(255) NOT NULL;
+ 
 
 create table utenti(
 id INT AUTO_INCREMENT  PRIMARY KEY,
@@ -21,10 +20,12 @@ titolo VARCHAR (200) NOT NULL,
 data_evento VARCHAR (200) NOT NULL,
 luogo VARCHAR (200) UNIQUE NOT NULL,
 info_evento VARCHAR(255) NOT NULL,
-info_artista varchar(200) not null
+info_artista varchar(200) not null,
+categoria_id int,
+foreign key (categoria_id) references categoria(id)
 );
 
-create table partecipare(
+create table partecipazione(
 	id INT auto_increment primary key,
     utente_id int,
     evento_id int,
@@ -40,6 +41,21 @@ luogo VARCHAR (200) UNIQUE NOT NULL,
 info_evento VARCHAR(255) NOT NULL,
 info_artista varchar(200) not null
 );
+
+create table esibizione(
+id INT AUTO_INCREMENT  PRIMARY KEY,
+artista_id int,
+evento_id int,
+foreign key (artista_id) references artisti(id),
+foreign key (evento_id) references eventi(id)
+);
+
+create table categoria(
+id INT AUTO_INCREMENT  PRIMARY KEY,
+tipologia VARCHAR (200) NOT NULL
+);
+
+
 
 
 
