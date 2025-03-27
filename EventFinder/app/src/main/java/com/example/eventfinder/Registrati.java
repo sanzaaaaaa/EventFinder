@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
-import com.example.eventfinder.modelli.Utenti;
+import com.example.eventfinder.modelli.Utente;
 
 import retrofit2.Call;
 import retrofit2.Callback;
