@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Seleziona la categoria: "
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         />
 
@@ -17,13 +17,14 @@
         android:id="@+id/spinner_categoria"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:spinnerMode="dialog"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Seleziona la data desiderata: "
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="15dp"
         />
@@ -39,10 +40,11 @@
         android:headerBackground="@android:color/holo_red_dark" />
 
     <TextView
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Seleziona la città: "
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         />
 
@@ -57,7 +59,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Prezzo massimo: 350"
-        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:paddingBottom="8dp"/>
 
@@ -67,10 +70,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"/>
 
+
+
     <Button
         android:id="@+id/btn_applica"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="Applica Filtri"
         android:backgroundTint="@android:color/holo_red_dark"
         />
@@ -83,11 +89,6 @@
         android:backgroundTint="@android:color/holo_red_dark"
         />
 
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date" />
+
 
 </LinearLayout>
