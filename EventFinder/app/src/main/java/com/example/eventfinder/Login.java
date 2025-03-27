@@ -1,4 +1,4 @@
-package com.example.eventfinder.modelli;
+package com.example.eventfinder;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.eventfinder.Home;
-import com.example.eventfinder.R;
+import com.example.eventfinder.modelli.ApiService;
+import com.example.eventfinder.modelli.Registrati;
+import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.Utenti;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -76,7 +78,7 @@ public class Login extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, Home.class);  // Change HomeActivity to your main screen activity
+                    Intent intent = new Intent(Login.this, HomeActivity.class);  // Change HomeActivity to your main screen activity
                     startActivity(intent);
                     finish();
                 } else if (response.code() == 401) {

@@ -41,7 +41,7 @@ public class InfoEventi extends AppCompatActivity {
 
 
         indietro.setOnClickListener(v -> {
-            Intent amici = new Intent(InfoEventi.this, Home.class);
+            Intent amici = new Intent(InfoEventi.this, HomeActivity.class);
             startActivity(amici);
         });
 

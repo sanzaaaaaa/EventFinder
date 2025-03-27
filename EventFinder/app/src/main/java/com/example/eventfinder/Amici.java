@@ -17,7 +17,7 @@ public class Amici extends AppCompatActivity {
 
 
         back.setOnClickListener(v -> {
-            Intent dietro = new Intent(Amici.this, Home.class);
+            Intent dietro = new Intent(Amici.this, HomeActivity.class);
             startActivity(dietro);
         });
     }
