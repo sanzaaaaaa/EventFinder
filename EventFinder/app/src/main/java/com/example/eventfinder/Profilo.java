@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import android.os.Bundle;
@@ -31,6 +32,37 @@ public class Profilo extends AppCompatActivity {
 
 
         ImageView profilo = findViewById(R.id.imgProfilo);
+        ImageButton btnBiglietto = findViewById(R.id.btnBiglietti4);
+        ImageButton btnPreferiti = findViewById(R.id.btnPrefe4);
+        ImageButton btnHome = findViewById(R.id.btnHome4);
+        ImageButton btnAmici = findViewById(R.id.btnHomeAmici4);
+        ImageButton btnProfilo = findViewById(R.id.btnProfilo4);
+
+        btnBiglietto.setOnClickListener(v -> {
+            Intent biglietto = new Intent(Profilo.this, Biglietti.class);
+            startActivity(biglietto);
+        });
+
+        btnPreferiti.setOnClickListener(v -> {
+            Intent preferiti = new Intent(Profilo.this, Preferiti.class);
+            startActivity(preferiti);
+
+        });
+
+        btnHome.setOnClickListener(v -> {
+            Intent home = new Intent(Profilo.this, HomeActivity.class);
+            startActivity(home);
+        });
+
+        btnAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(Profilo.this, Amici.class);
+            startActivity(amici);
+        });
+
+        btnProfilo.setOnClickListener(v -> {
+            Intent profili = new Intent(Profilo.this, Profilo.class);
+            startActivity(profili);
+        });
 
         // Usa Glide per caricare la GIF
         Glide.with(this)
