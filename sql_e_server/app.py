@@ -63,7 +63,7 @@ def login():
 
         if user:
             # Confronta la password in chiaro
-            stored_password = user['password_hash']
+            stored_password = user['password']
             if password_plain == stored_password:
                 return jsonify({'message': 'Login effettuato con successo!'}), 200
             else:
