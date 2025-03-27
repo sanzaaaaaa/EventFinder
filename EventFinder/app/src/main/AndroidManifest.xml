@@ -2,18 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        android:usesCleartextTraffic="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/eventlogo_transparent"
         android:label="@string/app_name"
         android:roundIcon="@drawable/eventlogo_transparent"
         android:supportsRtl="true"
         android:theme="@style/Theme.EventFinder"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".modelli.Home"
+            android:exported="false" />
+        <activity
+            android:name=".modelli.Filtri"
+            android:exported="false" />
         <activity
             android:name=".InvitaAmico"
             android:exported="false" />
@@ -23,13 +30,12 @@
         <activity
             android:name=".Amici"
             android:exported="false" />
-
         <activity android:name=".Profilo" />
         <activity
             android:name=".InfoEventi"
             android:exported="false" />
         <activity
-            android:name="com.example.eventfinder.modelli.Registrati"
+            android:name=".modelli.Registrati"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

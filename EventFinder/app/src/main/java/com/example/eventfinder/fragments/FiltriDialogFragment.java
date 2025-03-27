@@ -36,13 +36,14 @@ public class FiltriDialogFragment extends DialogFragment {
         SeekBar seekBar = view.findViewById(R.id.seekbar_prezzo);
         TextView txtPrezzo = view.findViewById(R.id.txt_prezzo);
 
-        seekBar.setMax(35);
-        seekBar.setProgress(0);
+        seekBar.setMax(350);
+        //seekBar.setMin(10);
+        seekBar.setProgress(350);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                int prezzoMassimo = 350 - (progress * 10);
+                int prezzoMassimo =  progress;
 
                 txtPrezzo.setText("Prezzo massimo: " + prezzoMassimo);
             }

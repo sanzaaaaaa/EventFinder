@@ -5,23 +5,46 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleziona la categoria: "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
 
     <Spinner
         android:id="@+id/spinner_categoria"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="45dp"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleziona la data desiderata: "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        />
 
     <DatePicker
         android:id="@+id/date_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:calendarTextColor="@android:color/holo_red_dark"
         android:calendarViewShown="true"
         android:datePickerMode="calendar"
         android:headerBackground="@android:color/holo_red_dark" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleziona la città: "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
 
     <AutoCompleteTextView
         android:id="@+id/autocomplete_luogo"
