@@ -15,11 +15,12 @@ import androidx.appcompat.widget.SearchView;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
 import com.example.eventfinder.modelli.Filtri;
+import com.example.eventfinder.modelli.Login;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private ListView listView;
     private List<Eventi> eventiList;
     private List<Eventi> eventiListFiltered;
@@ -36,12 +37,12 @@ public class Home extends AppCompatActivity {
         listView = findViewById(R.id.eventiListView);
 
         btnFiltro.setOnClickListener(v -> {
-            Intent filtro = new Intent(Home.this, Filtri.class);
+            Intent filtro = new Intent(HomeActivity.this, Filtri.class);
             startActivity(filtro);
         });
 
         loginButtonHome.setOnClickListener(view -> {
-            Intent intent = new Intent(this, Login.class);
+            Intent intent = new Intent(HomeActivity.this, Login.class);
             startActivity(intent);
         });
 
