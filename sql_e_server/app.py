@@ -77,21 +77,11 @@ def login():
             return jsonify({'message': 'Email non trovata'}), 404
 
 
-''''
-@app.route("/")
-def home():
-    eventi = [
-        {"id": 1, "nome": "Concerto Rock", "data": "10 Aprile 2025", "luogo": "Milano", "immagine": "concerto.jpg"},
-        {"id": 2, "nome": "Festival del Cibo", "data": "15 Maggio 2025", "luogo": "Roma", "immagine": "food_festival.jpg"},
-        {"id": 3, "nome": "Maratona Cittadina", "data": "20 Giugno 2025", "luogo": "Napoli", "immagine": "maratona.jpg"},
-    ]
-    return render_template("index.html", eventi=eventi)
 
-
-@app.route('/amici')
+@app.route('/amici') 
 def amici():
     return render_template('amici.html')
-'''
+
 
 
 @app.route('/eventi')
