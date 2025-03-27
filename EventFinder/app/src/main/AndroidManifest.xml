@@ -16,10 +16,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Biglietti"
+            android:exported="false" />
+        <activity
             android:name=".Preferiti"
             android:exported="false" />
         <activity
-            android:name=".modelli.Filtri"
+            android:name=".Filtri"
             android:exported="false" />
         <activity
             android:name=".InvitaAmico"
@@ -35,7 +38,7 @@
             android:name=".InfoEventi"
             android:exported="false" />
         <activity
-            android:name=".modelli.Registrati"
+            android:name=".Registrati"
             android:exported="true" />
         <activity
             android:name=".HomeActivity"

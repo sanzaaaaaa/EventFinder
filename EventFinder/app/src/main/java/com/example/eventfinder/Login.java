@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eventfinder.modelli.ApiService;
-import com.example.eventfinder.modelli.Registrati;
 import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.Utente;
 
