@@ -39,15 +39,14 @@
         android:text="Accedi / Registrati"
         android:textColor="@color/white"/>
 
+
     <ListView
         android:id="@+id/eventiListView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/searchView"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="100dp"
-        />
-
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="80dp" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -62,10 +61,24 @@
     </androidx.appcompat.widget.SearchView>
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="1000dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="880dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="-9dp"
+        android:background="@android:color/holo_red_dark"
         android:src="@drawable/cc0000" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/iconahome"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        />
 
 
 </RelativeLayout>
