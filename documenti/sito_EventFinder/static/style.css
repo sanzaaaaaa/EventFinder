@@ -148,16 +148,91 @@ footer .container {
     text-align: center;
 }
 
+/*............................................................................*/
+/* Reset di base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Contenitore principale */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Stili generali */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #b30000;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #b30000;
+    padding: 15px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo img {
+    height: 60px;
+}
+
+/* Navbar */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+nav ul li a.active {
+    text-decoration: underline;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Pulsante Call-to-Action */
+.cta {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cta:hover {
+    background-color: #cc0000;
+}
+
 /* Sezione Amici */
 .amici-section {
     padding: 50px 0;
 }
 
 /* Barra di ricerca amici */
-.search-box {
-    margin-bottom: 20px;
-}
-
 .search-box input {
     padding: 8px 15px;
     border-radius: 20px;
@@ -165,6 +240,7 @@ footer .container {
     outline: none;
     font-size: 16px;
     width: 250px;
+    margin-bottom: 20px;
 }
 
 .search-box input:focus {
@@ -225,4 +301,51 @@ footer .container {
 
 .add-amico button:hover {
     background: darkgreen;
+}
+
+/* Footer */
+footer {
+    background-color: #b30000;
+    color: white;
+    padding: 20px 0;
+}
+
+footer .container {
+    text-align: center;
+}
+
+/*............................................................................*/
+/* Sezione Account */
+.account-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+.account-info {
+    background: #f8f8f8;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.logout-btn {
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.logout-btn:hover {
+    background: darkred;
 }

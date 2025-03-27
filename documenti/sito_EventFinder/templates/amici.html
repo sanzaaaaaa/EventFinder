@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amici - EventFinder</title>
+
+    <!-- Stile personalizzato -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Evento">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
+                    <li><a href="{{ url_for('amici') }}">Amici</a></li>
+                    <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
+                    <li><a href="{{ url_for('account') }}">Account</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <!-- Sezione Amici -->
+    <section class="amici-section">
+        <div class="container">
+            <h2>I tuoi amici</h2>
+            <div class="search-box">
+                <input type="text" id="searchAmici" placeholder="Cerca un amico..." onkeyup="searchAmici()">
+            </div>
+
+            <ul class="amici-list" id="listaAmici">
+                <li>Mario Rossi <button onclick="rimuoviAmico(this)">❌</button></li>
+                <li>Giulia Bianchi <button onclick="rimuoviAmico(this)">❌</button></li>
+            </ul>
+
+            <div class="add-amico">
+                <input type="text" id="nomeAmico" placeholder="Aggiungi un nuovo amico">
+                <button onclick="aggiungiAmico()">➕ Aggiungi</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 EventFinder</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
