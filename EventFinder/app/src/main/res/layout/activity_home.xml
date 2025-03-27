@@ -45,6 +45,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/searchView"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="100dp"
         />
 
 
@@ -60,8 +61,11 @@
         android:layout_below="@+id/loginHomeBtn">
     </androidx.appcompat.widget.SearchView>
 
-
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="670dp"
+        android:src="@drawable/cc0000" />
 
 
 </RelativeLayout>
