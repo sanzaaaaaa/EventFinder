@@ -36,7 +36,7 @@
             android:name=".modelli.Registrati"
             android:exported="true" />
         <activity
-            android:name=".modelli.Home"
+            android:name=".Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
