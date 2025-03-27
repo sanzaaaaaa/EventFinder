@@ -29,10 +29,11 @@ def home():
     
     return jsonify(lista)
 
-@app.route('/register', methods=['POST'])
+
+
+@app.route('/api/register', methods=['POST'])
 def register():
     data = request.get_json()
-
   
     nome = data.get('nome')
     cognome = data.get('cognome')
@@ -48,7 +49,7 @@ def register():
     cursor.close()
     return jsonify({"message": "Utente registrato correttamente!"}), 201
 
-@app.route('/login', methods=['POST'])
+@app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
 
