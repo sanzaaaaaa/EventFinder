@@ -41,5 +41,6 @@ info_evento VARCHAR(255) NOT NULL,
 info_artista varchar(200) not null
 );
 
+SELECT * FROM utenti;
 
 

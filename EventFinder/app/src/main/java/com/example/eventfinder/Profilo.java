@@ -27,7 +27,7 @@ public class Profilo extends AppCompatActivity {
         setContentView(R.layout.activity_profilo);
 
         Button sezAmici = findViewById(R.id.btnAmici);
-        Button log = findViewById(R.id.btnLogout);
+        Button logout = findViewById(R.id.btnLogout);
 
 
         ImageView profilo = findViewById(R.id.imgProfilo);
