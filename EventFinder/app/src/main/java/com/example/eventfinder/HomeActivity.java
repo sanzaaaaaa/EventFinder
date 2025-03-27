@@ -35,6 +35,37 @@ public class HomeActivity extends AppCompatActivity {
         Button loginButtonHome = findViewById(R.id.loginHomeBtn);
         ImageButton btnFiltro = findViewById(R.id.btnFiltro);
         listView = findViewById(R.id.eventiListView);
+        ImageButton btnBiglietto = findViewById(R.id.btnBiglietti);
+        ImageButton btnPreferiti = findViewById(R.id.btnPrefe);
+        ImageButton btnHome = findViewById(R.id.btnHome);
+        ImageButton btnAmici = findViewById(R.id.btnHomeAmici);
+        ImageButton btnProfilo = findViewById(R.id.btnProfilo);
+
+        btnBiglietto.setOnClickListener(v -> {
+            Intent biglietto = new Intent(HomeActivity.this, Biglietti.class);
+            startActivity(biglietto);
+        });
+
+        btnPreferiti.setOnClickListener(v -> {
+            Intent preferiti = new Intent(HomeActivity.this, Preferiti.class);
+            startActivity(preferiti);
+
+        });
+
+        btnHome.setOnClickListener(v -> {
+            Intent home = new Intent(HomeActivity.this, HomeActivity.class);
+            startActivity(home);
+        });
+
+        btnAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(HomeActivity.this, Amici.class);
+            startActivity(amici);
+        });
+
+        btnProfilo.setOnClickListener(v -> {
+            Intent profilo = new Intent(HomeActivity.this, Profilo.class);
+            startActivity(profilo);
+        });
 
         btnFiltro.setOnClickListener(v -> {
             Intent filtro = new Intent(HomeActivity.this, Filtri.class);

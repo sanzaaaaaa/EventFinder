@@ -1,8 +1,10 @@
 package com.example.eventfinder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +33,40 @@ public class Biglietti extends AppCompatActivity {
         Button passati = findViewById(R.id.eventiPassati);
         ListView inProgramma = findViewById(R.id.listaInProgramma);
         ListView giaPassati = findViewById(R.id.listaPassati);
+
+        ImageButton btnBiglietto = findViewById(R.id.btnBiglietti1);
+        ImageButton btnPreferiti = findViewById(R.id.btnPrefe1);
+        ImageButton btnHome = findViewById(R.id.btnHome1);
+        ImageButton btnAmici = findViewById(R.id.btnHomeAmici1);
+        ImageButton btnProfilo = findViewById(R.id.btnProfilo1);
+
+        btnBiglietto.setOnClickListener(v -> {
+            Intent biglietto = new Intent(Biglietti.this, Biglietti.class);
+            startActivity(biglietto);
+        });
+
+        btnPreferiti.setOnClickListener(v -> {
+            Intent preferiti = new Intent(Biglietti.this, Preferiti.class);
+            startActivity(preferiti);
+
+        });
+
+        btnHome.setOnClickListener(v -> {
+            Intent home = new Intent(Biglietti.this, HomeActivity.class);
+            startActivity(home);
+        });
+
+        btnAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(Biglietti.this, Amici.class);
+            startActivity(amici);
+        });
+
+        btnProfilo.setOnClickListener(v -> {
+            Intent profilo = new Intent(Biglietti.this, Profilo.class);
+            startActivity(profilo);
+        });
+
+
 
         // Imposta la visibilità iniziale
         inProgramma.setVisibility(View.VISIBLE);
