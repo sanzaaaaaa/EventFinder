@@ -30,6 +30,24 @@ categoria_id int,
 foreign key (categoria_id) references categoria(id)
 );
 
+alter table eventi
+add column preferiti_id int;
+
+alter table eventi
+add foreign key (preferiti_id) references preferiti(id);
+
+select * from artisti;
+
+create table preferiti(
+	id INT auto_increment primary key,
+    utente_id int,
+    evento_id int,
+    foreign key (utente_id) references utenti(id),
+    foreign key (evento_id) references eventi(id)
+);
+
+select * from eventi;
+
 create table partecipazione(
 	id INT auto_increment primary key,
     utente_id int,
