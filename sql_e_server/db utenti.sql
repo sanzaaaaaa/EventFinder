@@ -76,4 +76,7 @@ foreign key (evento_id) references eventi(id)
 alter table categoria
 add column genere varchar(200);
 
+alter table eventi
+add column prezzo int;
+
 select * from eventi;
