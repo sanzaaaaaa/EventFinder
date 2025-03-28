@@ -35,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home); // Mantieni lo stesso layout del fragment
 
+        
+
         sharedPreference = new SharedPreference(this);
 
 
