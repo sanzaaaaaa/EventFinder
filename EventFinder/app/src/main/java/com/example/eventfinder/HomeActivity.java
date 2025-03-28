@@ -11,12 +11,15 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
 import com.example.eventfinder.modelli.SharedPreference;
-import com.google.mlkit.common.sdkinternal.SharedPrefManager;
+
 
 
 import java.util.ArrayList;
@@ -35,7 +38,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home); // Mantieni lo stesso layout del fragment
 
-        
+        WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+        windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 
         sharedPreference = new SharedPreference(this);
 

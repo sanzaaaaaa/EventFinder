@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 public class InfoEventi extends AppCompatActivity {
     private boolean isFilled = false;
@@ -21,6 +24,12 @@ public class InfoEventi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_eventi);
+
+        WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+        windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+
+
         titoloInfoEvento = findViewById(R.id.titoloInfoEvento); // Corretto
         dataInfoEvento = findViewById(R.id.dataInfoEvento);     // Corretto
         luogoInfoEvento = findViewById(R.id.luogoInfoEvento);   // Corretto
