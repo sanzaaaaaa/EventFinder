@@ -55,6 +55,8 @@ id INT AUTO_INCREMENT  PRIMARY KEY,
 tipologia VARCHAR (200) NOT NULL
 );
 
+select * from utenti;
+
 
 
 
