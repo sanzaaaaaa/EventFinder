@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     private List<Eventi> eventiListFiltered;
     private EventiAdapter eventiAdapter;
 
-    private SharedPreference sharedPreference;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,8 +42,7 @@ public class HomeActivity extends AppCompatActivity {
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
         windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 
-        sharedPreference = new SharedPreference(this);
-
+        SharedPreference sharedPreference = new SharedPreference(this);
 
         SearchView cerca = findViewById(R.id.searchView);
         Button loginButtonHome = findViewById(R.id.loginHomeBtn);
