@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
 
 import retrofit2.Call;
@@ -35,6 +36,8 @@ public class Login extends AppCompatActivity {
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
         windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 
+        SharedPreference sharedPreference = new SharedPreference(this);
+
         Button registratiButton = findViewById(R.id.registrati);
         email = findViewById(R.id.emailLogineditText);
         password = findViewById(R.id.pswLogineditText);
@@ -52,10 +55,10 @@ public class Login extends AppCompatActivity {
 
         });
         loginBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 loginUser();
+                sharedPreference.setLoggedIn(true);
             }
 
         });
