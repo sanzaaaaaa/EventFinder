@@ -1,0 +1,147 @@
+/* ==== RESET STILI ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ==== STILI GENERALI ==== */
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    text-align: center;
+    padding-top: 80px; /* Per compensare la navbar fissa */
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* ==== NAVBAR ==== */
+header {
+    background: #007bff;
+    color: white;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ==== SEZIONE HERO (HOME) ==== */
+.hero {
+    padding: 50px;
+    background-color: #007bff;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 36px;
+}
+
+/* ==== EVENTI LISTA ==== */
+.eventi {
+    padding: 20px;
+}
+
+.eventi ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.eventi li {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ==== FORM LOGIN & REGISTRAZIONE ==== */
+.login-section, .register-section {
+    background: white;
+    padding: 30px;
+    max-width: 400px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ==== SEZIONE ACCOUNT ==== */
+.account-section {
+    padding: 20px;
+}
+
+/* ==== FOOTER ==== */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+

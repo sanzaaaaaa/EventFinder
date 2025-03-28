@@ -3,53 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account - EventFinder</title>
-
-    <!-- Stile personalizzato -->
+    <title>Il Mio Account</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <a href="{{ url_for('home') }}" class="logo">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Evento">
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
-                    <li><a href="{{ url_for('amici') }}">Amici</a></li>
-                    <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
-                    <li><a href="{{ url_for('account') }}" class="active">Account</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    {% include 'navbar.html' %}
 
-    <!-- Sezione Account -->
     <section class="account-section">
-        <div class="container">
-            <h2>Il mio Account</h2>
-            <img src="{{ url_for('static', filename='img/utente.png') }}" alt="Immagine Profilo" class="profile-pic">
-
-            <div class="account-info">
-                <p><strong>Nome:</strong> Mario Rossi</p>
-                <p><strong>Email:</strong> mario.rossi@example.com</p>
-                <p><strong>Iscritto dal:</strong> Gennaio 2024</p>
-            </div>
-
-            <button class="logout-btn" onclick="logout()">Esci</button>
-        </div>
+        <h1>Ciao, {{ user.nome }}</h1>
+        <p>Email: {{ user.email }}</p>
+        <button class="logout-btn">Logout</button>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 EventFinder</p>
-    </footer>
+    {% include 'footer.html' %}
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
-

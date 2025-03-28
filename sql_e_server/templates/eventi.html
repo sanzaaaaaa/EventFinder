@@ -1,1 +1,31 @@
-<p> ciao </p>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <section class="eventi">
+        <h1>Eventi disponibili</h1>
+        <ul>
+            {% for evento in eventi %}
+                <li>
+                    <h2>{{ evento.titolo }}</h2>
+                    <p>📅 Data: {{ evento.data_evento }}</p>
+                    <p>📍 Luogo: {{ evento.luogo }}</p>
+                    <p>🎤 Artista: {{ evento.info_artista }}</p>
+                    <p>{{ evento.info_evento }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    {% include 'footer.html' %}
+
+</body>
+</html>
