@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".AmiciActivity">
 
-
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="30dp"
@@ -30,7 +29,9 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <ListView
+    <!-- Sostituito ListView con RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAmici"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_alignParentTop="true"
@@ -66,8 +67,7 @@
         android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="25dp"
-        />
+        android:layout_marginBottom="25dp" />
 
     <ImageButton
         android:id="@+id/btnPrefe3"
@@ -77,19 +77,17 @@
         android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="115dp"
-        android:layout_marginBottom="25dp"
-        />
+        android:layout_marginBottom="25dp" />
 
     <ImageButton
         android:id="@+id/btnHomeAmici3"
         android:layout_width="23dp"
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart= "270dp"
+        android:layout_marginStart="270dp"
         android:layout_marginBottom="24dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_amici"
-        />
+        android:src="@drawable/ic_amici" />
 
     <ImageButton
         android:id="@+id/btnBiglietti3"
@@ -99,8 +97,7 @@
         android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="20dp"
-        />
+        android:layout_marginBottom="20dp" />
 
     <ImageButton
         android:id="@+id/btnProfilo3"
@@ -110,7 +107,6 @@
         android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="340dp"
-        android:layout_marginBottom="20dp"
-        />
+        android:layout_marginBottom="20dp" />
 
 </RelativeLayout>

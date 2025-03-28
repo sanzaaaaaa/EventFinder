@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    query = "SELECT * FROM Utenti"  # Usa la tabella 'Utenti' corretta
+    query = "SELECT * FROM utenti"  # Usa la tabella 'Utenti' corretta
     with connection.cursor() as cursor:
         cursor.execute(query)
         lista = cursor.fetchall()
@@ -41,7 +41,7 @@ def register():
 
     # Inserisci i dati nel database
     cursor = connection.cursor()
-    query = "INSERT INTO Utenti (nome, cognome, email, data_di_nascita, password) VALUES (%s, %s, %s, %s, %s)"
+    query = "INSERT INTO utenti (nome, cognome, email, data_di_nascita, password) VALUES (%s, %s, %s, %s, %s)"
     cursor.execute(query, (nome, cognome, email, data_di_nascita, password))
     connection.commit()
     cursor.close()
@@ -70,6 +70,13 @@ def login():
                 return jsonify({'message': 'Password errata'}), 401
         else:
             return jsonify({'message': 'Email non trovata'}), 404
+        
+        
+@app.route('/get_users', methods=['GET'])
+def get_users():
+    utenti = utenti.query.all()  # Esegui la query per ottenere tutti gli utenti
+    users_list = [{"nome": u.nome, "cognome": u.cognome} for u in utenti]  # Formatta la risposta
+    return jsonify(users_list)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
