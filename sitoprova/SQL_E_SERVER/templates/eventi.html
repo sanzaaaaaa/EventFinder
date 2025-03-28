@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventi | EventFinder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Menu -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo EventFinder">
+            </div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
+                <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
+                <li><a href="{{ url_for('login') }}" class="btn-login-register">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <!-- Sezione Eventi -->
+    <section id="eventi">
+        <div class="intro">
+            <h1>Eventi Disponibili</h1>
+            <p>Esplora gli eventi più recenti e scopri cosa sta accadendo vicino a te!</p>
+        </div>
+        
+        <!-- Lista eventi (Esempio) -->
+        <div class="event-list">
+            <div class="event-card">
+                <h3>Concerto Rock</h3>
+                <p>Data: 15 aprile 2025</p>
+                <p>Luogo: Arena Centrale</p>
+            </div>
+            <div class="event-card">
+                <h3>Festival di Arte</h3>
+                <p>Data: 25 aprile 2025</p>
+                <p>Luogo: Parco delle Arti</p>
+            </div>
+            <div class="event-card">
+                <h3>Seminario di Marketing</h3>
+                <p>Data: 30 aprile 2025</p>
+                <p>Luogo: Sala Conferenze</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>&copy; 2025 EventFinder - Tutti i diritti riservati.</p>
+        <ul>
+            <li><a href="#privacy-policy">Privacy Policy</a></li>
+            <li><a href="#terms">Termini di Servizio</a></li>
+            <li><a href="#help">Aiuto</a></li>
+        </ul>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
