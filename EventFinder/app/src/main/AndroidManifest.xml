@@ -15,28 +15,33 @@
         android:theme="@style/Theme.EventFinder"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
         <activity
-            android:name=".modelli.Filtri"
+            android:name=".Biglietti"
+            android:exported="false" />
+        <activity
+            android:name=".Preferiti"
+            android:exported="false" />
+        <activity
+            android:name=".Filtri"
             android:exported="false" />
         <activity
             android:name=".InvitaAmico"
             android:exported="false" />
         <activity
-            android:name=".modelli.Login"
+            android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Amici"
+            android:name=".AmiciActivity"
             android:exported="false" />
         <activity android:name=".Profilo" />
         <activity
             android:name=".InfoEventi"
             android:exported="false" />
         <activity
-            android:name=".modelli.Registrati"
+            android:name=".Registrati"
             android:exported="true" />
         <activity
-            android:name=".Home"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

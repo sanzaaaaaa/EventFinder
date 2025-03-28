@@ -107,14 +107,6 @@
         android:layout_marginLeft="20dp"
         android:text="Prezzo" />
 
-    <TextView
-        android:id="@+id/textdataora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="680dp"
-        android:text="Data - ora " />
-
     <Button
         android:id="@+id/compraBtn"
         android:layout_width="170dp"

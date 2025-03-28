@@ -1,4 +1,4 @@
-package com.example.eventfinder.modelli;
+package com.example.eventfinder;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,8 +7,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
-import com.example.eventfinder.R;
+import com.example.eventfinder.modelli.ApiService;
+import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.Utente;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,6 +28,10 @@ public class Registrati extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrati);
+
+        WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+        windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 
         nome = findViewById(R.id.registratiNomeEdit);
         cognome = findViewById(R.id.registratiCognomeEdit);
