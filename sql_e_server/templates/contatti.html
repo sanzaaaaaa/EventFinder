@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <section class="contatti">
+        <h1>Contattaci</h1>
+        <p>Email: supporto@eventfinder.com</p>
+        <p>Telefono: +39 123 456 789</p>
+    </section>
+
+    {% include 'footer.html' %}
+
+</body>
+</html>
