@@ -3,6 +3,7 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -14,7 +15,8 @@ import androidx.appcompat.widget.SearchView;
 
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
-import com.example.eventfinder.Filtri;
+import com.example.eventfinder.modelli.SharedPreference;
+import com.google.mlkit.common.sdkinternal.SharedPrefManager;
 
 
 import java.util.ArrayList;
@@ -26,10 +28,15 @@ public class HomeActivity extends AppCompatActivity {
     private List<Eventi> eventiListFiltered;
     private EventiAdapter eventiAdapter;
 
+    private SharedPreference sharedPreference;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home); // Mantieni lo stesso layout del fragment
+
+        sharedPreference = new SharedPreference(this);
+
 
         SearchView cerca = findViewById(R.id.searchView);
         Button loginButtonHome = findViewById(R.id.loginHomeBtn);
@@ -40,6 +47,13 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton btnHome = findViewById(R.id.btnHome);
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo);
+
+
+        if (sharedPreference.isLoggedIn()) {
+            loginButtonHome.setVisibility(View.GONE);  // Nasconde il pulsante di login
+        } else {
+            loginButtonHome.setVisibility(View.VISIBLE);
+        }
 
         btnBiglietto.setOnClickListener(v -> {
             Intent biglietto = new Intent(HomeActivity.this, Biglietti.class);
