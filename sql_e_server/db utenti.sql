@@ -14,6 +14,11 @@ email VARCHAR (200) UNIQUE NOT NULL,
 data_di_nascita date NOT NULL,
 password VARCHAR(255) NOT NULL);
 
+create table categoria(
+id INT AUTO_INCREMENT  PRIMARY KEY,
+tipologia VARCHAR (200) NOT NULL
+);
+
 create table eventi(
 id INT AUTO_INCREMENT  PRIMARY KEY,
 titolo VARCHAR (200) NOT NULL,
@@ -50,14 +55,5 @@ foreign key (artista_id) references artisti(id),
 foreign key (evento_id) references eventi(id)
 );
 
-create table categoria(
-id INT AUTO_INCREMENT  PRIMARY KEY,
-tipologia VARCHAR (200) NOT NULL
-);
 
 select * from utenti;
-
-
-
-
-
