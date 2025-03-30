@@ -55,8 +55,9 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton btnProfilo = findViewById(R.id.btnProfilo);
 
 
+
         if (sharedPreference.isLoggedIn()) {
-            loginButtonHome.setVisibility(View.GONE);  // Nasconde il pulsante di login
+            loginButtonHome.setVisibility(View.GONE);
         } else {
             loginButtonHome.setVisibility(View.VISIBLE);
         }

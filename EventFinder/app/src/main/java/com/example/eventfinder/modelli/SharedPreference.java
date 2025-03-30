@@ -11,6 +11,7 @@ public class SharedPreference {
     private static final String KEY_COGNOME = "cognome";
     private static final String KEY_DATA_NASCITA = "data_di_nascita";
     private static final String KEY_IS_LOGGED_IN = "is_logged_in";
+    private static final String KEY_IS_LOGGED_OUT = "is_logged_out";
 
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;
@@ -32,6 +33,15 @@ public class SharedPreference {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
+    public void setLoggedOut(boolean isLoggedOut) {
+        editor.putBoolean(KEY_IS_LOGGED_OUT, isLoggedOut);
+        editor.apply();
+    }
+
+    public boolean isLoggedOut() {
+        return sharedPreferences.getBoolean(KEY_IS_LOGGED_OUT, true);
+    }
+
     public void saveEmail(String email) {
         editor.putString(KEY_EMAIL, email);
         editor.apply();
@@ -49,6 +59,7 @@ public class SharedPreference {
     public String getNome() {
         return sharedPreferences.getString(KEY_NOME, "Nome non disponibile");
     }
+
 
     public void saveCognome(String cognome) {
         editor.putString(KEY_COGNOME, cognome);
@@ -72,4 +83,5 @@ public class SharedPreference {
         editor.clear();
         editor.apply();
     }
+
 }
