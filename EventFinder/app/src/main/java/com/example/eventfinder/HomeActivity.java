@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if (sharedPreference.isLoggedIn()) {
             loginButtonHome.setVisibility(View.GONE);
-        } else {
+        } else  {
             loginButtonHome.setVisibility(View.VISIBLE);
         }
 

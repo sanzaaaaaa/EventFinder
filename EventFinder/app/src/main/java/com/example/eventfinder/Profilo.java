@@ -83,7 +83,7 @@ public class Profilo extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPreference.setLoggedOut(true);
+                sharedPreference.setLoggedIn(false);
 
             Toast.makeText(Profilo.this, "Hai eseguito il logout", Toast.LENGTH_SHORT).show();
             }

@@ -30,6 +30,7 @@ public class SharedPreference {
 
     // verifica se l'utente è loggato
     public boolean isLoggedIn() {
+
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
@@ -39,6 +40,7 @@ public class SharedPreference {
     }
 
     public boolean isLoggedOut() {
+
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_OUT, true);
     }
 
