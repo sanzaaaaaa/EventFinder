@@ -84,8 +84,13 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         btnProfilo.setOnClickListener(v -> {
+            if(sharedPreference.isLoggedIn()){
             Intent profilo = new Intent(HomeActivity.this, Profilo.class);
             startActivity(profilo);
+            }else{
+                Intent login = new Intent(HomeActivity.this, Login.class);
+                startActivity(login);
+            }
         });
 
         btnFiltro.setOnClickListener(v -> {

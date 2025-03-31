@@ -85,6 +85,9 @@ public class Profilo extends AppCompatActivity {
             public void onClick(View v) {
                 sharedPreference.setLoggedIn(false);
 
+                Intent intent = new Intent(Profilo.this, HomeActivity.class);
+                startActivity(intent);
+
             Toast.makeText(Profilo.this, "Hai eseguito il logout", Toast.LENGTH_SHORT).show();
             }
 
