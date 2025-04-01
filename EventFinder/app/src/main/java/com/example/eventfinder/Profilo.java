@@ -1,5 +1,6 @@
 package com.example.eventfinder;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,8 +33,14 @@ public class Profilo extends AppCompatActivity {
 
         Button sezAmici = findViewById(R.id.btnAmici);
         Button logout = findViewById(R.id.btnLogout);
+        TextView nomeProfilo = findViewById(R.id.nome);
 
         SharedPreference sharedPreference = new SharedPreference(this);
+
+        nomeProfilo.setText(sharedPreference.getNome() + " " + sharedPreference.getCognome());
+
+
+
 
         ImageView profilo = findViewById(R.id.imgProfilo);
         ImageButton btnBiglietto = findViewById(R.id.btnBiglietti4);
@@ -72,8 +80,6 @@ public class Profilo extends AppCompatActivity {
                 .asGif() // Specifica che vuoi caricare una GIF
                 .load(R.drawable.iconautente) // Inserisci il nome della tua GIF nella cartella drawable
                 .into(profilo); // Imposta la GIF nell'ImageView
-
-
 
         sezAmici.setOnClickListener(v -> {
             Intent amici = new Intent(Profilo.this, AmiciActivity.class);

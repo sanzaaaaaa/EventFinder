@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 public class SharedPreference {
     private static final String PREF_NAME = "UserPrefs";
 
+    private static final int PRIVATE_MODE = 0;
     private static final String KEY_EMAIL = "email";
     private static final String KEY_NOME = "nome";
     private static final String KEY_COGNOME = "cognome";
