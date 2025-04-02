@@ -74,9 +74,13 @@ def login():
         
 @app.route('/get_users', methods=['GET'])
 def get_users():
-    utenti = utenti.query.all()  # Esegui la query per ottenere tutti gli utenti
-    users_list = [{"nome": u.nome, "cognome": u.cognome} for u in utenti]  # Formatta la risposta
-    return jsonify(users_list)
+    query = "SELECT nome, cognome FROM utenti"  # Seleziona solo i campi necessari
+    with connection.cursor() as cursor:
+        cursor.execute(query)
+        users = cursor.fetchall()  # Ottiene tutti gli utenti
+
+    return jsonify(users)  # Flask converte direttamente la lista di dizionari in JSON
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
