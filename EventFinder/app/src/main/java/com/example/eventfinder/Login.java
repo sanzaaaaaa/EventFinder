@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
 
 import retrofit2.Call;
@@ -35,11 +37,18 @@ public class Login extends AppCompatActivity {
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
         windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 
+        SharedPreference sharedPreference = new SharedPreference(this);
+
         Button registratiButton = findViewById(R.id.registrati);
         email = findViewById(R.id.emailLogineditText);
         password = findViewById(R.id.pswLogineditText);
-
         loginBtn = findViewById(R.id.loginBtn);
+        ImageButton btnBackLogin = findViewById(R.id.btnBackLogin);
+
+        btnBackLogin.setOnClickListener(v -> {
+            Intent dietroLogin = new Intent(Login.this, HomeActivity.class);
+            startActivity(dietroLogin);
+        });
 
         apiService = RetrofitClient.getApiService().create(ApiService.class);
 
@@ -52,10 +61,10 @@ public class Login extends AppCompatActivity {
 
         });
         loginBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 loginUser();
+                sharedPreference.setLoggedIn(true);
             }
 
         });
@@ -83,7 +92,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, HomeActivity.class);  // Change HomeActivity to your main screen activity
                     startActivity(intent);
                     finish();

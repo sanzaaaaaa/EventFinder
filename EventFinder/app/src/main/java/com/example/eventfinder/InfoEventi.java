@@ -19,6 +19,7 @@ public class InfoEventi extends AppCompatActivity {
     private TextView dataInfoEvento;
     private TextView luogoInfoEvento;
     private ImageView immagineEvento;
+    private TextView prezzoEvento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class InfoEventi extends AppCompatActivity {
         dataInfoEvento = findViewById(R.id.dataInfoEvento);     // Corretto
         luogoInfoEvento = findViewById(R.id.luogoInfoEvento);   // Corretto
         immagineEvento = findViewById(R.id.immagineEvento);
+        prezzoEvento = findViewById(R.id.textPrezzo);
 
         ImageButton indietro = findViewById(R.id.btnBack);
         ImageButton iconaPreferiti = findViewById(R.id.iconapreferitiInfoEvento);
@@ -43,10 +45,12 @@ public class InfoEventi extends AppCompatActivity {
         String data = intent.getStringExtra("data");
         String luogo = intent.getStringExtra("luogo");
         String immagineUrl = intent.getStringExtra("immagine");
+        String prezzo = intent.getStringExtra("prezzo");
 
         titoloInfoEvento.setText(titolo);
         dataInfoEvento.setText(data);
         luogoInfoEvento.setText(luogo);
+        prezzoEvento.setText(prezzo);
 
 
         indietro.setOnClickListener(v -> {

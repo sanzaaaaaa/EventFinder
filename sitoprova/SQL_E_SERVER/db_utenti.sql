@@ -31,12 +31,12 @@ foreign key (categoria_id) references categoria(id)
 );
 
 alter table eventi
-add column urlimage varchar(500);
+add column preferiti_id int;
 
 alter table eventi
 add foreign key (preferiti_id) references preferiti(id);
 
-
+select * from artisti;
 
 create table preferiti(
 	id INT auto_increment primary key,
@@ -73,10 +73,5 @@ foreign key (artista_id) references artisti(id),
 foreign key (evento_id) references eventi(id)
 );
 
-alter table categoria
-add column genere varchar(200);
 
-alter table eventi
-add column prezzo int;
-
-select * from eventi;
+select * from utenti;

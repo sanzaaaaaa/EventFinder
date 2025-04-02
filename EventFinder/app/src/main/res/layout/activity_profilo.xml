@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="#CC0000">  <!-- Rosso Scuro -->
+        android:background="#CC0000"> <!-- Rosso Scuro -->
 
         <TextView
             android:id="@+id/tvEditProfile"
@@ -79,8 +79,8 @@
             android:background="#D32F2F"
             android:layout_marginBottom="10dp"/>
 
-        <!-- Email -->
-        <TextView
+        <!-- Email
+         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email"
@@ -93,6 +93,7 @@
             android:layout_height="1dp"
             android:background="#D32F2F"
             android:layout_marginBottom="10dp"/>
+            -->
     </LinearLayout>
 
     <!-- Pulsanti -->

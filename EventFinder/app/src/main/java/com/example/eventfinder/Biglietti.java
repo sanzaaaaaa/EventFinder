@@ -106,11 +106,13 @@ public class Biglietti extends AppCompatActivity {
         Eventi evento1 = new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/linkin-park-biglietti.jpg",
                 "Linkin Park",
                 "mar 24 giugno, 16:00",
-                "Ippodromo SNAI La Maura");
+                "Ippodromo SNAI La Maura",
+                "92");
         Eventi evento2 = new Eventi("https://dice-media.imgix.net/attachments/2024-12-17/5bd0bf9c-7ffb-48d1-ba8f-9bb937748e69.jpg?rect=0%2C0%2C2064%2C2064&auto=format%2Ccompress&q=40&w=328&h=328&fit=crop&crop=faces%2Ccenter&dpr=2",
                 "Vintage Violence",
                 "15 Marzo 2024",
-                "Legend Club, Milano");
+                "Legend Club, Milano",
+                "92");
 
         List<Eventi> listaEventiInProgramma = new ArrayList<>();
         List<Eventi> listaEventiPassati = new ArrayList<>();

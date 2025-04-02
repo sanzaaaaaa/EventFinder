@@ -1,10 +1,15 @@
 package com.example.eventfinder;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
@@ -13,6 +18,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.eventfinder.modelli.Amici;
+import com.example.eventfinder.modelli.SharedPreference;
 
 public class Profilo extends AppCompatActivity {
 
@@ -27,6 +33,13 @@ public class Profilo extends AppCompatActivity {
 
         Button sezAmici = findViewById(R.id.btnAmici);
         Button logout = findViewById(R.id.btnLogout);
+        TextView nomeProfilo = findViewById(R.id.nome);
+
+        SharedPreference sharedPreference = new SharedPreference(this);
+
+        nomeProfilo.setText(sharedPreference.getNome() + " " + sharedPreference.getCognome());
+
+
 
 
         ImageView profilo = findViewById(R.id.imgProfilo);
@@ -68,12 +81,25 @@ public class Profilo extends AppCompatActivity {
                 .load(R.drawable.iconautente) // Inserisci il nome della tua GIF nella cartella drawable
                 .into(profilo); // Imposta la GIF nell'ImageView
 
-
-
         sezAmici.setOnClickListener(v -> {
             Intent amici = new Intent(Profilo.this, AmiciActivity.class);
             startActivity(amici);
         });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sharedPreference.setLoggedIn(false);
+
+                Intent intent = new Intent(Profilo.this, HomeActivity.class);
+                startActivity(intent);
+
+            Toast.makeText(Profilo.this, "Hai eseguito il logout", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+
 
     }
 }
