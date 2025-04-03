@@ -42,16 +42,45 @@ public class AmiciActivity extends AppCompatActivity {
         utentiAdapter = new UtentiAdapter(utentiList);
         recyclerView.setAdapter(utentiAdapter);
 
-        // Inizializza Retrofit e APIService
-        apiService = RetrofitClient.getApiService().create(ApiService.class);
+        ImageButton btnBiglietto = findViewById(R.id.btnBiglietti3);
+        ImageButton btnPreferiti = findViewById(R.id.btnPrefe3);
+        ImageButton btnHome = findViewById(R.id.btnHome3);
+        ImageButton btnAmici = findViewById(R.id.btnHomeAmici3);
+        ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
 
-        // Chiamata per ottenere gli utenti registrati
+        btnBiglietto.setOnClickListener(v -> {
+            Intent biglietto = new Intent(AmiciActivity.this, Biglietti.class);
+            startActivity(biglietto);
+        });
+
+        btnProfilo.setOnClickListener(v -> {
+            Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
+            startActivity(profilo);
+        });
+
+        btnPreferiti.setOnClickListener(v -> {
+            Intent preferiti = new Intent(AmiciActivity.this, Preferiti.class);
+            startActivity(preferiti);
+
+        });
+
+        btnHome.setOnClickListener(v -> {
+            Intent home = new Intent(AmiciActivity.this, HomeActivity.class);
+            startActivity(home);
+        });
+
+        btnAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(AmiciActivity.this, AmiciActivity.class);
+            startActivity(amici);
+        });
+
+
+        apiService = RetrofitClient.getApiService().create(ApiService.class);
         getUtentiRegistrati();
     }
 
     private void getUtentiRegistrati() {
-        // Esegui la chiamata API per ottenere gli utenti
-        Call<List<Utente>> call = apiService.getUsers(); // Usa la tua chiamata API
+        Call<List<Utente>> call = apiService.getUsers();
         call.enqueue(new Callback<List<Utente>>() {
             @Override
             public void onResponse(Call<List<Utente>> call, Response<List<Utente>> response) {
@@ -64,7 +93,6 @@ public class AmiciActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Utente>> call, Throwable t) {
-                // Gestisci l'errore
             }
         });
     }

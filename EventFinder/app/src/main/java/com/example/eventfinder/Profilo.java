@@ -27,22 +27,10 @@ public class Profilo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilo);
 
-        WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
-        windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
-
-        Button sezAmici = findViewById(R.id.btnAmici);
-        Button logout = findViewById(R.id.btnLogout);
         TextView nomeProfilo = findViewById(R.id.nome);
+        TextView dataNascitaProfilo = findViewById(R.id.datanascita);
+        Button logout = findViewById(R.id.btnLogout);
 
-        SharedPreference sharedPreference = new SharedPreference(this);
-
-        nomeProfilo.setText(sharedPreference.getNome() + " " + sharedPreference.getCognome());
-
-
-
-
-        ImageView profilo = findViewById(R.id.imgProfilo);
         ImageButton btnBiglietto = findViewById(R.id.btnBiglietti4);
         ImageButton btnPreferiti = findViewById(R.id.btnPrefe4);
         ImageButton btnHome = findViewById(R.id.btnHome4);
@@ -52,6 +40,11 @@ public class Profilo extends AppCompatActivity {
         btnBiglietto.setOnClickListener(v -> {
             Intent biglietto = new Intent(Profilo.this, Biglietti.class);
             startActivity(biglietto);
+        });
+
+        btnProfilo.setOnClickListener(v -> {
+            Intent profilo = new Intent(Profilo.this, Profilo.class);
+            startActivity(profilo);
         });
 
         btnPreferiti.setOnClickListener(v -> {
@@ -70,39 +63,31 @@ public class Profilo extends AppCompatActivity {
             startActivity(amici);
         });
 
-        btnProfilo.setOnClickListener(v -> {
-            Intent profili = new Intent(Profilo.this, Profilo.class);
-            startActivity(profili);
+
+        SharedPreference sharedPreference = new SharedPreference(this);
+
+        if (sharedPreference.isLoggedIn()) {
+            String nome = sharedPreference.getNome();
+            String cognome = sharedPreference.getCognome();
+            String dataNascita = sharedPreference.getDataDiNascita();
+
+            nomeProfilo.setText(nome + " " + cognome);
+            dataNascitaProfilo.setText(dataNascita);
+        } else {
+            Intent intent = new Intent(Profilo.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        logout.setOnClickListener(v -> {
+            sharedPreference.setLoggedIn(false);
+            Intent intent = new Intent(Profilo.this, Login.class);
+            startActivity(intent);
+            finish();
         });
-
-        // Usa Glide per caricare la GIF
-        Glide.with(this)
-                .asGif() // Specifica che vuoi caricare una GIF
-                .load(R.drawable.iconautente) // Inserisci il nome della tua GIF nella cartella drawable
-                .into(profilo); // Imposta la GIF nell'ImageView
-
-        sezAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(Profilo.this, AmiciActivity.class);
-            startActivity(amici);
-        });
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sharedPreference.setLoggedIn(false);
-
-                Intent intent = new Intent(Profilo.this, HomeActivity.class);
-                startActivity(intent);
-
-            Toast.makeText(Profilo.this, "Hai eseguito il logout", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-
-
-
     }
 }
+
 
 
 

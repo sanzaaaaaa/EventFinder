@@ -20,10 +20,9 @@ public class SharedPreference {
 
     public SharedPreference(Context context) {
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit(); // Ora editor è inizializzato correttamente
+        editor = sharedPreferences.edit();
     }
 
-    // salva lo stato di login
     public void setLoggedIn(boolean isLoggedIn) {
         editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn);
         editor.apply();
