@@ -32,11 +32,12 @@
     <!-- Sostituito ListView con RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAmici"
+        android:layout_below="@+id/searchBarHome"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="177dp"
+        android:layout_marginTop="151dp"
         android:layout_marginBottom="83dp" />
 
     <com.google.android.material.search.SearchBar
@@ -48,7 +49,7 @@
         android:layout_centerHorizontal="true"
         android:backgroundTint="@android:color/white"
         android:text="Cerca..." />
-
+    
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="1000dp"
