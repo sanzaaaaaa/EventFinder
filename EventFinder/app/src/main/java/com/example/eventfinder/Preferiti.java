@@ -24,7 +24,6 @@ public class Preferiti extends AppCompatActivity {
         windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 
         ImageButton btnBiglietto = findViewById(R.id.btnBiglietti2);
-        ImageButton btnPreferiti = findViewById(R.id.btnPrefe2);
         ImageButton btnHome = findViewById(R.id.btnHome2);
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici2);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo2);
@@ -34,11 +33,6 @@ public class Preferiti extends AppCompatActivity {
             startActivity(biglietto);
         });
 
-        btnPreferiti.setOnClickListener(v -> {
-            Intent preferiti = new Intent(Preferiti.this, Preferiti.class);
-            startActivity(preferiti);
-
-        });
 
         btnHome.setOnClickListener(v -> {
             Intent home = new Intent(Preferiti.this, HomeActivity.class);

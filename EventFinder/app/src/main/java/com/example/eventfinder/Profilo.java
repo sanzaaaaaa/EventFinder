@@ -35,17 +35,12 @@ public class Profilo extends AppCompatActivity {
         ImageButton btnPreferiti = findViewById(R.id.btnPrefe4);
         ImageButton btnHome = findViewById(R.id.btnHome4);
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici4);
-        ImageButton btnProfilo = findViewById(R.id.btnProfilo4);
 
         btnBiglietto.setOnClickListener(v -> {
             Intent biglietto = new Intent(Profilo.this, Biglietti.class);
             startActivity(biglietto);
         });
 
-        btnProfilo.setOnClickListener(v -> {
-            Intent profilo = new Intent(Profilo.this, Profilo.class);
-            startActivity(profilo);
-        });
 
         btnPreferiti.setOnClickListener(v -> {
             Intent preferiti = new Intent(Profilo.this, Preferiti.class);
@@ -73,6 +68,7 @@ public class Profilo extends AppCompatActivity {
 
             nomeProfilo.setText(nome + " " + cognome);
             dataNascitaProfilo.setText(dataNascita);
+
         } else {
             Intent intent = new Intent(Profilo.this, HomeActivity.class);
             startActivity(intent);
@@ -81,7 +77,7 @@ public class Profilo extends AppCompatActivity {
 
         logout.setOnClickListener(v -> {
             sharedPreference.setLoggedIn(false);
-            Intent intent = new Intent(Profilo.this, Login.class);
+            Intent intent = new Intent(Profilo.this, HomeActivity.class);
             startActivity(intent);
             finish();
         });

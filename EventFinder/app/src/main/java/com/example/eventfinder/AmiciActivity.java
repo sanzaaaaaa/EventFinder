@@ -45,7 +45,6 @@ public class AmiciActivity extends AppCompatActivity {
         ImageButton btnBiglietto = findViewById(R.id.btnBiglietti3);
         ImageButton btnPreferiti = findViewById(R.id.btnPrefe3);
         ImageButton btnHome = findViewById(R.id.btnHome3);
-        ImageButton btnAmici = findViewById(R.id.btnHomeAmici3);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
 
         btnBiglietto.setOnClickListener(v -> {
@@ -67,11 +66,6 @@ public class AmiciActivity extends AppCompatActivity {
         btnHome.setOnClickListener(v -> {
             Intent home = new Intent(AmiciActivity.this, HomeActivity.class);
             startActivity(home);
-        });
-
-        btnAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(AmiciActivity.this, AmiciActivity.class);
-            startActivity(amici);
         });
 
 

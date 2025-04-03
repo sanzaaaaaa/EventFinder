@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +42,17 @@ public class Registrati extends AppCompatActivity {
         apiService = RetrofitClient.getApiService().create(ApiService.class);
 
         registratiBtn.setOnClickListener(v -> registerUser());
+
+        ImageButton back = findViewById(R.id.btnBackRegister);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Registrati.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void registerUser() {
@@ -69,10 +81,8 @@ public class Registrati extends AppCompatActivity {
                     sharedPreference.saveDataDiNascita(d);
                     sharedPreference.setLoggedIn(false);
 
-                    // Messaggio di successo
                     Toast.makeText(Registrati.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
 
-                    // Reindirizza alla schermata di login
                     Intent intent = new Intent(Registrati.this, Login.class);
                     startActivity(intent);
                     finish();
