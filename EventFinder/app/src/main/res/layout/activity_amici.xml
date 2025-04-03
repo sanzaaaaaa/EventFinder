@@ -49,7 +49,7 @@
         android:layout_centerHorizontal="true"
         android:backgroundTint="@android:color/white"
         android:text="Cerca..." />
-    
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="1000dp"
