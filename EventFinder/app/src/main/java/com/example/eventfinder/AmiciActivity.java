@@ -42,19 +42,26 @@ public class AmiciActivity extends AppCompatActivity {
         utentiAdapter = new UtentiAdapter(utentiList);
         recyclerView.setAdapter(utentiAdapter);
 
+
+        apiService = RetrofitClient.getApiService().create(ApiService.class);
+        getUtentiRegistrati();
+
+        ImageButton indietro = findViewById(R.id.btnBack);
+
+        indietro.setOnClickListener(v -> {
+            Intent amici = new Intent(AmiciActivity.this, HomeActivity.class);
+            startActivity(amici);
+        });
+
         ImageButton btnBiglietto = findViewById(R.id.btnBiglietti3);
         ImageButton btnPreferiti = findViewById(R.id.btnPrefe3);
         ImageButton btnHome = findViewById(R.id.btnHome3);
+        ImageButton btnAmici = findViewById(R.id.btnHomeAmici3);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
 
         btnBiglietto.setOnClickListener(v -> {
             Intent biglietto = new Intent(AmiciActivity.this, Biglietti.class);
             startActivity(biglietto);
-        });
-
-        btnProfilo.setOnClickListener(v -> {
-            Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
-            startActivity(profilo);
         });
 
         btnPreferiti.setOnClickListener(v -> {
@@ -68,9 +75,15 @@ public class AmiciActivity extends AppCompatActivity {
             startActivity(home);
         });
 
+        btnAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(AmiciActivity.this, AmiciActivity.class);
+            startActivity(amici);
+        });
 
-        apiService = RetrofitClient.getApiService().create(ApiService.class);
-        getUtentiRegistrati();
+        btnProfilo.setOnClickListener(v -> {
+            Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
+            startActivity(profilo);
+        });
     }
 
     private void getUtentiRegistrati() {
@@ -90,4 +103,5 @@ public class AmiciActivity extends AppCompatActivity {
             }
         });
     }
+
 }
