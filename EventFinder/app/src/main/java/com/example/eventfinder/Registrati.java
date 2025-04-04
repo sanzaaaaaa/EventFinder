@@ -79,7 +79,7 @@ public class Registrati extends AppCompatActivity {
                     sharedPreference.saveCognome(c);
                     sharedPreference.saveEmail(e);
                     sharedPreference.saveDataDiNascita(d);
-                    sharedPreference.setLoggedIn(false);
+                    sharedPreference.setLoggedIn(true);
 
                     Toast.makeText(Registrati.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
 

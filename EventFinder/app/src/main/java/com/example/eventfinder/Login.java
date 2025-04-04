@@ -69,6 +69,7 @@ public class Login extends AppCompatActivity {
         });
 
     }
+
     private void loginUser() {
         String e = email.getText().toString();
         String p = password.getText().toString();
@@ -91,6 +92,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
+
+
                     Intent intent = new Intent(Login.this, HomeActivity.class);  // Change HomeActivity to your main screen activity
                     startActivity(intent);
                     finish();
@@ -110,4 +113,5 @@ public class Login extends AppCompatActivity {
         });
     }
 }
+
 
