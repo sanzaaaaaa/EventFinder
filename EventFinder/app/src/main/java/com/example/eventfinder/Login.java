@@ -86,7 +86,35 @@ public class Login extends AppCompatActivity {
 
         Utente nuovoUtente = new Utente(e, p);
 
-        Call<Void> call = apiService.loginUser(nuovoUtente);
+        Call<Utente> call = apiService.loginUser(nuovoUtente);
+        call.enqueue(new Callback<Utente>() {
+            @Override
+            public void onResponse(Call<Utente> call, Response<Utente> response) {
+                if (response.isSuccessful()) {
+
+                    Utente utente = response.body();
+                    SharedPreference sharedPreference = new SharedPreference(Login.this);
+                    sharedPreference.saveNome(utente.getNome());
+
+                    Intent intent = new Intent(Login.this, HomeActivity.class);  // Change HomeActivity to your main screen activity
+                    startActivity(intent);
+                    finish();
+                } else if (response.code() == 401) {
+                    Toast.makeText(Login.this, "password sbagliata", Toast.LENGTH_SHORT).show();
+                } else if (response.code() == 404) {
+                    Toast.makeText(Login.this, "Email non registrata", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Utente> call, Throwable t) {
+
+            }
+        });
+
+        /*Call<Void> call = apiService.loginUser(nuovoUtente);
         call.enqueue(new Callback<Void>() {
 
             @Override
@@ -110,7 +138,7 @@ public class Login extends AppCompatActivity {
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(Login.this, "Something went wrong...", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 }
 

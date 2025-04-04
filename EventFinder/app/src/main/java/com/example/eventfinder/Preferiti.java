@@ -3,6 +3,7 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,17 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.example.eventfinder.modelli.Eventi;
+import com.example.eventfinder.modelli.EventiAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Preferiti extends AppCompatActivity {
+    private ListView preferitiListView;
+    private List<Eventi> eventiList;
+    private EventiAdapter eventiAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +38,7 @@ public class Preferiti extends AppCompatActivity {
         ImageButton btnHome = findViewById(R.id.btnHome2);
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici2);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo2);
+        ListView preferitiListView = findViewById(R.id.preferitiListView);
 
         btnBiglietto.setOnClickListener(v -> {
             Intent biglietto = new Intent(Preferiti.this, Biglietti.class);
@@ -48,5 +60,10 @@ public class Preferiti extends AppCompatActivity {
             Intent profilo = new Intent(Preferiti.this, Profilo.class);
             startActivity(profilo);
         });
+
+        eventiList = new ArrayList<>();
+        eventiAdapter = new EventiAdapter(this, eventiList);
+        preferitiListView.setAdapter(eventiAdapter);
+
     }
 }
