@@ -42,32 +42,6 @@ public class AmiciActivity extends AppCompatActivity {
         utentiAdapter = new UtentiAdapter(utentiList);
         recyclerView.setAdapter(utentiAdapter);
 
-        ImageButton btnBiglietto = findViewById(R.id.btnBiglietti3);
-        ImageButton btnPreferiti = findViewById(R.id.btnPrefe3);
-        ImageButton btnHome = findViewById(R.id.btnHome3);
-        ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
-
-        btnBiglietto.setOnClickListener(v -> {
-            Intent biglietto = new Intent(AmiciActivity.this, Biglietti.class);
-            startActivity(biglietto);
-        });
-
-        btnProfilo.setOnClickListener(v -> {
-            Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
-            startActivity(profilo);
-        });
-
-        btnPreferiti.setOnClickListener(v -> {
-            Intent preferiti = new Intent(AmiciActivity.this, Preferiti.class);
-            startActivity(preferiti);
-
-        });
-
-        btnHome.setOnClickListener(v -> {
-            Intent home = new Intent(AmiciActivity.this, HomeActivity.class);
-            startActivity(home);
-        });
-
 
         apiService = RetrofitClient.getApiService().create(ApiService.class);
         getUtentiRegistrati();
