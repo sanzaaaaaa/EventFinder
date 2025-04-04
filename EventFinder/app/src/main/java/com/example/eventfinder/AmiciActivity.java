@@ -47,6 +47,45 @@ public class AmiciActivity extends AppCompatActivity {
 
         // Chiamata per ottenere gli utenti registrati
         getUtentiRegistrati();
+
+        ImageButton indietro = findViewById(R.id.btnBack);
+
+        indietro.setOnClickListener(v -> {
+            Intent amici = new Intent(AmiciActivity.this, HomeActivity.class);
+            startActivity(amici);
+        });
+
+        ImageButton btnBiglietto = findViewById(R.id.btnBiglietti3);
+        ImageButton btnPreferiti = findViewById(R.id.btnPrefe3);
+        ImageButton btnHome = findViewById(R.id.btnHome3);
+        ImageButton btnAmici = findViewById(R.id.btnHomeAmici3);
+        ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
+
+        btnBiglietto.setOnClickListener(v -> {
+            Intent biglietto = new Intent(AmiciActivity.this, Biglietti.class);
+            startActivity(biglietto);
+        });
+
+        btnPreferiti.setOnClickListener(v -> {
+            Intent preferiti = new Intent(AmiciActivity.this, Preferiti.class);
+            startActivity(preferiti);
+
+        });
+
+        btnHome.setOnClickListener(v -> {
+            Intent home = new Intent(AmiciActivity.this, HomeActivity.class);
+            startActivity(home);
+        });
+
+        btnAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(AmiciActivity.this, AmiciActivity.class);
+            startActivity(amici);
+        });
+
+        btnProfilo.setOnClickListener(v -> {
+            Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
+            startActivity(profilo);
+        });
     }
 
     private void getUtentiRegistrati() {
@@ -68,4 +107,5 @@ public class AmiciActivity extends AppCompatActivity {
             }
         });
     }
+
 }
