@@ -40,16 +40,11 @@ public class Biglietti extends AppCompatActivity {
         ListView inProgramma = findViewById(R.id.listaInProgramma);
         ListView giaPassati = findViewById(R.id.listaPassati);
 
-        ImageButton btnBiglietto = findViewById(R.id.btnBiglietti1);
         ImageButton btnPreferiti = findViewById(R.id.btnPrefe1);
         ImageButton btnHome = findViewById(R.id.btnHome1);
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici1);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo1);
 
-        btnBiglietto.setOnClickListener(v -> {
-            Intent biglietto = new Intent(Biglietti.this, Biglietti.class);
-            startActivity(biglietto);
-        });
 
         btnPreferiti.setOnClickListener(v -> {
             Intent preferiti = new Intent(Biglietti.this, Preferiti.class);

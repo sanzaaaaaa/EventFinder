@@ -47,8 +47,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="350dp"
         android:background="@drawable/edittext"
-        android:padding="10dp"
-        android:hint="Email" />
+        android:drawableEnd="@drawable/email"
+        android:hint="Email"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/pswLogineditText"
@@ -58,6 +59,7 @@
         android:padding="10dp"
         android:layout_marginTop="400dp"
         android:background="@drawable/edittext"
+        android:drawableEnd="@drawable/baseline_lock_24"
         android:hint="Password"
         android:inputType="textPassword" />
 
@@ -83,6 +85,5 @@
         android:backgroundTint="#00FFFFFF"
         android:text="non sei registrato? registrati"
         android:textColor="#353232" />
-
 
 </RelativeLayout>

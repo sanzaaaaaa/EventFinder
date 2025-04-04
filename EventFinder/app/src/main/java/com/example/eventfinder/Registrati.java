@@ -1,9 +1,11 @@
 package com.example.eventfinder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
 
 import retrofit2.Call;
@@ -29,10 +32,6 @@ public class Registrati extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrati);
 
-        WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
-        windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
-
         nome = findViewById(R.id.registratiNomeEdit);
         cognome = findViewById(R.id.registratiCognomeEdit);
         email = findViewById(R.id.registratiGmailEdit);
@@ -40,18 +39,22 @@ public class Registrati extends AppCompatActivity {
         password = findViewById(R.id.registratiPwEdit);
 
         registratiBtn = findViewById(R.id.registratiBtn);
-
         apiService = RetrofitClient.getApiService().create(ApiService.class);
 
-        registratiBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registerUser();
-            }
+        registratiBtn.setOnClickListener(v -> registerUser());
 
+        ImageButton back = findViewById(R.id.btnBackRegister);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Registrati.this, Login.class);
+                startActivity(intent);
+            }
         });
 
     }
+
     private void registerUser() {
         String n = nome.getText().toString();
         String c = cognome.getText().toString();
@@ -59,22 +62,39 @@ public class Registrati extends AppCompatActivity {
         String d = data_di_nascita.getText().toString();
         String p = password.getText().toString();
 
-        Utente nuovoUtente = new Utente(n,c,e,d,p);
+        if (n.isEmpty() || c.isEmpty() || e.isEmpty() || d.isEmpty() || p.isEmpty()) {
+            Toast.makeText(Registrati.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Utente nuovoUtente = new Utente(n, c, e, d, p);
+
         Call<Void> call = apiService.registerUser(nuovoUtente);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    SharedPreference sharedPreference = new SharedPreference(Registrati.this);
+                    sharedPreference.saveNome(n);
+                    sharedPreference.saveCognome(c);
+                    sharedPreference.saveEmail(e);
+                    sharedPreference.saveDataDiNascita(d);
+                    sharedPreference.setLoggedIn(false);
 
-                Toast.makeText(Registrati.this,"Registration Successful!",Toast.LENGTH_SHORT).show();
-                finish();
+                    Toast.makeText(Registrati.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(Registrati.this, Login.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(Registrati.this, "Registration failed. Try again later.", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(Registrati.this,"Something went wrong...",Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(Registrati.this, "Something went wrong...", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

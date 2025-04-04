@@ -66,13 +66,14 @@
 
         <!-- Data di nascita -->
         <TextView
+            android:id="@+id/datanascita"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Data di nascita"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="Data di nascita"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"/>
+            android:textStyle="bold" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

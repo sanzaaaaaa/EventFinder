@@ -10,6 +10,14 @@
     tools:context=".Registrati">
 
 
+    <ImageButton
+        android:id="@+id/btnBackRegister"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/icons8_cerchiato_su_a_sinistra_2_24" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="600dp"

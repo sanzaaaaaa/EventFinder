@@ -50,7 +50,6 @@ public class HomeActivity extends AppCompatActivity {
         listView = findViewById(R.id.eventiListView);
         ImageButton btnBiglietto = findViewById(R.id.btnBiglietti);
         ImageButton btnPreferiti = findViewById(R.id.btnPrefe);
-        ImageButton btnHome = findViewById(R.id.btnHome);
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo);
 
@@ -58,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if (sharedPreference.isLoggedIn()) {
             loginButtonHome.setVisibility(View.GONE);
+
         } else  {
             loginButtonHome.setVisibility(View.VISIBLE);
         }
@@ -73,10 +73,6 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
-        btnHome.setOnClickListener(v -> {
-            Intent home = new Intent(HomeActivity.this, HomeActivity.class);
-            startActivity(home);
-        });
 
         btnAmici.setOnClickListener(v -> {
             Intent amici = new Intent(HomeActivity.this, AmiciActivity.class);

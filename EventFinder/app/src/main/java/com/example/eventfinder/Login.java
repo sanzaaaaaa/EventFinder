@@ -58,7 +58,6 @@ public class Login extends AppCompatActivity {
                 Intent intent = new Intent(Login.this, Registrati.class);
                 startActivity(intent);
             }
-
         });
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

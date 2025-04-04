@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -8,14 +8,26 @@
     <TextView
         android:id="@+id/nomeUtente"
         android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
         android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imgProfilo"
         android:text="Nome Utente"
         android:textSize="16sp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgProfilo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/icons8_account_di_prova_100"/>
 
     <TextView
         android:id="@+id/cognomeUtente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Cognome Utente"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@id/nomeUtente"
         android:textSize="16sp" />
-</LinearLayout>
+</RelativeLayout>
