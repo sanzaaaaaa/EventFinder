@@ -16,14 +16,11 @@ public interface ApiService {
     @POST("/login")
     Call<Utente> loginUser(@Body Utente user);
 
-
-
-
     @GET("/get_users")
     Call<List<Utente>> getUsers();
 
-    @GET("/aggiungi_preferiti")
-    Call<Void> getEvents(@Query("id_utente") int idUtente, @Query("id_evento") int idEvento);
+    @POST("/aggiungi_preferiti")
+    Call<Void> getEvents(@Query("utente_id") int idUtente, @Query("evento_id") int idEvento);
 
 
 }

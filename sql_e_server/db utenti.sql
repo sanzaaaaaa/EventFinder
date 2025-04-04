@@ -46,7 +46,8 @@ create table preferiti(
     foreign key (evento_id) references eventi(id)
 );
 
-select * from eventi;
+select * from artisti;
+
 
 create table partecipazione(
 	id INT auto_increment primary key,
@@ -58,11 +59,7 @@ create table partecipazione(
 
 create table artisti(
 id INT AUTO_INCREMENT  PRIMARY KEY,
-nome VARCHAR (200) NOT NULL,
-data_evento VARCHAR (200) NOT NULL,
-luogo VARCHAR (200) UNIQUE NOT NULL,
-info_evento VARCHAR(255) NOT NULL,
-info_artista varchar(200) not null
+nome VARCHAR (200) NOT NULL
 );
 
 create table esibizione(

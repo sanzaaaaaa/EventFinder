@@ -12,6 +12,15 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.example.eventfinder.modelli.ApiService;
+import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.SharedPreference;
+import com.example.eventfinder.modelli.Utente;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class InfoEventi extends AppCompatActivity {
     private boolean isFilled = false;
 
@@ -20,6 +29,8 @@ public class InfoEventi extends AppCompatActivity {
     private TextView luogoInfoEvento;
     private ImageView immagineEvento;
     private TextView prezzoEvento;
+    private ApiService apiService;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +73,14 @@ public class InfoEventi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 if (isFilled) {
                     iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
                 } else {
                     iconaPreferiti.setImageResource(R.drawable.ic_pref_not_filled);
                 }
 
-                isFilled =! isFilled;
+                isFilled = !isFilled;
             }
         });
-
     }
 }
