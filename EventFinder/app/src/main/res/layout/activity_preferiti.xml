@@ -22,7 +22,7 @@
 
 
     <ListView
-        android:id="@+id/listaPassati"
+        android:id="@+id/preferitiListView"
         android:layout_width="match_parent"
         android:layout_height="611dp"
         android:layout_marginTop="120dp"

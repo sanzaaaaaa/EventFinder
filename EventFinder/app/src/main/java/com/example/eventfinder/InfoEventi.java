@@ -61,6 +61,9 @@ public class InfoEventi extends AppCompatActivity {
         iconaPreferiti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 if (isFilled) {
                     iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
                 } else {
