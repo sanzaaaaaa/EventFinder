@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
@@ -30,6 +31,7 @@ public class InfoEventi extends AppCompatActivity {
     private ImageView immagineEvento;
     private TextView prezzoEvento;
     private ApiService apiService;
+
 
 
     @Override
@@ -74,6 +76,20 @@ public class InfoEventi extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (isFilled) {
+
+                   ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
+                   apiService.getEvents(1, 1).enqueue(new Callback<Void>() {
+                       @Override
+                       public void onResponse(Call<Void> call, Response<Void> response) {
+                           Toast.makeText(InfoEventi.this, "Aggiunto ai preferiti", Toast.LENGTH_SHORT).show();
+                       }
+
+                       @Override
+                       public void onFailure(Call<Void> call, Throwable t) {
+                           Toast.makeText(InfoEventi.this, "Errore", Toast.LENGTH_SHORT).show();
+                       }
+                   });
+
                     iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
                 } else {
                     iconaPreferiti.setImageResource(R.drawable.ic_pref_not_filled);

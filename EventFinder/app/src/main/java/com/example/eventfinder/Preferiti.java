@@ -13,16 +13,24 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
+import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.Utente;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Preferiti extends AppCompatActivity {
     private ListView preferitiListView;
     private List<Eventi> eventiList;
     private EventiAdapter eventiAdapter;
+    private ApiService apiService;
 
 
     @Override
@@ -49,6 +57,7 @@ public class Preferiti extends AppCompatActivity {
         btnHome.setOnClickListener(v -> {
             Intent home = new Intent(Preferiti.this, HomeActivity.class);
             startActivity(home);
+
         });
 
         btnAmici.setOnClickListener(v -> {
@@ -61,9 +70,16 @@ public class Preferiti extends AppCompatActivity {
             startActivity(profilo);
         });
 
-        eventiList = new ArrayList<>();
-        eventiAdapter = new EventiAdapter(this, eventiList);
-        preferitiListView.setAdapter(eventiAdapter);
+
+        ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
+        //getPreferitiEventi();
+
+
+
 
     }
+
+    /*public void getPreferitiEventi(){
+        Call<List<Utente>> call = apiService.getEvents();
+    }*/
 }

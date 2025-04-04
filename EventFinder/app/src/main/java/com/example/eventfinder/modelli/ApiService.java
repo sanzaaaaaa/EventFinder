@@ -22,5 +22,9 @@ public interface ApiService {
     @POST("/aggiungi_preferiti")
     Call<Void> getEvents(@Query("utente_id") int idUtente, @Query("evento_id") int idEvento);
 
+    @GET("/get_preferiti")
+    Call<List<Utente>> getPreferiti();
+
+
 
 }
