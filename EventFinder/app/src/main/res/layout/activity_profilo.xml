@@ -53,8 +53,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nome"
-            android:text="Nome , Cognome"
+            android:id="@+id/nomepr"
+            android:text="Nome "
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
@@ -63,13 +63,27 @@
             android:layout_height="1dp"
             android:background="#D32F2F"/>
 
-
-        <!-- Data di nascita -->
         <TextView
-            android:id="@+id/datanascita"
+            android:id="@+id/cognomepr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="cognome"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D32F2F"
+            android:layout_marginBottom="10dp"/>
+
+
+        <TextView
+            android:id="@+id/datanascitapr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:layout_marginBottom="5dp"
             android:text="Data di nascita"
             android:textSize="18sp"
@@ -80,34 +94,23 @@
             android:background="#D32F2F"
             android:layout_marginBottom="10dp"/>
 
-        <!-- Email
-         <TextView
+        <TextView
+            android:id="@+id/emailpr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="5dp"
             android:text="Email"
-            android:layout_marginTop="15dp"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"/>
+            android:textStyle="bold" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#D32F2F"
             android:layout_marginBottom="10dp"/>
-            -->
-    </LinearLayout>
 
-    <!-- Pulsanti -->
-    <Button
-        android:id="@+id/btnAmici"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sezione amici"
-        android:textColor="@color/white"
-        android:layout_below="@id/listaDettagli"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#CC0000"/>
+
+    </LinearLayout>
 
 
     <Button
@@ -116,7 +119,7 @@
         android:layout_height="wrap_content"
         android:text="Logout"
         android:textColor="@color/white"
-        android:layout_below="@id/btnAmici"
+        android:layout_below="@id/listaDettagli"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:backgroundTint="#CC0000" />

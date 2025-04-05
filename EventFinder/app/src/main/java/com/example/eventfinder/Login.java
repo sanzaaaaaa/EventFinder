@@ -2,6 +2,7 @@ package com.example.eventfinder;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +46,7 @@ public class Login extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         ImageButton btnBackLogin = findViewById(R.id.btnBackLogin);
 
+
         btnBackLogin.setOnClickListener(v -> {
             Intent dietroLogin = new Intent(Login.this, HomeActivity.class);
             startActivity(dietroLogin);
@@ -73,6 +75,7 @@ public class Login extends AppCompatActivity {
     private void loginUser() {
         String e = email.getText().toString();
         String p = password.getText().toString();
+
         if (e.isEmpty()) {
             Toast.makeText(Login.this, "Please enter email", Toast.LENGTH_SHORT).show();
             return;
@@ -83,8 +86,8 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-
         Utente nuovoUtente = new Utente(e, p);
+
 
         Call<Utente> call = apiService.loginUser(nuovoUtente);
         call.enqueue(new Callback<Utente>() {
@@ -92,54 +95,47 @@ public class Login extends AppCompatActivity {
             public void onResponse(Call<Utente> call, Response<Utente> response) {
                 if (response.isSuccessful()) {
 
-                    Utente utente = response.body();
-                    SharedPreference sharedPreference = new SharedPreference(Login.this);
-                    sharedPreference.saveNome(utente.getNome());
+//                    Log.d("Login", "Risposta API: " + response.body());
 
-                    Intent intent = new Intent(Login.this, HomeActivity.class);  // Change HomeActivity to your main screen activity
-                    startActivity(intent);
-                    finish();
-                } else if (response.code() == 401) {
-                    Toast.makeText(Login.this, "password sbagliata", Toast.LENGTH_SHORT).show();
-                } else if (response.code() == 404) {
-                    Toast.makeText(Login.this, "Email non registrata", Toast.LENGTH_SHORT).show();
+                    if (response.body() != null) {
+                        Utente utente = response.body();
+
+                        Log.d("Login", "Nome: " + utente.getNome());
+                        Log.d("Login", "Cognome: " + utente.getCognome());
+                        Log.d("Login", "Data di Nascita: " + utente.getData_di_nascita());
+                        Log.d("Login", "Email: " + utente.getEmail());
+
+                        SharedPreference sharedPreference = new SharedPreference(Login.this);
+                        sharedPreference.saveNome(utente.getNome());
+                        sharedPreference.saveCognome(utente.getCognome());
+                        sharedPreference.saveDataDiNascita(utente.getData_di_nascita());
+                        sharedPreference.saveEmail(utente.getEmail());
+                        sharedPreference.setLoggedIn(true);
+
+                        Intent intent = new Intent(Login.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Log.d("Login", "La risposta è vuota o null.");
+                    }
                 } else {
-                    Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
+
+                    if (response.code() == 401) {
+                        Toast.makeText(Login.this, "Password errata", Toast.LENGTH_SHORT).show();
+                    } else if (response.code() == 404) {
+                        Toast.makeText(Login.this, "Email non registrata", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
+
 
             @Override
             public void onFailure(Call<Utente> call, Throwable t) {
-
+                Toast.makeText(Login.this, "Network error", Toast.LENGTH_SHORT).show();
             }
         });
-
-        /*Call<Void> call = apiService.loginUser(nuovoUtente);
-        call.enqueue(new Callback<Void>() {
-
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-
-
-                    Intent intent = new Intent(Login.this, HomeActivity.class);  // Change HomeActivity to your main screen activity
-                    startActivity(intent);
-                    finish();
-                } else if (response.code() == 401) {
-                    Toast.makeText(Login.this, "password sbagliata", Toast.LENGTH_SHORT).show();
-                } else if (response.code() == 404) {
-                    Toast.makeText(Login.this, "Email non registrata", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(Login.this, "Something went wrong...", Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 }
-
 

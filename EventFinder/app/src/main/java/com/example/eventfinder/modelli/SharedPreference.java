@@ -28,7 +28,6 @@ public class SharedPreference {
         editor.apply();
     }
 
-    // verifica se l'utente è loggato
     public boolean isLoggedIn() {
 
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
