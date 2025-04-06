@@ -19,7 +19,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="380dp"
         android:layout_marginTop="70dp"
         android:id="@+id/immagineEvento" />
 
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/artistaInfoEvento"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="135dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttoninvitefriends"
         android:text="Invita amici"
@@ -99,28 +99,29 @@
         app:strokeColor="#FFFFFF" />
 
 
+
+
     <TextView
         android:id="@+id/textPrezzo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="660dp"
-        android:layout_marginLeft="20dp"
-        android:text="Prezzo" />
+        android:layout_below="@+id/invAmiciBtn"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="25dp"
+        android:text="Prezzo"
+        android:textSize="16sp" />
+
 
     <Button
         android:id="@+id/compraBtn"
         android:layout_width="170dp"
         android:layout_alignParentEnd="true"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="660dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
+        android:layout_below="@+id/invAmiciBtn"
         android:backgroundTint="@android:color/holo_red_dark"
         android:text="Acquista biglietti"
         android:textStyle="bold" />
-
-
-
-
 
 </RelativeLayout>
