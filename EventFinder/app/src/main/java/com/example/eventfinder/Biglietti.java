@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
+import com.example.eventfinder.modelli.SharedPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class Biglietti extends AppCompatActivity {
         WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
         windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+        SharedPreference sharedPreference = new SharedPreference(this);
 
         Button programma = findViewById(R.id.eventiInProgramma);
         Button passati = findViewById(R.id.eventiPassati);
@@ -63,17 +65,21 @@ public class Biglietti extends AppCompatActivity {
         });
 
         btnProfilo.setOnClickListener(v -> {
-            Intent profilo = new Intent(Biglietti.this, Profilo.class);
-            startActivity(profilo);
+            if (sharedPreference.isLoggedIn()) {
+                Intent profilo = new Intent(Biglietti.this, Profilo.class);
+                startActivity(profilo);
+            } else {
+                Intent login = new Intent(Biglietti.this, Login.class);
+                startActivity(login);
+            }
         });
 
 
 
-        // Imposta la visibilità iniziale
+
         inProgramma.setVisibility(View.VISIBLE);
         giaPassati.setVisibility(View.GONE);
 
-        // Imposta i listener per i bottoni
         programma.setOnClickListener(v -> {
             inProgramma.setVisibility(View.VISIBLE);
             giaPassati.setVisibility(View.GONE);
