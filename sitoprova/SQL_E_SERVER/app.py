@@ -97,7 +97,7 @@ def dashboard():
         return redirect(url_for('login'))
     return render_template('dashboard.html')
 
-@app.route('/aggiungi_preferiti', methods=['POST'])
+"""@app.route('/aggiungi_preferiti', methods=['POST'])
 def aggiungi_preferiti():
     data = request.json
     utente_id = data.get('utente_id')
@@ -115,9 +115,7 @@ def aggiungi_preferiti():
         return jsonify({"status": "error", "message": str(e)})
     finally:
         cursor.close()
-        conn.close()
-        '''
-        
+        conn.close() """
 
 # Avvio
 if __name__ == '__main__':
