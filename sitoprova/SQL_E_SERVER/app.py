@@ -41,6 +41,7 @@ def login():
 
         if user:
             session["username"]=user["id"]
+            session['logged'] = True
             return redirect('/')
         else:
             return "utente non trovato"
@@ -85,7 +86,7 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
-# Eventi (protetta)
+# Eventi
 @app.route('/eventi')
 def eventi():
     if 'logged' not in session:
