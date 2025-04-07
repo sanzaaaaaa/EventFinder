@@ -2,12 +2,15 @@ package com.example.eventfinder;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -18,6 +21,8 @@ import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +36,9 @@ public class InfoEventi extends AppCompatActivity {
     private TextView luogoInfoEvento;
     private ImageView immagineEvento;
     private TextView prezzoEvento;
+
+    private Button invAmiciBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,7 @@ public class InfoEventi extends AppCompatActivity {
         luogoInfoEvento = findViewById(R.id.luogoInfoEvento);
         immagineEvento = findViewById(R.id.immagineEvento);
         prezzoEvento = findViewById(R.id.textPrezzo);
+        invAmiciBtn = findViewById(R.id.invAmiciBtn);
 
         ImageButton indietro = findViewById(R.id.btnBack);
         ImageButton iconaPreferiti = findViewById(R.id.iconapreferitiInfoEvento);
@@ -77,6 +86,12 @@ public class InfoEventi extends AppCompatActivity {
             startActivity(amici);
         });
 
+        invAmiciBtn.setOnClickListener(v -> {
+            Intent invitaIntent = new Intent(this, InvitaAmiciActivity.class);
+            startActivityForResult(intent, 2001);
+
+        });
+
         /*iconaPreferiti.setOnClickListener(v -> {
             if (isFilled) {
                 ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
@@ -99,5 +114,21 @@ public class InfoEventi extends AppCompatActivity {
 
             isFilled = !isFilled;
         }); */
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 2001 && resultCode == RESULT_OK && data != null) {
+            ArrayList<Utente> invitati = (ArrayList<Utente>) data.getSerializableExtra("amiciInvitati");
+
+            if (invitati != null) {
+                for (Utente u : invitati) {
+                    Log.d("Utente invitato", u.getNome());
+                }
+                // Qui puoi anche aggiornare una TextView o RecyclerView per mostrare gli amici invitati
+            }
+        }
     }
 }
