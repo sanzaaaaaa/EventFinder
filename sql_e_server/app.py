@@ -81,24 +81,7 @@ def get_users():
 
     return jsonify(users)  # Flask converte direttamente la lista di dizionari in JSON
 
-@app.route('/aggiungi_preferiti', methods=['POST'])
-def aggiungi_preferiti():
-    data = request.json
-    utente_id = data.get('utente_id')
-    evento_id = data.get('evento_id')
 
-    conn = get_connection()
-    cursor = conn.cursor()
-    query = "INSERT INTO preferiti (utente_id, evento_id) VALUES(%s, %s)"
-    try:
-        cursor.execute(query, (id_utente, id_evento))
-        conn.commit()
-        return jsonify({"status": "success"})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
-    finally:
-        cursor.close()
-        conn.close()
 
 
 if __name__ == '__main__':
