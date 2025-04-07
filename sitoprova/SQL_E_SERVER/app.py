@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for, session, flash
-from flask_mysqldb import MySQL
+import pymysql
+import pymysql.cursors
+
 
 
 app = Flask(__name__)
@@ -11,7 +13,7 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '1234'
 app.config['MYSQL_DB'] = 'eventfinder'
 
-mysql = MySQL(app)
+mysql = pymysql.connect() #MySQL(app)
 
 # Home page
 @app.route('/')
