@@ -19,11 +19,11 @@ public interface ApiService {
     @GET("/get_users")
     Call<List<Utente>> getUsers();
 
-    @POST("/aggiungi_preferiti")
-    Call<Void> getEvents(@Query("utente_id") int idUtente, @Query("evento_id") int idEvento);
+    /*@POST("/aggiungi_preferiti")
+    Call<Void> getEvents(@Query("utente_id") int idUtente, @Query("evento_id") int idEvento); */
 
-    @GET("/get_preferiti")
-    Call<List<Utente>> getPreferiti();
+    //@GET("/get_preferiti")
+    //Call<List<Utente>> getPreferiti();
 
 
 
