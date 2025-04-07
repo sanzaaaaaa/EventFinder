@@ -33,21 +33,21 @@
         
         <!-- Lista eventi (Esempio) -->
         <div class="event-list">
+            
+            <a href="{{url_for('info_evento')}}">
             <div class="event-card">
-                <h3>Concerto Rock</h3>
-                <p>Data: 15 aprile 2025</p>
-                <p>Luogo: Arena Centrale</p>
+                {% for evento in eventi %}
+                <img url="{{evento.immagine}}" alt="immagine del film {{evento.titolo}}">
+                <h3>{{evento.titolo}}</h3>
+                <h4>{{evento.luogo}}</h4>
+                <h5>{{evento.data_evento}}</h5>
+                <p>{{evento.info_evento}}</p>
+                <p>{{evento.artista}}</p>
+                <p>{{evento.prezzo}}</p>
+                 {% endfor %}
             </div>
-            <div class="event-card">
-                <h3>Festival di Arte</h3>
-                <p>Data: 25 aprile 2025</p>
-                <p>Luogo: Parco delle Arti</p>
-            </div>
-            <div class="event-card">
-                <h3>Seminario di Marketing</h3>
-                <p>Data: 30 aprile 2025</p>
-                <p>Luogo: Sala Conferenze</p>
-            </div>
+        </a>
+           
         </div>
     </section>
 
