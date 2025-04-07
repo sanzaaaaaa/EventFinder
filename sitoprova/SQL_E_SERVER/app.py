@@ -130,6 +130,11 @@ def aggiungievento():
 
     return render_template('aggiungievento.html')
 
+@app.route('/info_evento', methods=['GET', 'POST'])
+def info_evento():
+    return render_template('infoevento.html')
+
+
 """@app.route('/aggiungi_preferiti', methods=['POST'])
 def aggiungi_preferiti():
     data = request.json

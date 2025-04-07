@@ -34,17 +34,19 @@
         <!-- Lista eventi (Esempio) -->
         <div class="event-list">
             
+            <a href="{{url_for('info_evento')}}">
             <div class="event-card">
                 {% for evento in eventi %}
-                <img src="{{evento.immagine}}" alt="immagine del film {{evento.titolo}}">
-                <p>{{evento.titolo}}</p>
-                <p>{{evento.luogo}}</p>
-                <p>{{evento.data_evento}}</p>
+                <img url="{{evento.immagine}}" alt="immagine del film {{evento.titolo}}">
+                <h3>{{evento.titolo}}</h3>
+                <h4>{{evento.luogo}}</h4>
+                <h5>{{evento.data_evento}}</h5>
                 <p>{{evento.info_evento}}</p>
                 <p>{{evento.artista}}</p>
                 <p>{{evento.prezzo}}</p>
                  {% endfor %}
             </div>
+        </a>
            
         </div>
     </section>
