@@ -18,7 +18,7 @@
                 <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
                 <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
                 {% if session.logged %}
-                    <a href="#">Ciao {{session.username}}</a>
+                    <a href="#">Ciao {{session["nome"]}}</a>
                 {% else %}
                 <li><a href="{{ url_for('login') }}" class="btn-login-register">Login/Register</a></li>
                 {% endif %}

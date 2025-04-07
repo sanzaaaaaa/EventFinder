@@ -41,6 +41,7 @@ def login():
 
         if user:
             session["username"]=user["id"]
+            session["nome"]=user["nome"]
             session['logged'] = True
             return redirect('/')
         else:
