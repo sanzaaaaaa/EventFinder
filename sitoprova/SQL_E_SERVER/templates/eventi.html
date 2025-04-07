@@ -33,21 +33,19 @@
         
         <!-- Lista eventi (Esempio) -->
         <div class="event-list">
+            
             <div class="event-card">
-                <h3>Concerto Rock</h3>
-                <p>Data: 15 aprile 2025</p>
-                <p>Luogo: Arena Centrale</p>
+                {% for evento in eventi %}
+                <img src="{{evento.immagine}}" alt="immagine del film {{evento.titolo}}">
+                <p>{{evento.titolo}}</p>
+                <p>{{evento.luogo}}</p>
+                <p>{{evento.data_evento}}</p>
+                <p>{{evento.info_evento}}</p>
+                <p>{{evento.artista}}</p>
+                <p>{{evento.prezzo}}</p>
+                 {% endfor %}
             </div>
-            <div class="event-card">
-                <h3>Festival di Arte</h3>
-                <p>Data: 25 aprile 2025</p>
-                <p>Luogo: Parco delle Arti</p>
-            </div>
-            <div class="event-card">
-                <h3>Seminario di Marketing</h3>
-                <p>Data: 30 aprile 2025</p>
-                <p>Luogo: Sala Conferenze</p>
-            </div>
+           
         </div>
     </section>
 

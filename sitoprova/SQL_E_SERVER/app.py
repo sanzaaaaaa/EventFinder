@@ -117,14 +117,14 @@ def aggiungievento():
         immagine = data.get('immagine')
         titolo = data.get('titolo')
         luogo = data.get('luogo')
-        data = data.get('data')
+        data_evento = data.get('data')
         info_evento = data.get('info_evento')
         artista = data.get('artista')
         prezzo = data.get('prezzo')
 
         with connection.cursor() as cursor:
-            query = "INSERT INTO eventi (immagine, titolo, luogo, data, info_evento, artista, prezzo) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-            cursor.execute(query, (immagine, titolo, luogo, data, info_evento, artista, prezzo))
+            query = "INSERT INTO eventi (urlimage, titolo, luogo, data_evento, info_evento, info_artista, prezzo) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            cursor.execute(query, (immagine, titolo, luogo, data_evento, info_evento, artista, prezzo))
             cursor = cursor.fetchone()
         return redirect (url_for('eventi'))
 
