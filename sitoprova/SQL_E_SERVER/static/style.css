@@ -251,8 +251,8 @@ footer ul li a:hover {
     background-color: #ff6666;
 }
 /*.............................................................................................*/
-/*sezione login*/
-/* style.css */
+/*sezione login/regitrazione*/
+
 
 .body_login {
     margin: 0;
@@ -288,12 +288,14 @@ form {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"] ,input[type="nome"],input[type="cognome"] ,input[type="date"]  {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+
 
 button{
     background-color: #b30000;
