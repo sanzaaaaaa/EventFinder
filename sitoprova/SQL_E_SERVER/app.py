@@ -109,8 +109,25 @@ def dashboard():
         return redirect(url_for('login'))
     return render_template('dashboard.html')
 
-@app.route('/aggiungievento')
+@app.route('/aggiungievento', methods=['GET', 'POST'])
 def aggiungievento():
+
+    if request.method == 'POST':
+        data = request.form
+        immagine = data.get('immagine')
+        titolo = data.get('titolo')
+        luogo = data.get('luogo')
+        data = data.get('data')
+        info_evento = data.get('info_evento')
+        artista = data.get('artista')
+        prezzo = data.get('prezzo')
+
+        with connection.cursor() as cursor:
+            query = "INSERT INTO eventi (immagine, titolo, luogo, data, info_evento, artista, prezzo) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            cursor.execute(query, (immagine, titolo, luogo, data, info_evento, artista, prezzo))
+            cursor = cursor.fetchone()
+        return redirect (url_for('eventi'))
+
     return render_template('aggiungievento.html')
 
 """@app.route('/aggiungi_preferiti', methods=['POST'])

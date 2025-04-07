@@ -25,14 +25,14 @@
 
 
     <form method="POST" action="{{ url_for('aggiungievento') }}">
-        <input type="image" src="" alt="">
+        <input type="text" name="immagine" placeholder="Link immagine" required>
         <input type="text" name="titolo" placeholder="Titolo" required>
         <input type="text" name="luogo" placeholder="Luogo" required>
         <input type="date" name="data" placeholder="Data" required>
         <input type="text" name="info_evento" placeholder="Informazioni sull'evento" required>
         <input type="text" name="artista" placeholder="Nome artista" required>
         <input type="number" name="prezzo" placeholder="Prezzo" required>
-        <button type="submit">Registrati</button>
+        <button type="submit">Registra evento</button>
     </form>
 
 
