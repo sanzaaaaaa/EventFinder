@@ -1,69 +1,82 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for, session, flash
-from flask_mysqldb import MySQL
+from flask import Flask, flash, jsonify, render_template, request, url_for, redirect, session
+import pymysql
+import pymysql.cursors
+
 
 
 app = Flask(__name__)
-app.secret_key = 'tuo_super_segreto'  # Cambia questa chiave!
+app.config.update(SECRET_KEY='1234')
+
 
 # Configurazione per MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '1234'
-app.config['MYSQL_DB'] = 'eventfinder'
+connection = pymysql.connect(
+host='localhost',
+user='root',
+password='1234',
+database='eventfinder',
+autocommit=True,
+cursorclass=pymysql.cursors.DictCursor
+)
 
-mysql = MySQL(app)
+
 
 # Home page
 @app.route('/')
 def home():
-    if 'loggedin' in session:
-        return render_template('index.html', username=session['username'])
-    return redirect(url_for('login'))
+    return render_template('index.html')
 
 # Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+        data = request.form
+        email = data.get('email') #email = data.get('email')
+        password = data.get('password')
 
-        cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM utenti WHERE email = %s", (email,))
-        user = cur.fetchone()
-        cur.close()
+        cursor = connection.cursor()
+        query = "select * from utenti where email = %s and password = %s"
+        cursor.execute(query, (email, password))
+        user = cursor.fetchone()
+        cursor.close()
 
-        if user and password(user[5], password):  # password al 6° campo
+        if user:
+            session["username"]=user["id"]
+            return redirect('/')
+        else:
+            return "utente non trovato"
+    else:
+        return render_template('login.html')
+        
+
+        
+
+        """if user and password(user[5], password):  # password al 6° campo
             session['loggedin'] = True
             session['id'] = user[0]
             session['username'] = user[1]  # nome
             return redirect(url_for('home'))
         else:
-            flash('Email o password errati', 'danger')
+            flash('Email o password errati', 'danger') """
 
-    return render_template('login.html')
+    
 
 # Registrazione
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        nome = request.form['nome']
-        cognome = request.form['cognome']
-        email = request.form['email']
-        data_di_nascita = request.form['data_di_nascita']
-        password = request.form['password']
+        data = request.form
+        nome = data.get('nome')
+        cognome = data.get('cognome')
+        email = data.get('email')
+        data_di_nascita = data.get('data_di_nascita')
+        password = data.get('password')
 
-        hashed_pw = password(password)
-        cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM utenti WHERE email = %s", (email,))
-        existing = cur.fetchone()
-        if existing:
-            flash('Email già registrata', 'warning')
-        else:
-            cur.execute("INSERT INTO utenti (nome, cognome, email, data_di_nascita, password) VALUES (%s, %s, %s, %s, %s)",
-                        (nome, cognome, email, data_di_nascita, hashed_pw))
-            mysql.connection.commit()
-            flash('Registrazione completata! Ora puoi accedere.', 'success')
-        cur.close()
+
+        with connection.cursor() as cursor:
+            query = "INSERT INTO utenti (nome, cognome, email, data_di_nascita, password) VALUES (%s, %s, %s, %s, %s)"
+            cursor.execute(query, (nome, cognome, email, data_di_nascita, password))
+            cursor = cursor.fetchone()
+        return redirect (url_for('home'))
     return render_template('register.html')
 
 # Logout
@@ -75,13 +88,13 @@ def logout():
 # Eventi (protetta)
 @app.route('/eventi')
 def eventi():
-    if 'loggedin' not in session:
+    if 'logged' not in session:
         return redirect(url_for('login'))
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM eventi")
-    eventi = cur.fetchall()
-    cur.close()
-    return render_template('eventi.html', eventi=eventi)
+    else:
+        with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM eventi")
+        eventi = cursor.fetchall()
+        return render_template('eventi.html', eventi=eventi)
 
 # Contatti
 @app.route('/contatti')
@@ -91,7 +104,7 @@ def contatti():
 # Dashboard (protetta)
 @app.route('/dashboard')
 def dashboard():
-    if 'loggedin' not in session:
+    if 'logged' not in session:
         return redirect(url_for('login'))
     return render_template('dashboard.html')
 
@@ -101,7 +114,7 @@ def aggiungi_preferiti():
     utente_id = data.get('utente_id')
     evento_id = data.get('evento_id')
     
-    '''
+    
     conn = get_connection()
     cursor = conn.cursor()
     query = "INSERT INTO preferiti (utente_id, evento_id) VALUES(%s, %s)"
@@ -117,4 +130,4 @@ def aggiungi_preferiti():
 
 # Avvio
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host= '0.0.0.0', debug=True)
