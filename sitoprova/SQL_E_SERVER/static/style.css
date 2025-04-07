@@ -250,3 +250,82 @@ footer ul li a:hover {
 .contatti .form-contatti button:hover {
     background-color: #ff6666;
 }
+/*.............................................................................................*/
+/*sezione login*/
+/* style.css */
+
+.body_login {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+img.logo{
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+h2{
+    color: #b30000;
+    margin-bottom: 10px;
+}
+
+form {
+    background-color: #f8f8f8;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button{
+    background-color: #b30000;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #990000;
+}
+
+p {
+    margin-top: 15px;
+    color: #333;
+}
+
+a {
+    color: #b30000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.logo_1 {
+    width: auto;
+    height: 60px;
+    margin-bottom: 20px;
+}
+

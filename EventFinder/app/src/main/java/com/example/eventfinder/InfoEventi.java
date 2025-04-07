@@ -3,6 +3,7 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,6 +33,9 @@ public class InfoEventi extends AppCompatActivity {
     private ImageView immagineEvento;
     private TextView prezzoEvento;
 
+    private Button invAmiciBtn;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,7 @@ public class InfoEventi extends AppCompatActivity {
         luogoInfoEvento = findViewById(R.id.luogoInfoEvento);
         immagineEvento = findViewById(R.id.immagineEvento);
         prezzoEvento = findViewById(R.id.textPrezzo);
+        invAmiciBtn = findViewById(R.id.invAmiciBtn);
 
         ImageButton indietro = findViewById(R.id.btnBack);
         ImageButton iconaPreferiti = findViewById(R.id.iconapreferitiInfoEvento);
@@ -75,6 +80,11 @@ public class InfoEventi extends AppCompatActivity {
         indietro.setOnClickListener(v -> {
             Intent amici = new Intent(InfoEventi.this, HomeActivity.class);
             startActivity(amici);
+        });
+
+        invAmiciBtn.setOnClickListener(v -> {
+            Intent invitaIntent = new Intent(this, InvitaAmiciActivity.class);
+            startActivityForResult(intent, 2001);
         });
 
         /*iconaPreferiti.setOnClickListener(v -> {
