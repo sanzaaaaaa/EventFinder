@@ -113,7 +113,7 @@ def aggiungi_preferiti():
         return jsonify({"status": "error", "message": str(e)})
     finally:
         cursor.close()
-        conn.close()
+        conn.close() """
 
 # Avvio
 if __name__ == '__main__':
