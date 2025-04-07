@@ -77,10 +77,10 @@ public class InfoEventi extends AppCompatActivity {
             startActivity(amici);
         });
 
-        iconaPreferiti.setOnClickListener(v -> {
+        /*iconaPreferiti.setOnClickListener(v -> {
             if (isFilled) {
                 ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
-                apiService.getEvents(1, 1).enqueue(new Callback<Void>() {
+                apiService.getEventi(1, 1).enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         Toast.makeText(InfoEventi.this, "Aggiunto ai preferiti", Toast.LENGTH_SHORT).show();
@@ -98,6 +98,6 @@ public class InfoEventi extends AppCompatActivity {
             }
 
             isFilled = !isFilled;
-        });
+        }); */
     }
 }
