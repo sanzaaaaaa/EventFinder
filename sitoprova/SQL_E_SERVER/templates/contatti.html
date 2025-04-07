@@ -18,7 +18,11 @@
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
                 <li><input type="text" id="search-events" placeholder="Cerca eventi" oninput="searchEvents()"></li>
+                {% if session.logged %}
+                    <a href="#">Ciao {{session.username}}</a>
+                {% else %}
                 <li><a href="{{ url_for('login') }}" class="btn-login-register">Login/Register</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
