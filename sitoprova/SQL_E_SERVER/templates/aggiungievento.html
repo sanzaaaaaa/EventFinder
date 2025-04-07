@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Aggiungi Evento</title>
+</head>
+<body>
+
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo EventFinder">
+            </div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
+                <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
+                <li><a href="{{ url_for('login') }}" class="btn-login-register">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <form method="POST" action="{{ url_for('aggiungievento') }}">
+        <input type="image" src="" alt="">
+        <input type="text" name="titolo" placeholder="Titolo" required>
+        <input type="text" name="luogo" placeholder="Luogo" required>
+        <input type="date" name="data" placeholder="Data" required>
+        <input type="text" name="info_evento" placeholder="Informazioni sull'evento" required>
+        <input type="text" name="artista" placeholder="Nome artista" required>
+        <input type="number" name="prezzo" placeholder="Prezzo" required>
+        <button type="submit">Registrati</button>
+    </form>
+
+
+</body>
+</html>

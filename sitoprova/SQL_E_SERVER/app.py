@@ -109,6 +109,10 @@ def dashboard():
         return redirect(url_for('login'))
     return render_template('dashboard.html')
 
+@app.route('/aggiungievento')
+def aggiungievento():
+    return render_template('aggiungievento.html')
+
 """@app.route('/aggiungi_preferiti', methods=['POST'])
 def aggiungi_preferiti():
     data = request.json
