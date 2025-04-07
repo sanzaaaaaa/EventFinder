@@ -36,7 +36,7 @@ public class InvitaAmiciActivity extends AppCompatActivity {
         btnInvita.setOnClickListener(v -> {
             ArrayList<Utente> selezionati = new ArrayList<>(adapter.getSelezionati());
             Intent resultIntent = new Intent();
-            resultIntent.putParcelableArrayListExtra("amiciInvitati", selezionati);
+            resultIntent.putExtra("amiciInvitati", selezionati);
             setResult(RESULT_OK, resultIntent);
             finish();
         });
