@@ -16,6 +16,7 @@
             </div>
             <ul class="menu">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
                 <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
                 <li><input type="text" id="search-events" placeholder="Cerca eventi" oninput="searchEvents()"></li>
                 {% if session.logged %}
