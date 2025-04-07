@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_mysqldb import MySQL
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, jsonify, render_template, request, redirect, url_for, session, flash
+import pymysql
+import pymysql.cursors
+
+
 
 app = Flask(__name__)
 app.secret_key = 'tuo_super_segreto'  # Cambia questa chiave!
@@ -11,7 +13,7 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '1234'
 app.config['MYSQL_DB'] = 'eventfinder'
 
-mysql = MySQL(app)
+mysql = pymysql.connect() #MySQL(app)
 
 # Home page
 @app.route('/')
@@ -32,7 +34,7 @@ def login():
         user = cur.fetchone()
         cur.close()
 
-        if user and check_password_hash(user[5], password):  # password al 6° campo
+        if user and password(user[5], password):  # password al 6° campo
             session['loggedin'] = True
             session['id'] = user[0]
             session['username'] = user[1]  # nome
@@ -52,7 +54,7 @@ def register():
         data_di_nascita = request.form['data_di_nascita']
         password = request.form['password']
 
-        hashed_pw = generate_password_hash(password)
+        hashed_pw = password(password)
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM utenti WHERE email = %s", (email,))
         existing = cur.fetchone()
@@ -95,12 +97,13 @@ def dashboard():
         return redirect(url_for('login'))
     return render_template('dashboard.html')
 
-@app.route('/aggiungi_preferiti', methods=['POST'])
+"""@app.route('/aggiungi_preferiti', methods=['POST'])
 def aggiungi_preferiti():
     data = request.json
     utente_id = data.get('utente_id')
     evento_id = data.get('evento_id')
-
+    
+    '''
     conn = get_connection()
     cursor = conn.cursor()
     query = "INSERT INTO preferiti (utente_id, evento_id) VALUES(%s, %s)"
@@ -112,7 +115,7 @@ def aggiungi_preferiti():
         return jsonify({"status": "error", "message": str(e)})
     finally:
         cursor.close()
-        conn.close()
+        conn.close() """
 
 # Avvio
 if __name__ == '__main__':
