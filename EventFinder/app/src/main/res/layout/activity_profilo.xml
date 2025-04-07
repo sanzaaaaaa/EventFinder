@@ -7,11 +7,11 @@
     android:background="@android:color/white"
     tools:context=".Profilo">
 
-    <!-- Barra superiore rossa -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="#CC0000"> <!-- Rosso Scuro -->
+        android:background="#CC0000">
 
         <TextView
             android:id="@+id/tvEditProfile"
@@ -25,90 +25,118 @@
 
     </RelativeLayout>
 
-    <!-- Immagine del profilo -->
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgProfilo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:src="@drawable/icons8_account_di_prova_100"/>
 
-    <!-- Icona fotocamera -->
-    <!-- Colorata di rosso -->
-
-
-    <!-- Layout dettagli profilo -->
-
-    <LinearLayout
-        android:id="@+id/listaDettagli"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardProfileInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imgProfilo"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp">
+        android:layout_below="@+id/imgProfilo"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
-        <!-- Nome Cognome -->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nome"
-            android:text="Nome , Cognome"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D32F2F"/>
+            android:orientation="vertical"
+            android:padding="16dp">
 
 
-        <!-- Data di nascita -->
-        <TextView
-            android:id="@+id/datanascita"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            android:text="Data di nascita"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D32F2F"
-            android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#333333" />
 
-        <!-- Email
-         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:layout_marginTop="15dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D32F2F"
-            android:layout_marginBottom="10dp"/>
-            -->
-    </LinearLayout>
+            <TextView
+                android:id="@+id/nomepr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome Cognome"
+                android:textSize="16sp"
+                android:background="#E0DFDF"
+                android:textColor="#333333"
+                android:padding="10dp"
+                android:layout_marginTop="8dp" />
 
-    <!-- Pulsanti -->
-    <Button
-        android:id="@+id/btnAmici"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sezione amici"
-        android:textColor="@color/white"
-        android:layout_below="@id/listaDettagli"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#CC0000"/>
 
+            <TextView
+                android:id="@+id/cognome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cognome:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/cognomepr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cognome"
+                android:textSize="16sp"
+                android:background="#E0DFDF"
+                android:textColor="#333333"
+                android:padding="10dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/datanascita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data di nascita:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/datanascitapr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="01/01/1990"
+                android:textSize="16sp"
+                android:background="#E0DFDF"
+                android:textColor="#333333"
+                android:padding="10dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/emailpr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="example@email.com"
+                android:textSize="16sp"
+                android:background="#E0DFDF"
+                android:textColor="#333333"
+                android:padding="10dp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnLogout"
@@ -116,9 +144,9 @@
         android:layout_height="wrap_content"
         android:text="Logout"
         android:textColor="@color/white"
-        android:layout_below="@id/btnAmici"
+        android:layout_below="@id/cardProfileInfo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#CC0000" />
 
 

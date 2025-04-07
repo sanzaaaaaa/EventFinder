@@ -9,13 +9,9 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
-import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
 
 import retrofit2.Call;
@@ -74,12 +70,6 @@ public class Registrati extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    SharedPreference sharedPreference = new SharedPreference(Registrati.this);
-                    sharedPreference.saveNome(n);
-                    sharedPreference.saveCognome(c);
-                    sharedPreference.saveEmail(e);
-                    sharedPreference.saveDataDiNascita(d);
-                    sharedPreference.setLoggedIn(true);
 
                     Toast.makeText(Registrati.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
 

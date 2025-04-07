@@ -12,12 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
 
-import com.bumptech.glide.Glide;
-import com.example.eventfinder.modelli.Amici;
 import com.example.eventfinder.modelli.SharedPreference;
 
 public class Profilo extends AppCompatActivity {
@@ -27,8 +22,10 @@ public class Profilo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilo);
 
-        TextView nomeProfilo = findViewById(R.id.nome);
-        TextView dataNascitaProfilo = findViewById(R.id.datanascita);
+        TextView nomeProfilo = findViewById(R.id.nomepr);
+        TextView dataNascitaProfilo = findViewById(R.id.datanascitapr);
+        TextView emailProfilo = findViewById(R.id.emailpr);
+        TextView cognomeProfilo = findViewById(R.id.cognomepr);
         Button logout = findViewById(R.id.btnLogout);
 
         ImageButton btnBiglietto = findViewById(R.id.btnBiglietti4);
@@ -58,22 +55,24 @@ public class Profilo extends AppCompatActivity {
             startActivity(amici);
         });
 
-
         SharedPreference sharedPreference = new SharedPreference(this);
 
         if (sharedPreference.isLoggedIn()) {
             String nome = sharedPreference.getNome();
             String cognome = sharedPreference.getCognome();
-            String dataNascita = sharedPreference.getDataDiNascita();
+            String dataDiNascita = sharedPreference.getDataDiNascita();
+            String email = sharedPreference.getEmail();
 
-            nomeProfilo.setText(nome + " " + cognome);
-            dataNascitaProfilo.setText(dataNascita);
-
+            nomeProfilo.setText(nome);
+            cognomeProfilo.setText(cognome);
+            emailProfilo.setText(email);
+            dataNascitaProfilo.setText(dataDiNascita);
         } else {
             Intent intent = new Intent(Profilo.this, HomeActivity.class);
             startActivity(intent);
             finish();
         }
+
 
         logout.setOnClickListener(v -> {
             sharedPreference.setLoggedIn(false);

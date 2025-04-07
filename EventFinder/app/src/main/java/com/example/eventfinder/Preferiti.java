@@ -17,6 +17,7 @@ import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
 import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
 
 import java.util.ArrayList;
@@ -37,6 +38,8 @@ public class Preferiti extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferiti);
+
+        SharedPreference sharedPreference = new SharedPreference(this);
 
         WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
@@ -66,20 +69,15 @@ public class Preferiti extends AppCompatActivity {
         });
 
         btnProfilo.setOnClickListener(v -> {
-            Intent profilo = new Intent(Preferiti.this, Profilo.class);
-            startActivity(profilo);
+            if (sharedPreference.isLoggedIn()) {
+                Intent profilo = new Intent(Preferiti.this, Profilo.class);
+                startActivity(profilo);
+            } else {
+                Intent login = new Intent(Preferiti.this, Login.class);
+                startActivity(login);
+            }
         });
 
 
-        ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
-        //getPreferitiEventi();
-
-
-
-
     }
-
-    /*public void getPreferitiEventi(){
-        Call<List<Utente>> call = apiService.getEvents();
-    }*/
 }

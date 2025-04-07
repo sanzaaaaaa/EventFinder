@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,12 +55,23 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton btnProfilo = findViewById(R.id.btnProfilo);
 
 
+        TextView ciao = findViewById(R.id.benvenuto);
+        TextView slogan1 = findViewById(R.id.slogan);
+
+
+
 
         if (sharedPreference.isLoggedIn()) {
-            loginButtonHome.setVisibility(View.GONE);
+            loginButtonHome.setVisibility(View.INVISIBLE);
+            ciao.setVisibility(View.VISIBLE);
+            slogan1.setVisibility(View.VISIBLE);
+            String nome = sharedPreference.getNome();
+            ciao.setText("Benvenuto "+ nome);
 
         } else  {
             loginButtonHome.setVisibility(View.VISIBLE);
+            ciao.setVisibility(View.INVISIBLE);
+            slogan1.setVisibility(View.INVISIBLE);
         }
 
         btnBiglietto.setOnClickListener(v -> {

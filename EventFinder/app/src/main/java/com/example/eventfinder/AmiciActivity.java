@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.eventfinder.UtentiAdapter;
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
+import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class AmiciActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amici);
-
+        SharedPreference sharedPreference = new SharedPreference(this);
         recyclerView = findViewById(R.id.recyclerViewAmici);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -81,9 +82,16 @@ public class AmiciActivity extends AppCompatActivity {
         });
 
         btnProfilo.setOnClickListener(v -> {
-            Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
-            startActivity(profilo);
+            if (sharedPreference.isLoggedIn()) {
+                Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
+                startActivity(profilo);
+            } else {
+                Intent login = new Intent(AmiciActivity.this, Login.class);
+                startActivity(login);
+            }
         });
+
+
     }
 
     private void getUtentiRegistrati() {

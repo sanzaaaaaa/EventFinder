@@ -13,6 +13,7 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.bumptech.glide.Glide;
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
@@ -30,9 +31,6 @@ public class InfoEventi extends AppCompatActivity {
     private TextView luogoInfoEvento;
     private ImageView immagineEvento;
     private TextView prezzoEvento;
-    private ApiService apiService;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +41,9 @@ public class InfoEventi extends AppCompatActivity {
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
         windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 
-
-        titoloInfoEvento = findViewById(R.id.titoloInfoEvento); // Corretto
-        dataInfoEvento = findViewById(R.id.dataInfoEvento);     // Corretto
-        luogoInfoEvento = findViewById(R.id.luogoInfoEvento);   // Corretto
+        titoloInfoEvento = findViewById(R.id.titoloInfoEvento);
+        dataInfoEvento = findViewById(R.id.dataInfoEvento);
+        luogoInfoEvento = findViewById(R.id.luogoInfoEvento);
         immagineEvento = findViewById(R.id.immagineEvento);
         prezzoEvento = findViewById(R.id.textPrezzo);
 
@@ -57,46 +54,50 @@ public class InfoEventi extends AppCompatActivity {
         String titolo = intent.getStringExtra("titolo");
         String data = intent.getStringExtra("data");
         String luogo = intent.getStringExtra("luogo");
-        String immagineUrl = intent.getStringExtra("immagine");
+        String immagineUrl = intent.getStringExtra("urlImage"); // Assicurati che la chiave sia corretta
         String prezzo = intent.getStringExtra("prezzo");
 
         titoloInfoEvento.setText(titolo);
         dataInfoEvento.setText(data);
         luogoInfoEvento.setText(luogo);
-        prezzoEvento.setText(prezzo);
+//        prezzoEvento.setText(prezzo);
 
+
+        if (immagineUrl != null && !immagineUrl.isEmpty()) {
+            Glide.with(this)
+                    .load(immagineUrl)
+                    .centerCrop()
+                    .into(immagineEvento);
+        } else {
+            immagineEvento.setImageResource(R.drawable.barraricerca); // Immagine di fallback
+        }
 
         indietro.setOnClickListener(v -> {
             Intent amici = new Intent(InfoEventi.this, HomeActivity.class);
             startActivity(amici);
         });
 
-        iconaPreferiti.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        iconaPreferiti.setOnClickListener(v -> {
+            if (isFilled) {
+                ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
+                apiService.getEvents(1, 1).enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Toast.makeText(InfoEventi.this, "Aggiunto ai preferiti", Toast.LENGTH_SHORT).show();
+                    }
 
-                if (isFilled) {
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(InfoEventi.this, "Errore", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-                   ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
-                   apiService.getEvents(1, 1).enqueue(new Callback<Void>() {
-                       @Override
-                       public void onResponse(Call<Void> call, Response<Void> response) {
-                           Toast.makeText(InfoEventi.this, "Aggiunto ai preferiti", Toast.LENGTH_SHORT).show();
-                       }
-
-                       @Override
-                       public void onFailure(Call<Void> call, Throwable t) {
-                           Toast.makeText(InfoEventi.this, "Errore", Toast.LENGTH_SHORT).show();
-                       }
-                   });
-
-                    iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
-                } else {
-                    iconaPreferiti.setImageResource(R.drawable.ic_pref_not_filled);
-                }
-
-                isFilled = !isFilled;
+                iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
+            } else {
+                iconaPreferiti.setImageResource(R.drawable.ic_pref_not_filled);
             }
+
+            isFilled = !isFilled;
         });
     }
 }
