@@ -126,7 +126,16 @@ h1 {
     width: 200px;
 }
 
+/* Profilo e logout */
+.btn-logout {
+    text-align: center;
+    margin-top: 50px;
+    text-decoration: none;
+}
 
+#logout {
+    text-decoration: none;
+}
 
 /* Footer */
 footer {

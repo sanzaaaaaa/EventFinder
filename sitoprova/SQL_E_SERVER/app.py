@@ -103,12 +103,10 @@ def eventi():
 def contatti():
     return render_template('contatti.html')
 
-# Dashboard (protetta)
-@app.route('/dashboard')
-def dashboard():
-    if 'logged' not in session:
-        return redirect(url_for('login'))
-    return render_template('dashboard.html')
+# Profilo
+@app.route('/profilo')
+def profilo():
+        return render_template('profiloutente.html')
 
 @app.route('/aggiungievento', methods=['GET', 'POST'])
 def aggiungievento():
