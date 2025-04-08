@@ -4,8 +4,11 @@ drop schema if exists eventfinder;
 create schema if not exists eventfinder;
 
 use eventfinder;
- 
+select * from eventi;
 
+alter table eventi
+modify column info_evento varchar(1000);
+ 
 create table utenti(
 id INT AUTO_INCREMENT  PRIMARY KEY,
 nome VARCHAR (200) NOT NULL,
@@ -46,9 +49,6 @@ create table preferiti(
     foreign key (evento_id) references eventi(id)
 );
 
-select * from artisti;
-
-
 create table partecipazione(
 	id INT auto_increment primary key,
     utente_id int,
@@ -76,6 +76,5 @@ add column genere varchar(200);
 alter table eventi
 add column prezzo int;
 
-select * from eventi;
 
 
