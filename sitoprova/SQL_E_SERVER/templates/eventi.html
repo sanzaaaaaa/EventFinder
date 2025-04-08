@@ -50,7 +50,7 @@
                     <p>{{ evento.info_artista }}</p>
                     <p>{{ evento.prezzo }}</p>
 
-                    <form action="{{ url_for('elimina_evento', evento_id=evento['id']) }}" class="elimina"  method="POST">
+                    <form action="{{ url_for('elimina_evento', evento_id=evento['id']) }}" method="POST">
                         <button type="submit" class="Elimina">Elimina Evento</button>
                     </form>
                 </div>
