@@ -41,6 +41,7 @@ def login():
 
         if user:
             session["username"]=user["id"]
+            session["nome"]=user["nome"]
             session['logged'] = True
             return redirect('/')
         else:
@@ -102,12 +103,10 @@ def eventi():
 def contatti():
     return render_template('contatti.html')
 
-# Dashboard (protetta)
-@app.route('/dashboard')
-def dashboard():
-    if 'logged' not in session:
-        return redirect(url_for('login'))
-    return render_template('dashboard.html')
+# Profilo
+@app.route('/profilo')
+def profilo():
+        return render_template('profiloutente.html')
 
 @app.route('/aggiungievento', methods=['GET', 'POST'])
 def aggiungievento():
@@ -129,6 +128,23 @@ def aggiungievento():
         return redirect (url_for('eventi'))
 
     return render_template('aggiungievento.html')
+
+@app.route('/info_evento', methods=['GET', 'POST'])
+def info_evento():
+    return render_template('infoevento.html')
+
+
+@app.route('/elimina_evento/<int:evento_id>', methods=['POST'])
+def elimina_evento(evento_id):
+
+    with connection.cursor() as cursor:
+        
+        query = "DELETE FROM eventi WHERE id = %s"
+        cursor.execute(query, (evento_id,))
+        connection.commit()  
+
+    return redirect(url_for('eventi'))
+
 
 """@app.route('/aggiungi_preferiti', methods=['POST'])
 def aggiungi_preferiti():

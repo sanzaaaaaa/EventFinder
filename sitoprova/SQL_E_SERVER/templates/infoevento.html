@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Aggiungi Evento</title>
+    <title>Info Evento</title>
 </head>
 <body>
-
-
     <header>
         <nav>
             <div class="logo">
@@ -19,7 +17,7 @@
                 <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
                 <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
                 {% if session.logged %}
-                <li><a href="#">Ciao {{session["nome"]}}</a></li> 
+                <li><a href="{{ url_for('profilo') }}">Ciao {{session["nome"]}}</a></li> 
                 {% else %}
                 <li><a href="{{ url_for('login') }}" class="btn-login-register">Login/Register</a></li>
                 {% endif %}
@@ -27,19 +25,6 @@
         </nav>
     </header>
 
-
-    <form method="POST" action="{{ url_for('aggiungievento') }}"class="aggiungievento">
-        <h3>AGGIUNGI EVENTO</h3>
-        <input type="text" name="immagine" placeholder="Link immagine" required>
-        <input type="text" name="titolo" placeholder="Titolo" required>
-        <input type="text" name="luogo" placeholder="Luogo" required>
-        <input type="date" name="data" placeholder="Data" required>
-        <input type="text" name="info_evento" placeholder="Informazioni sull'evento" required>
-        <input type="text" name="artista" placeholder="Nome artista" required>
-        <input type="number" name="prezzo" placeholder="Prezzo" required>
-        <button type="submit">Registra evento</button>
-    </form>
-
-
+    
 </body>
 </html>

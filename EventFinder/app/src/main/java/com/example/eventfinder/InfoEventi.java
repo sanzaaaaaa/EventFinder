@@ -77,8 +77,7 @@ public class InfoEventi extends AppCompatActivity {
             startActivity(amici);
         });
 
-
-        iconaPreferiti.setOnClickListener(v -> {
+        /*iconaPreferiti.setOnClickListener(v -> {
             if (isFilled) {
                 ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
                 apiService.getEventi(1, 1).enqueue(new Callback<Void>() {
@@ -99,6 +98,6 @@ public class InfoEventi extends AppCompatActivity {
             }
 
             isFilled = !isFilled;
-        });
+        }); */
     }
 }

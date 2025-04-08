@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EventFinder</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Profilo</title>
 </head>
 <body>
-    <!-- Menu -->
     <header>
         <nav>
             <div class="logo">
@@ -17,22 +16,17 @@
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
                 <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
-                {% if session.logged %}
-                <li><a href="{{ url_for('profilo') }}">Ciao {{session["nome"]}}</a></li> 
-                {% else %}
-                <li><a href="{{ url_for('login') }}" class="btn-login-register">Login/Register</a></li>
-                {% endif %}
             </ul>
         </nav>
     </header>
+
+    
+    <div class="btn-logout">
+        <a id="logout" href="/logout">Logout</a>
+    </div>
+
     
 
-    <!-- Titolo principale centrato -->
-    <section class="intro">
-        <h1>Benvenuto su EventFinder</h1>
-    </section>
-
-    <!-- Footer -->
     <footer id="footer">
         <p>&copy; 2025 EventFinder - Tutti i diritti riservati.</p>
         <ul>
@@ -42,12 +36,5 @@
         </ul>
     </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
-
-
-
-
-
-

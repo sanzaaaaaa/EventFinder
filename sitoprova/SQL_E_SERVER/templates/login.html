@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - EventFinder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="body_login">
+    <img src="{{ url_for('static', filename='img/logo_1.png') }}" alt="Logo EventFinder" class="logo_1">
     <h2>Login</h2>
     <form method="POST" action="{{ url_for('login') }}">
         <input type="email" name="email" placeholder="Email" required>
@@ -15,4 +17,3 @@
     <p>Non hai un account? <a href="{{ url_for('register') }}">Registrati qui</a></p>
 </body>
 </html>
-
