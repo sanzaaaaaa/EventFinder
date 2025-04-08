@@ -97,17 +97,22 @@ def eventi():
                 cursor.execute("SELECT * FROM eventi")
         eventi = cursor.fetchall()
         return render_template('eventi.html', eventi=eventi)
+    
 
 # Contatti
 @app.route('/contatti')
 def contatti():
     return render_template('contatti.html')
 
+
 # Profilo
 @app.route('/profilo')
 def profilo():
         return render_template('profiloutente.html')
 
+
+
+# Aggiungi evento
 @app.route('/aggiungievento', methods=['GET', 'POST'])
 def aggiungievento():
 
@@ -133,7 +138,7 @@ def aggiungievento():
 def info_evento():
     return render_template('infoevento.html')
 
-
+# Elimina evento
 @app.route('/elimina_evento/<int:evento_id>', methods=['POST'])
 def elimina_evento(evento_id):
 
