@@ -8,13 +8,39 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.eventfinder.R;
 import com.example.eventfinder.modelli.Utente;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteViewHolder> {
     private List<Utente> utenti;
+    private List<Utente> utentiFull; // Lista completa per il filtro
 
     public UtentiAdapter(List<Utente> utenti) {
         this.utenti = utenti;
+        this.utentiFull = new ArrayList<>(utenti);
+    }
+
+
+    public void setData(List<Utente> nuovaLista) {
+        utenti = nuovaLista;
+    }
+
+
+    public void filter(String testo) {
+        List<Utente> filtrata = new ArrayList<>();
+        if (testo.isEmpty()) {
+            filtrata.addAll(utentiFull);
+        } else {
+            for (Utente u : utentiFull) {
+                if (u.getNome().toLowerCase().contains(testo.toLowerCase())) {
+                    filtrata.add(u);
+                }
+            }
+        }
+        utenti.clear();
+        utenti.addAll(filtrata);
+
     }
 
     @NonNull
@@ -36,7 +62,7 @@ public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteView
         return utenti.size();
     }
 
-    public class UtenteViewHolder extends RecyclerView.ViewHolder {
+    public static class UtenteViewHolder extends RecyclerView.ViewHolder {
         TextView nome, cognome;
 
         public UtenteViewHolder(View itemView) {

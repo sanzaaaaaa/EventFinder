@@ -1,23 +1,27 @@
 package com.example.eventfinder;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
+
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.eventfinder.UtentiAdapter;
+
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +63,23 @@ public class AmiciActivity extends AppCompatActivity {
         ImageButton btnHome = findViewById(R.id.btnHome3);
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici3);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
+        SearchView cerca = findViewById(R.id.searchViewAmici);
+
+
+        cerca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                utentiAdapter.filter(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                utentiAdapter.filter(newText);
+                return true;
+            }
+        });
+
 
         btnBiglietto.setOnClickListener(v -> {
             Intent biglietto = new Intent(AmiciActivity.this, Biglietti.class);
@@ -91,12 +112,13 @@ public class AmiciActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
 
     private void getUtentiRegistrati() {
         Call<List<Utente>> call = apiService.getUsers();
         call.enqueue(new Callback<List<Utente>>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(Call<List<Utente>> call, Response<List<Utente>> response) {
                 if (response.isSuccessful()) {
@@ -105,6 +127,10 @@ public class AmiciActivity extends AppCompatActivity {
                     utentiAdapter.notifyDataSetChanged();
                 }
             }
+
+
+
+
 
             @Override
             public void onFailure(Call<List<Utente>> call, Throwable t) {
