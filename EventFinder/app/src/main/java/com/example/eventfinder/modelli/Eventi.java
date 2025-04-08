@@ -24,9 +24,9 @@ public class Eventi {
     private String info_artista;
 
     @SerializedName("prezzo")
-    private int prezzo;
+    private String prezzo;
 
-    public Eventi(int id, String urlImage, String titolo, String data, String luogo, String info_evento, String info_artista, int prezzo) {
+    public Eventi(int id, String urlImage, String titolo, String data, String luogo, String info_evento, String info_artista, String prezzo) {
         this.id = id;
         this.urlImage = urlImage;
         this.titolo = titolo;
@@ -94,11 +94,11 @@ public class Eventi {
         this.info_artista = info_artista;
     }
 
-    public int getPrezzo() {
+    public String getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(int prezzo) {
+    public void setPrezzo(String prezzo) {
         this.prezzo = prezzo;
     }
 }

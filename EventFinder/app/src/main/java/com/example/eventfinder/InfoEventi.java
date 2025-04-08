@@ -2,6 +2,7 @@ package com.example.eventfinder;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -69,6 +70,8 @@ public class InfoEventi extends AppCompatActivity {
         infoArtista.setText(info_artista);
         infoEvento.setText(info_evento);
         prezzoEvento.setText(prezzo);
+
+
 
 
         if (immagineUrl != null && !immagineUrl.isEmpty()) {

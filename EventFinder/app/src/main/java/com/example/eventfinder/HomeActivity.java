@@ -134,7 +134,6 @@ public class HomeActivity extends AppCompatActivity {
                 eventiList.clear();
                 eventiList.addAll(response.body());
                 eventiAdapter.notifyDataSetChanged();
-
                 eventiListFiltered.clear();
                 eventiListFiltered.addAll(eventiList);
                 Log.d("EVENTI", "Ricevuti: " + response.body().size());
@@ -152,6 +151,9 @@ public class HomeActivity extends AppCompatActivity {
             infoIntent.putExtra("titolo", eventiList.get(position).getTitolo());
             infoIntent.putExtra("data", eventiList.get(position).getData());
             infoIntent.putExtra("urlImage", eventiList.get(position).getUrlImage());
+            infoIntent.putExtra("info_evento", eventiList.get(position).getInfo_evento());
+            infoIntent.putExtra("info_artista", eventiList.get(position).getInfo_artista());
+            infoIntent.putExtra("prezzo", eventiList.get(position).getPrezzo());
             infoIntent.putExtra("luogo", eventiList.get(position).getLuogo());
             startActivity(infoIntent);
         });

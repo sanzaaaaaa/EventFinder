@@ -99,17 +99,27 @@
         app:strokeColor="#FFFFFF" />
 
 
-
-
     <TextView
         android:id="@+id/textPrezzo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/invAmiciBtn"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="23dp"
         android:text="Prezzo"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/euro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/invAmiciBtn"
+        android:layout_marginTop="23dp"
+        android:layout_toRightOf="@+id/textPrezzo"
+        android:text="€"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 
     <Button
