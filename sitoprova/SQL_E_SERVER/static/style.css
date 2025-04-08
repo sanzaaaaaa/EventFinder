@@ -101,10 +101,32 @@ header .menu li input::placeholder {
     margin: 50px 0;
 }
 
+/* Bottone aggiungi evento */
+#btn-add-event {
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+#btn-add-event:hover {
+    color: #850707;
+    font-weight: bold;
+}
+
 h1 {
     font-size: 3rem;
     color: black;
 }
+
+/* css per lista eventi */
+.event-list {
+    
+}
+
+.event-list img {
+    width: 200px;
+}
+
+
 
 /* Footer */
 footer {
@@ -318,7 +340,7 @@ p {
 }
 
 a {
-    color: #b30000;
+    color: #000;
     text-decoration: none;
 }
 

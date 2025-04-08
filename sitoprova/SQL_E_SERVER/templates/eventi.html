@@ -18,7 +18,7 @@
                 <li><a href="{{ url_for('eventi') }}">Eventi</a></li>
                 <li><a href="{{ url_for('contatti') }}">Contatti</a></li>
                 {% if session.logged %}
-                    <a href="#">Ciao {{session.username}}</a>
+                <li><a href="#">Ciao {{session["nome"]}}</a></li> 
                 {% else %}
                 <li><a href="{{ url_for('login') }}" class="btn-login-register">Login/Register</a></li>
                 {% endif %}
@@ -32,21 +32,22 @@
         <div class="intro">
             <h1>Eventi Disponibili</h1>
             <p>Esplora gli eventi più recenti e scopri cosa sta accadendo vicino a te!</p>
-            <a href="{{url_for('aggiungievento')}}">Aggiungi evento</a>
         </div>
+
+        <a id="btn-add-event" href="{{url_for('aggiungievento')}}">Aggiungi evento</a>
         
-        <!-- Lista eventi (Esempio) -->
+        <!-- Lista eventi -->
         <div class="event-list">
             
             <a href="{{url_for('info_evento')}}">
             <div class="event-card">
                 {% for evento in eventi %}
-                <img url="{{evento.immagine}}" alt="immagine del film {{evento.titolo}}">
+                <img src="{{evento.urlimage}}" alt="immagine del film {{evento.titolo}}">
                 <h3>{{evento.titolo}}</h3>
                 <h4>{{evento.luogo}}</h4>
                 <h5>{{evento.data_evento}}</h5>
                 <p>{{evento.info_evento}}</p>
-                <p>{{evento.artista}}</p>
+                <p>{{evento.info_artista}}</p>
                 <p>{{evento.prezzo}}</p>
                  {% endfor %}
             </div>
