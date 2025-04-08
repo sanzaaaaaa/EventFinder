@@ -188,7 +188,7 @@ def mobile_home():
     
     return jsonify(lista)
 
-@app.route('/register', methods=['POST'])
+@app.route('/mobile_register', methods=['POST'])
 def mobile_register():
     data = request.get_json()
 
@@ -208,7 +208,7 @@ def mobile_register():
     return jsonify({"message": "Utente registrato correttamente!"}), 201
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/mobile_login', methods=['POST'])
 def mobile_login():
     data = request.get_json()
 

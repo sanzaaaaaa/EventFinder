@@ -10,10 +10,10 @@ import retrofit2.http.Query;
 
 
 public interface ApiService {
-    @POST("/register")
+    @POST("/mobile_register")
     Call<Void> registerUser(@Body Utente user);
 
-    @POST("/login")
+    @POST("/mobile_login")
     Call<Utente> loginUser(@Body Utente user);
 
     @GET("/get_users")
