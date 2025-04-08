@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +18,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 
+import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
+import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
 
 
@@ -26,11 +29,16 @@ import com.example.eventfinder.modelli.SharedPreference;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class HomeActivity extends AppCompatActivity {
     private ListView listView;
     private List<Eventi> eventiList;
     private List<Eventi> eventiListFiltered;
     private EventiAdapter eventiAdapter;
+    private ApiService eventoApi;
 
 
 
@@ -111,27 +119,27 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
         eventiList = new ArrayList<>();
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/linkin-park-biglietti.jpg", "Linkin Park", "mar 24 giugno, 16:00", "Ippodromo SNAI La Maura", "92"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/teaser/222x222/2024/nazzi-nuova-storia-biglietti.jpg", "Stefano Nazzi - Indagini Live - Una nuova storia", "gio 03 Aprile, 21:01", "Teatro Arcimboldi", "92"));
-        eventiList.add(new Eventi("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxeRyx5R-NwaPO_ad1mU9N-CKXpb7Z_NNjg&s", "Latin Festival ", "mar 03 Luglio, 23:01", "Segrate", "92"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore", "92"));
-        eventiList.add(new Eventi("https://i.scdn.co/image/ab67616d0000b273c920263f076402b429b32606", "Artie five - tour La bella vita", "sab 20 agosto 2025, 21:00", "Mediolanum Forum", "92"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/linkin-park-biglietti.jpg", "Linkin Park", "mar 24 giugno, 16:00", "Ippodromo SNAI La Maura", "92"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/teaser/222x222/2024/nazzi-nuova-storia-biglietti.jpg", "Stefano Nazzi - Indagini Live - Una nuova storia", "gio 03 Aprile, 21:01", "Teatro Arcimboldi", "92"));
-        eventiList.add(new Eventi("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxeRyx5R-NwaPO_ad1mU9N-CKXpb7Z_NNjg&s", "Latin Festival ", "mar 03 Luglio, 23:01", "Segrate", "92"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore", "92"));
-        eventiList.add(new Eventi("https://i.scdn.co/image/ab67616d0000b273c920263f076402b429b32606", "Artie five - tour La bella vita", "sab 20 agosto 2025, 21:00", "Mediolanum Forum", "92"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/l/linkin-park-biglietti.jpg", "Linkin Park", "mar 24 giugno, 16:00", "Ippodromo SNAI La Maura", "92"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/teaser/222x222/2024/nazzi-nuova-storia-biglietti.jpg", "Stefano Nazzi - Indagini Live - Una nuova storia", "gio 03 Aprile, 21:01", "Teatro Arcimboldi", "92"));
-        eventiList.add(new Eventi("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxeRyx5R-NwaPO_ad1mU9N-CKXpb7Z_NNjg&s", "Latin Festival ", "mar 03 Luglio, 23:01", "Segrate", "92"));
-        eventiList.add(new Eventi("https://www.ticketone.it/obj/media/IT-eventim/galery/222x222/2/21savage-TA.jpg", "21 Savage ", "9 luglio 2025, 10:00", "Lido di Camaiore", "92"));
-        eventiList.add(new Eventi("https://i.scdn.co/image/ab67616d0000b273c920263f076402b429b32606", "Artie five - tour La bella vita", "sab 20 agosto 2025, 21:00", "Mediolanum Forum", "92"));
-
         eventiListFiltered = new ArrayList<>(eventiList);
-
         eventiAdapter = new EventiAdapter(this, eventiListFiltered);
         listView.setAdapter(eventiAdapter);
+
+        eventoApi = RetrofitClient.getApiService().create(ApiService.class);
+        Call<List<Eventi>> call = eventoApi.getEventi();
+        call.enqueue(new Callback<List<Eventi>>() {
+            @Override
+            public void onResponse(Call<List<Eventi>> call, Response<List<Eventi>> response) {
+                eventiList.clear();
+                eventiList.addAll(response.body());
+                eventiAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<List<Eventi>> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "Errore nel caricamento dei dati", Toast.LENGTH_LONG).show();
+            }
+        });
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Intent infoIntent = new Intent(this, InfoEventi.class);

@@ -5,22 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.eventfinder.R;
 
 import java.util.List;
 
+import retrofit2.Callback;
+
 public class EventiAdapter extends ArrayAdapter<Eventi> {
     private Context context;
 
     private boolean isFilled = false;
 
-    public EventiAdapter(Context context,  List<Eventi> eventiList) {
+    public EventiAdapter(Context context, List<Eventi> eventiList) {
         super(context, 0, eventiList);
         this.context = context;
     }
