@@ -3,6 +3,7 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -35,7 +36,7 @@ import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
     private ListView listView;
-    private List<Eventi> eventiList;
+    private List<Eventi> eventiList = new ArrayList<>();
     private List<Eventi> eventiListFiltered;
     private EventiAdapter eventiAdapter;
     private ApiService eventoApi;
@@ -66,7 +67,9 @@ public class HomeActivity extends AppCompatActivity {
         TextView ciao = findViewById(R.id.benvenuto);
         TextView slogan1 = findViewById(R.id.slogan);
 
-
+        eventiListFiltered = new ArrayList<>(eventiList);
+        eventiAdapter = new EventiAdapter(this, eventiListFiltered);
+        listView.setAdapter(eventiAdapter);
 
 
         if (sharedPreference.isLoggedIn()) {
@@ -120,10 +123,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        eventiList = new ArrayList<>();
-        eventiListFiltered = new ArrayList<>(eventiList);
-        eventiAdapter = new EventiAdapter(this, eventiListFiltered);
-        listView.setAdapter(eventiAdapter);
+
+
 
         eventoApi = RetrofitClient.getApiService().create(ApiService.class);
         Call<List<Eventi>> call = eventoApi.getEventi();
@@ -133,6 +134,11 @@ public class HomeActivity extends AppCompatActivity {
                 eventiList.clear();
                 eventiList.addAll(response.body());
                 eventiAdapter.notifyDataSetChanged();
+
+                eventiListFiltered.clear();
+                eventiListFiltered.addAll(eventiList);
+                Log.d("EVENTI", "Ricevuti: " + response.body().size());
+
             }
 
             @Override

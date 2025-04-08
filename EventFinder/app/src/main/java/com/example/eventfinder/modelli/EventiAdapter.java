@@ -13,28 +13,31 @@ import com.example.eventfinder.R;
 
 import java.util.List;
 
+import retrofit2.Call;
 import retrofit2.Callback;
 
 public class EventiAdapter extends ArrayAdapter<Eventi> {
     private Context context;
-
+    private List<Eventi> eventiList;
     private boolean isFilled = false;
 
     public EventiAdapter(Context context, List<Eventi> eventiList) {
         super(context, 0, eventiList);
         this.context = context;
+        this.eventiList = eventiList;
     }
 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Eventi eventi = getItem(position);
+
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.lista_eventi, parent, false);
         }
 
+        Eventi eventi = eventiList.get(position);
         ImageView eventiImageView = convertView.findViewById(R.id.eventiImageView);
         TextView eventiTitolo = convertView.findViewById(R.id.eventiTitolo);
         TextView eventiData = convertView.findViewById(R.id.eventiData);

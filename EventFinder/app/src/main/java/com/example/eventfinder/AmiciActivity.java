@@ -35,7 +35,7 @@ public class AmiciActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private UtentiAdapter utentiAdapter;
     private List<Utente> utentiList = new ArrayList<>();
-    private Retrofit apiService; // Usa Retrofit per la tua chiamata API
+    private ApiService getUtenti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +48,6 @@ public class AmiciActivity extends AppCompatActivity {
 
         utentiAdapter = new UtentiAdapter(utentiList);
         recyclerView.setAdapter(utentiAdapter);
-
-        apiService = RetrofitClient.getApiService();
-
-
-        getUtentiRegistrati();
 
         ImageButton indietro = findViewById(R.id.btnBack);
         indietro.setOnClickListener(v -> {
@@ -115,13 +110,11 @@ public class AmiciActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
+
+        getUtenti = RetrofitClient.getApiService().create(ApiService.class);
 
 
-    private void getUtentiRegistrati() {
-        apiService = RetrofitClient.getApiService();  
-        
-        Call<List<Utente>> call = apiService.getUser();
+        Call<List<Utente>> call = getUtenti.getUsers();
 
         call.enqueue(new Callback<List<Utente>>() {
             @SuppressLint("NotifyDataSetChanged")

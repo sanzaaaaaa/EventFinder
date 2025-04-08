@@ -191,8 +191,6 @@ def mobile_home():
 @app.route('/mobile_register', methods=['POST'])
 def mobile_register():
     data = request.get_json()
-
-  
     nome = data.get('nome')
     cognome = data.get('cognome')
     email = data.get('email')
@@ -252,7 +250,7 @@ def get_users():
 
 @app.route('/get_eventi', methods=['GET'])
 def get_eventi():
-    query = "SELECT * from eventi" 
+    query = "SELECT * FROM eventi" 
     with connection.cursor() as cursor:
         cursor.execute(query)
         eventi = cursor.fetchall() 

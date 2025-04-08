@@ -29,6 +29,8 @@ public class InfoEventi extends AppCompatActivity {
     private TextView titoloInfoEvento;
     private TextView dataInfoEvento;
     private TextView luogoInfoEvento;
+    private TextView infoArtista;
+    private TextView infoEvento;
     private ImageView immagineEvento;
     private TextView prezzoEvento;
 
@@ -44,6 +46,8 @@ public class InfoEventi extends AppCompatActivity {
         titoloInfoEvento = findViewById(R.id.titoloInfoEvento);
         dataInfoEvento = findViewById(R.id.dataInfoEvento);
         luogoInfoEvento = findViewById(R.id.luogoInfoEvento);
+        infoArtista = findViewById(R.id.artistaInfoEvento);
+        infoEvento = findViewById(R.id.infoEvento);
         immagineEvento = findViewById(R.id.immagineEvento);
         prezzoEvento = findViewById(R.id.textPrezzo);
 
@@ -54,13 +58,17 @@ public class InfoEventi extends AppCompatActivity {
         String titolo = intent.getStringExtra("titolo");
         String data = intent.getStringExtra("data");
         String luogo = intent.getStringExtra("luogo");
-        String immagineUrl = intent.getStringExtra("urlImage"); // Assicurati che la chiave sia corretta
+        String info_evento = intent.getStringExtra("info_evento");
+        String info_artista = intent.getStringExtra("info_artista");
+        String immagineUrl = intent.getStringExtra("urlImage");
         String prezzo = intent.getStringExtra("prezzo");
 
         titoloInfoEvento.setText(titolo);
         dataInfoEvento.setText(data);
         luogoInfoEvento.setText(luogo);
-//        prezzoEvento.setText(prezzo);
+        infoArtista.setText(info_artista);
+        infoEvento.setText(info_evento);
+        prezzoEvento.setText(prezzo);
 
 
         if (immagineUrl != null && !immagineUrl.isEmpty()) {
