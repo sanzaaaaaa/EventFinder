@@ -16,7 +16,7 @@ body {
 /* Menu */
 header {
     background-color: #b30000; /* Rosso forte */
-    padding: 0.2rem 1.5rem; /* Ancora più ridotto il padding per un menu più compatto */
+    padding: 0.2rem 1.5rem;
     color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -28,13 +28,13 @@ header nav {
 }
 
 header .logo img {
-    width: 100px; /* Ridotto ulteriormente il logo per un menu più compatto */
+    width: 100px;
 }
 
 header .menu {
     list-style-type: none;
     display: flex;
-    gap: 8px; /* Ridotto il gap per rendere il menu più compatto */
+    gap: 8px;
     align-items: center;
 }
 
@@ -47,9 +47,9 @@ header .menu li input {
     color: black;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem; /* Aumentata la dimensione del font */
+    font-size: 1.2rem;
     transition: color 0.3s ease;
-    padding: 8px 12px; /* Padding aumentato per dare più spazio alle scritte */
+    padding: 8px 12px;
 }
 
 header .menu li a:hover {
@@ -57,14 +57,14 @@ header .menu li a:hover {
 }
 
 header .menu li input {
-    padding: 8px 12px; /* Aumentato il padding per il campo di ricerca */
+    padding: 8px 12px;
     border-radius: 20px;
     border: 2px solid black;
     outline: none;
-    background-color: #ffffff; /* Sfondo bianco per la barra di ricerca */
+    background-color: #ffffff;
     color: black;
-    width: 300px; /* Aumentata la larghezza della barra di ricerca */
-    font-size: 1.2rem; /* Aumentata la dimensione del font */
+    width: 300px;
+    font-size: 1.2rem;
 }
 
 header .menu li input::placeholder {
@@ -82,17 +82,8 @@ header .menu li input::placeholder {
     font-weight: bold;
     letter-spacing: 1px;
     text-decoration: none;
-    border: 2px solid #0f0c0c; /* Bordo  */
+    border: 2px solid #0f0c0c;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Rimosso l'effetto hover */
-.btn-login-register:hover {
-    background-color: #850707; /* Nessuna modifica al colore */
-    color: white;
-    transform: none; /* Rimosso il transform */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Nessun cambiamento nell'ombra */
-    border: 2px solid #0f0c0c; /* Nessuna modifica al bordo */
 }
 
 /* Titolo principale centrato */
@@ -101,27 +92,12 @@ header .menu li input::placeholder {
     margin: 50px 0;
 }
 
-/* Bottone aggiungi evento */
-#btn-add-event {
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-#btn-add-event:hover {
-    color: #850707;
-    font-weight: bold;
-}
-
 h1 {
     font-size: 3rem;
     color: black;
 }
 
 /* css per lista eventi */
-.event-list {
-    
-}
-
 .event-list img {
     width: 200px;
 }
@@ -130,7 +106,6 @@ h1 {
 .btn-logout {
     text-align: center;
     margin-top: 50px;
-    text-decoration: none;
 }
 
 #logout {
@@ -171,7 +146,7 @@ footer ul li a {
 footer ul li a:hover {
     color: #ff6666;
 }
-/*...............................................................................*/
+
 /* Sezione Contatti */
 .contatti {
     padding: 50px 20px;
@@ -281,10 +256,8 @@ footer ul li a:hover {
 .contatti .form-contatti button:hover {
     background-color: #ff6666;
 }
-/*.............................................................................................*/
-/*sezione login/regitrazione*/
 
-
+/* Sezione login/registrazione */
 .body_login {
     margin: 0;
     padding: 0;
@@ -297,12 +270,12 @@ footer ul li a:hover {
     flex-direction: column;
 }
 
-img.logo{
+img.logo {
     width: 120px;
     margin-bottom: 20px;
 }
 
-h2{
+h2 {
     color: #b30000;
     margin-bottom: 10px;
 }
@@ -319,16 +292,17 @@ form {
 }
 
 input[type="email"],
-input[type="password"] ,input[type="nome"],input[type="cognome"] ,input[type="date"]  {
+input[type="password"],
+input[type="nome"],
+input[type="cognome"],
+input[type="date"] {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-
-
-button{
+button {
     background-color: #b30000;
     color: white;
     border: none;
@@ -337,10 +311,6 @@ button{
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #990000;
 }
 
 p {
@@ -354,8 +324,9 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
+
 .logo_1 {
     width: auto;
     height: 60px;
@@ -372,7 +343,6 @@ a:hover {
     text-align: center;
 }
 
-
 .aggiungievento input {
     width: 100%;
     padding: 12px;
@@ -386,5 +356,80 @@ a:hover {
 
 .aggiungievento button {
     width: 100%;
-    height:50px;
+    height: 50px;
+}
+
+.eventi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.event-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.event-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #f2f2f2;
+}
+
+.event-card h3 {
+    font-size: 1.6rem;
+    color: #333333;
+    margin: 15px;
+    font-weight: 600;
+}
+
+.event-card h4 {
+    font-size: 1.2rem;
+    color: #777777;
+    margin: 10px 15px;
+}
+
+.event-card h5 {
+    font-size: 1rem;
+    color: #888888;
+    margin: 10px 15px;
+}
+
+.event-card p {
+    font-size: 1rem;
+    color: #555555;
+    margin: 10px 15px;
+    line-height: 1.5;
+}
+
+.event-card p:last-of-type {
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 20px;
+}
+
+.aggiungieventi {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #b30000;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }

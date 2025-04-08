@@ -134,6 +134,18 @@ def info_evento():
     return render_template('infoevento.html')
 
 
+@app.route('/elimina_evento/<int:evento_id>', methods=['POST'])
+def elimina_evento(evento_id):
+
+    with connection.cursor() as cursor:
+        
+        query = "DELETE FROM eventi WHERE id = %s"
+        cursor.execute(query, (evento_id,))
+        connection.commit()  
+
+    return redirect(url_for('eventi'))
+
+
 """@app.route('/aggiungi_preferiti', methods=['POST'])
 def aggiungi_preferiti():
     data = request.json

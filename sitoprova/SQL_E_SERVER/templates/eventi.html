@@ -34,37 +34,30 @@
             <p>Esplora gli eventi più recenti e scopri cosa sta accadendo vicino a te!</p>
         </div>
 
-        <a id="btn-add-event" href="{{url_for('aggiungievento')}}">Aggiungi evento</a>
+        <a id="btn-add-event" href="{{url_for('aggiungievento')}}" class="aggiungieventi">Aggiungi evento</a>
         
         <!-- Lista eventi -->
         <div class="event-list">
             
-            <a href="{{url_for('info_evento')}}">
-            <div class="event-card">
+            <a href="{{url_for('info_evento')}}" class="eventi">
                 {% for evento in eventi %}
-                <img src="{{evento.urlimage}}" alt="immagine del film {{evento.titolo}}">
-                <h3>{{evento.titolo}}</h3>
-                <h4>{{evento.luogo}}</h4>
-                <h5>{{evento.data_evento}}</h5>
-                <p>{{evento.info_evento}}</p>
-                <p>{{evento.info_artista}}</p>
-                <p>{{evento.prezzo}}</p>
-                 {% endfor %}
-            </div>
-        </a>
-           
+                <div class="event-card">
+                    <img src="{{ evento.urlimage }}" alt="immagine del film {{ evento.titolo }}">
+                    <h3>{{ evento.titolo }}</h3>
+                    <h4>{{ evento.luogo }}</h4>
+                    <h5>{{ evento.data_evento }}</h5>
+                    <p>{{ evento.info_evento }}</p>
+                    <p>{{ evento.info_artista }}</p>
+                    <p>{{ evento.prezzo }}</p>
+
+                    <form action="{{ url_for('elimina_evento', evento_id=evento['id']) }}" class="elimina"  method="POST">
+                        <button type="submit" class="Elimina">Elimina Evento</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </a>      
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer id="footer">
-        <p>&copy; 2025 EventFinder - Tutti i diritti riservati.</p>
-        <ul>
-            <li><a href="#privacy-policy">Privacy Policy</a></li>
-            <li><a href="#terms">Termini di Servizio</a></li>
-            <li><a href="#help">Aiuto</a></li>
-        </ul>
-    </footer>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
