@@ -29,43 +29,79 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class AmiciActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private UtentiAdapter utentiAdapter;
     private List<Utente> utentiList = new ArrayList<>();
-    private ApiService apiService; // Usa Retrofit per la tua chiamata API
+    private Retrofit apiService; // Usa Retrofit per la tua chiamata API
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amici);
         SharedPreference sharedPreference = new SharedPreference(this);
+
         recyclerView = findViewById(R.id.recyclerViewAmici);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         utentiAdapter = new UtentiAdapter(utentiList);
         recyclerView.setAdapter(utentiAdapter);
 
+        apiService = RetrofitClient.getApiService();
 
-        apiService = RetrofitClient.getApiService().create(ApiService.class);
+
         getUtentiRegistrati();
 
         ImageButton indietro = findViewById(R.id.btnBack);
-
         indietro.setOnClickListener(v -> {
             Intent amici = new Intent(AmiciActivity.this, HomeActivity.class);
             startActivity(amici);
         });
 
+
         ImageButton btnBiglietto = findViewById(R.id.btnBiglietti3);
+        btnBiglietto.setOnClickListener(v -> {
+            Intent biglietto = new Intent(AmiciActivity.this, Biglietti.class);
+            startActivity(biglietto);
+        });
+
+
         ImageButton btnPreferiti = findViewById(R.id.btnPrefe3);
+        btnPreferiti.setOnClickListener(v -> {
+            Intent preferiti = new Intent(AmiciActivity.this, Preferiti.class);
+            startActivity(preferiti);
+        });
+
+
         ImageButton btnHome = findViewById(R.id.btnHome3);
+        btnHome.setOnClickListener(v -> {
+            Intent home = new Intent(AmiciActivity.this, HomeActivity.class);
+            startActivity(home);
+        });
+
+
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici3);
+        btnAmici.setOnClickListener(v -> {
+            Intent amici = new Intent(AmiciActivity.this, AmiciActivity.class);
+            startActivity(amici);
+        });
+
+
         ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
+        btnProfilo.setOnClickListener(v -> {
+            if (sharedPreference.isLoggedIn()) {
+                Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
+                startActivity(profilo);
+            } else {
+                Intent login = new Intent(AmiciActivity.this, Login.class);
+                startActivity(login);
+            }
+        });
+
+
         SearchView cerca = findViewById(R.id.searchViewAmici);
-
-
         cerca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -79,44 +115,14 @@ public class AmiciActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
-        btnBiglietto.setOnClickListener(v -> {
-            Intent biglietto = new Intent(AmiciActivity.this, Biglietti.class);
-            startActivity(biglietto);
-        });
-
-        btnPreferiti.setOnClickListener(v -> {
-            Intent preferiti = new Intent(AmiciActivity.this, Preferiti.class);
-            startActivity(preferiti);
-
-        });
-
-        btnHome.setOnClickListener(v -> {
-            Intent home = new Intent(AmiciActivity.this, HomeActivity.class);
-            startActivity(home);
-        });
-
-        btnAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(AmiciActivity.this, AmiciActivity.class);
-            startActivity(amici);
-        });
-
-        btnProfilo.setOnClickListener(v -> {
-            if (sharedPreference.isLoggedIn()) {
-                Intent profilo = new Intent(AmiciActivity.this, Profilo.class);
-                startActivity(profilo);
-            } else {
-                Intent login = new Intent(AmiciActivity.this, Login.class);
-                startActivity(login);
-            }
-        });
-
     }
 
 
     private void getUtentiRegistrati() {
-        Call<List<Utente>> call = apiService.getUsers();
+        apiService = RetrofitClient.getApiService();  
+        
+        Call<List<Utente>> call = apiService.getUser();
+
         call.enqueue(new Callback<List<Utente>>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -125,17 +131,15 @@ public class AmiciActivity extends AppCompatActivity {
                     utentiList.clear();
                     utentiList.addAll(response.body());
                     utentiAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(AmiciActivity.this, "Errore nel recupero degli utenti", Toast.LENGTH_SHORT).show();
                 }
             }
 
-
-
-
-
             @Override
             public void onFailure(Call<List<Utente>> call, Throwable t) {
+                Toast.makeText(AmiciActivity.this, "Errore di rete", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }
