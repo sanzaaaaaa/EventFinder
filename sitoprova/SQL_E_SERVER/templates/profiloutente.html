@@ -21,12 +21,25 @@
     </header>
 
     
-    <div class="btn-logout">
-        <form  action="/logout">
-            <button id="logout" href="/logout">Logout</button>
-        </form>
-    </div>
 
+
+    <section class="profilo-utente">
+        <div class="profilo-box">
+            <img src="{{ url_for('static', filename='img/foto_profilo.png') }}" alt="Foto Profilo" class="foto-profilo">
+            <div class="info-utente">
+                <h2>{{ utente.nome }} {{ utente.cognome }}</h2>
+                <p><strong>Email:</strong> {{ utente.email }}</p>
+                <p><strong>Data di nascita:</strong> {{ utente.data_di_nascita }}</p>
+                
+            </div>
+            <div class="btn-logout">
+                <form  action="/logout">
+                    <button id="logout" href="/logout">Logout</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
     
 
     <footer id="footer">

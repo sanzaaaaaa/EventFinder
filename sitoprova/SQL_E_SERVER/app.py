@@ -106,10 +106,28 @@ def contatti():
 
 
 # Profilo
+#..............................
 @app.route('/profilo')
 def profilo():
-        return render_template('profiloutente.html')
+    if 'logged' not in session:
+        return redirect(url_for('login'))
 
+    user_id = session['username']
+
+    with connection.cursor() as cursor:
+        query = "SELECT nome, cognome, email, data_di_nascita FROM utenti WHERE id = %s"
+        cursor.execute(query, (user_id,))
+        utente = cursor.fetchone()
+
+    if utente:
+        
+        if utente['data_di_nascita']:
+            utente['data_di_nascita'] = utente['data_di_nascita'].strftime('%d %B %Y')
+
+       
+        return render_template('profiloutente.html', utente=utente)
+    else:
+        return "Utente non trovato", 404
 
 
 # Aggiungi evento
