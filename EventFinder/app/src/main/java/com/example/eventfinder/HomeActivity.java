@@ -148,6 +148,7 @@ public class HomeActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Intent infoIntent = new Intent(this, InfoEventi.class);
+            infoIntent.putExtra("evento_id", eventiList.get(position).getId());
             infoIntent.putExtra("titolo", eventiList.get(position).getTitolo());
             infoIntent.putExtra("data", eventiList.get(position).getData());
             infoIntent.putExtra("urlImage", eventiList.get(position).getUrlImage());

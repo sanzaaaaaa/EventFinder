@@ -92,8 +92,13 @@ public class InfoEventi extends AppCompatActivity {
 
         iconaPreferiti.setOnClickListener(v -> {
             if (isFilled) {
-                int eventoId = getIntent().getIntExtra("evento_id", 1);
+                int eventoId = getIntent().getIntExtra("evento_id", -1);
                 int utenteId = sharedPreference.getId();
+
+                if (eventoId == -1) {
+                    Toast.makeText(InfoEventi.this, "Errore: ID evento mancante", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 EventiPreferiti preferiti = new EventiPreferiti(utenteId, eventoId);
 

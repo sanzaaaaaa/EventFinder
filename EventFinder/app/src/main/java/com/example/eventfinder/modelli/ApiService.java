@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
@@ -26,8 +27,8 @@ public interface ApiService {
     Call<Void> getEvents(@Body EventiPreferiti preferiti);
 
 
-    @GET("/get_preferiti")
-    Call<List<Eventi>> getPreferiti(@Query("utente_id") int idUtente);
+    @GET("/get_preferiti/{utente_id}")
+    Call<List<Eventi>> getPreferiti(@Path("utente_id") int idUtente);
 
 
 

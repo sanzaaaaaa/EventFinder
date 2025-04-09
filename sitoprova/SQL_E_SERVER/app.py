@@ -271,14 +271,14 @@ def aggiungi_preferiti():
         cursor.close()
         connection.close()
 
-@app.route("/get_preferiti")
-def get_preferiti():
-    utente_id = request.args.get('utente_id', type=int)
+@app.route("/get_preferiti/<int:utente_id>")
+def get_preferiti(utente_id):
+    
 
     if utente_id is None:
         return jsonify({"error": "utente_id mancante"}), 400
 
-    query = "SELECT eventi.* FROM eventiJOIN preferiti ON eventi.id = preferiti.evento_id WHERE preferiti.utente_id = %s"
+    query = "SELECT eventi.* FROM eventi JOIN preferiti ON eventi.id = preferiti.evento_id WHERE preferiti.utente_id = %s"
     with connection.cursor() as cursor:
         cursor.execute(query, (utente_id,))
         preferiti = cursor.fetchall() 

@@ -42,7 +42,7 @@ public class Preferiti extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferiti);
 
-        SharedPreference sharedPreference = new SharedPreference(this);
+        sharedPreference = new SharedPreference(this);
 
         WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
@@ -52,7 +52,7 @@ public class Preferiti extends AppCompatActivity {
         ImageButton btnHome = findViewById(R.id.btnHome2);
         ImageButton btnAmici = findViewById(R.id.btnHomeAmici2);
         ImageButton btnProfilo = findViewById(R.id.btnProfilo2);
-        ListView preferitiListView = findViewById(R.id.preferitiListView);
+        preferitiListView = findViewById(R.id.preferitiListView);
 
         eventiAdapter = new EventiAdapter(this, preferitiList);
         preferitiListView.setAdapter(eventiAdapter);
@@ -92,11 +92,15 @@ public class Preferiti extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Eventi>> call, Response<List<Eventi>> response) {
                 preferitiList.clear();
-                preferitiList.addAll(response.body());
-                eventiAdapter.notifyDataSetChanged();
-                Log.d("PREFERITI", "Ricevuti: " + response.body().size());
+                if (response.isSuccessful() && response.body() != null) {
+                    preferitiList.addAll(response.body());
+                    eventiAdapter.notifyDataSetChanged();
+                    Log.d("PREFERITI", "Ricevuti: " + response.body().size());
+                } else {
+                    Log.e("PREFERITI", "Risposta non valida o lista null");
+                    Toast.makeText(Preferiti.this, "Nessun preferito trovato", Toast.LENGTH_SHORT).show();
+                }
             }
-
             @Override
             public void onFailure(Call<List<Eventi>> call, Throwable t) {
                 Toast.makeText(Preferiti.this, "Errore durante il recupero dei preferiti", Toast.LENGTH_SHORT).show();
