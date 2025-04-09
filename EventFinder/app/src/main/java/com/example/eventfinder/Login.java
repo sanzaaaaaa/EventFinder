@@ -105,6 +105,7 @@ public class Login extends AppCompatActivity {
                         Log.d("Login", "Email: " + utente.getEmail());
 
                         SharedPreference sharedPreference = new SharedPreference(Login.this);
+                        sharedPreference.saveId(utente.getId());
                         sharedPreference.saveNome(utente.getNome());
                         sharedPreference.saveCognome(utente.getCognome());
                         sharedPreference.saveDataDiNascita(utente.getData_di_nascita());

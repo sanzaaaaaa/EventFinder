@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.eventfinder.modelli.ApiService;
+import com.example.eventfinder.modelli.EventiPreferiti;
 import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 
 public class InfoEventi extends AppCompatActivity {
     private boolean isFilled = false;
-
+    private EventiPreferiti preferiti;
     private TextView titoloInfoEvento;
     private TextView dataInfoEvento;
     private TextView luogoInfoEvento;
@@ -71,6 +72,7 @@ public class InfoEventi extends AppCompatActivity {
         infoEvento.setText(info_evento);
         prezzoEvento.setText(prezzo);
 
+        SharedPreference sharedPreference = new SharedPreference(this);
 
 
 
@@ -88,27 +90,31 @@ public class InfoEventi extends AppCompatActivity {
             startActivity(amici);
         });
 
-        /*iconaPreferiti.setOnClickListener(v -> {
+        iconaPreferiti.setOnClickListener(v -> {
             if (isFilled) {
+                int eventoId = getIntent().getIntExtra("evento_id", 1);
+                int utenteId = sharedPreference.getId();
+
+                EventiPreferiti preferiti = new EventiPreferiti(utenteId, eventoId);
+
                 ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
-                apiService.getEventi(1, 1).enqueue(new Callback<Void>() {
+                apiService.getEvents(preferiti).enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Toast.makeText(InfoEventi.this, "Aggiunto ai preferiti", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InfoEventi.this, "Evento aggiunto ai preferiti", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(InfoEventi.this, "Errore", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InfoEventi.this, "Errore durante l'aggiunta dell'evento ai preferiti", Toast.LENGTH_SHORT).show();
                     }
                 });
-
                 iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
             } else {
                 iconaPreferiti.setImageResource(R.drawable.ic_pref_not_filled);
             }
 
             isFilled = !isFilled;
-        }); */
+        });
     }
 }

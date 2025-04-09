@@ -151,25 +151,6 @@ def elimina_evento(evento_id):
     return redirect(url_for('eventi'))
 
 
-"""@app.route('/aggiungi_preferiti', methods=['POST'])
-def aggiungi_preferiti():
-    data = request.json
-    utente_id = data.get('utente_id')
-    evento_id = data.get('evento_id')
-    
-    
-    conn = get_connection()
-    cursor = conn.cursor()
-    query = "INSERT INTO preferiti (utente_id, evento_id) VALUES(%s, %s)"
-    try:
-        cursor.execute(query, (utente_id, evento_id))
-        conn.commit()
-        return jsonify({"status": "success"})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
-    finally:
-        cursor.close()
-        conn.close() """
 
 
 # backend applicazione mobile
@@ -256,6 +237,54 @@ def get_eventi():
         eventi = cursor.fetchall() 
 
     return jsonify(eventi) 
+
+# Aggiungi evento ai preferiti
+@app.route('/aggiungi_preferiti', methods=['POST'])
+def aggiungi_preferiti():
+
+    connection = pymysql.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="eventfinder",
+    autocommit=True,
+    cursorclass=pymysql.cursors.DictCursor
+    )
+
+    data = request.json
+    utente_id = data.get('utente_id')
+    evento_id = data.get('evento_id')
+
+    print("Ricevuto utente_id:", utente_id)
+    print("Ricevuto evento_id:", evento_id)
+    
+    
+    cursor = connection.cursor()
+    query = "INSERT INTO preferiti (utente_id, evento_id) VALUES(%s, %s)"
+    try:
+        cursor.execute(query, (utente_id, evento_id))
+        connection.commit()
+        return jsonify({"status": "success"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+    finally:
+        cursor.close()
+        connection.close()
+
+@app.route("/get_preferiti")
+def get_preferiti():
+    utente_id = request.args.get('utente_id', type=int)
+
+    if utente_id is None:
+        return jsonify({"error": "utente_id mancante"}), 400
+
+    query = "SELECT eventi.* FROM eventiJOIN preferiti ON eventi.id = preferiti.evento_id WHERE preferiti.utente_id = %s"
+    with connection.cursor() as cursor:
+        cursor.execute(query, (utente_id,))
+        preferiti = cursor.fetchall() 
+
+    return jsonify(preferiti) 
+
 
 # Avvio
 if __name__ == '__main__':

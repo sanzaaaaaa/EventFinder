@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 public class SharedPreference {
     private static final String PREF_NAME = "UserPrefs";
+    private static final String KEY_ID = "utente_id";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_NOME = "nome";
     private static final String KEY_COGNOME = "cognome";
@@ -28,6 +29,15 @@ public class SharedPreference {
     public boolean isLoggedIn() {
 
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
+    }
+
+    public void saveId(int id) {
+        editor.putInt(KEY_ID, id);
+        editor.apply();
+    }
+
+    public int getId() {
+        return sharedPreferences.getInt("utente_id", 1);
     }
 
     public void saveEmail(String email) {
