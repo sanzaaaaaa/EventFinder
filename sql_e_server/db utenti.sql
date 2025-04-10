@@ -12,9 +12,9 @@ ALTER TABLE eventi DROP FOREIGN KEY eventi_ibfk_2;
 
 ALTER TABLE eventi DROP COLUMN preferiti_id; 
 
+rename table partecipazione to acquista;
 
-
-select * from preferiti;
+select * from acquista;
 
 alter table eventi
 modify column info_evento varchar(1000);
@@ -46,8 +46,6 @@ foreign key (categoria_id) references categoria(id)
 alter table eventi
 add column urlimage varchar(500);
 
-alter table eventi
-add foreign key (preferiti_id) references preferiti(id);
 
 
 

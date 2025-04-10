@@ -1,5 +1,7 @@
 package com.example.eventfinder.modelli;
 
+import com.example.eventfinder.Biglietti;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,6 +34,12 @@ public interface ApiService {
 
     @GET("/get_preferiti/{utente_id}")
     Call<List<Eventi>> getPreferiti(@Path("utente_id") int idUtente);
+
+    @POST("/aggiungi_biglietti")
+    Call<List<Void>> postBiglietti(@Body EventiBiglietti biglietti);
+
+    @GET("/get_biglietti/{utente_id}")
+    Call<List<Eventi>> getBiglietti(@Path("utente_id") int idUtente);
 
 
 

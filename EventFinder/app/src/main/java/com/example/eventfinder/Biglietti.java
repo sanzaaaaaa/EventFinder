@@ -3,9 +3,11 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,17 +17,25 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
+import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Biglietti extends AppCompatActivity {
-    private ListView listView;
-    private List<Eventi> eventiList;
+    private ListView bigliettiListview;
+    private List<Eventi> bigliettiList = new ArrayList<>();
     private EventiAdapter eventiAdapter;
+    private SharedPreference sharedPreference;
+    private ApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +47,8 @@ public class Biglietti extends AppCompatActivity {
         windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
         SharedPreference sharedPreference = new SharedPreference(this);
 
-        Button programma = findViewById(R.id.eventiInProgramma);
-        Button passati = findViewById(R.id.eventiPassati);
-        ListView inProgramma = findViewById(R.id.listaInProgramma);
-        ListView giaPassati = findViewById(R.id.listaPassati);
+        TextView bigliettiAcquistati = findViewById(R.id.bigliettiAcquistati);
+        ListView bigliettiListview = findViewById(R.id.bigliettiListview);
 
         ImageButton btnPreferiti = findViewById(R.id.btnPrefe1);
         ImageButton btnHome = findViewById(R.id.btnHome1);
@@ -77,7 +85,7 @@ public class Biglietti extends AppCompatActivity {
 
 
 
-        inProgramma.setVisibility(View.VISIBLE);
+        /*inProgramma.setVisibility(View.VISIBLE);
         giaPassati.setVisibility(View.GONE);
 
         programma.setOnClickListener(v -> {
@@ -88,7 +96,29 @@ public class Biglietti extends AppCompatActivity {
         passati.setOnClickListener(v -> {
             giaPassati.setVisibility(View.VISIBLE);
             inProgramma.setVisibility(View.GONE);
+        });*/
+
+        int utenteId = sharedPreference.getId();
+        eventiAdapter = new EventiAdapter(this, bigliettiList);
+        bigliettiListview.setAdapter(eventiAdapter);
+
+        ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
+        apiService.getBiglietti(utenteId).enqueue(new Callback<List<Eventi>>() {
+            @Override
+            public void onResponse(Call<List<Eventi>> call, Response<List<Eventi>> response) {
+                bigliettiList.clear();
+                if (response.isSuccessful()) {
+                    bigliettiList.addAll(response.body());
+                    eventiAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Eventi>> call, Throwable t) {
+
+            }
         });
+
 
         // Dati per le prenotazioni
         /*Eventi[] prenotazioniInProgramma = {
@@ -106,7 +136,7 @@ public class Biglietti extends AppCompatActivity {
 
 
 
-        List<Eventi> listaEventiInProgramma = new ArrayList<>();
+        /*List<Eventi> listaEventiInProgramma = new ArrayList<>();
         List<Eventi> listaEventiPassati = new ArrayList<>();
 
 
@@ -121,14 +151,14 @@ public class Biglietti extends AppCompatActivity {
 
         /*ArrayAdapter<Eventi> adapterInPassate = new ArrayAdapter<>(ctx,
                 R.layout.lista_eventi,
-                R.id.eventiTitolo,
+                R.id.eventiTitolo
 
-        );*/
+        );
 
         // Imposta gli adapter per le ListView
         inProgramma.setAdapter(adapter1);
         //giaPassati.setAdapter(adapterInPassate);
 
-        giaPassati.setAdapter(adapter2);
+        giaPassati.setAdapter(adapter2);*/
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 import com.bumptech.glide.Glide;
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.Eventi;
+import com.example.eventfinder.modelli.EventiBiglietti;
 import com.example.eventfinder.modelli.EventiPreferiti;
 import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
@@ -39,6 +41,7 @@ public class InfoEventi extends AppCompatActivity {
     private TextView infoEvento;
     private ImageView immagineEvento;
     private TextView prezzoEvento;
+    private EventiBiglietti biglietti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +59,9 @@ public class InfoEventi extends AppCompatActivity {
         infoEvento = findViewById(R.id.infoEvento);
         immagineEvento = findViewById(R.id.immagineEvento);
         prezzoEvento = findViewById(R.id.textPrezzo);
-
         ImageButton indietro = findViewById(R.id.btnBack);
         ImageButton iconaPreferiti = findViewById(R.id.iconapreferitiInfoEvento);
+        Button btnbiglietti = findViewById(R.id.compraBtn);
 
         Intent intent = getIntent();
         String titolo = intent.getStringExtra("titolo");
@@ -93,6 +96,30 @@ public class InfoEventi extends AppCompatActivity {
             Intent amici = new Intent(InfoEventi.this, HomeActivity.class);
             startActivity(amici);
         });
+
+        biglietti = new EventiBiglietti(sharedPreference.getId(), intent.getIntExtra("evento_id", -1));
+        btnbiglietti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
+                apiService.postBiglietti(biglietti).enqueue(new Callback<List<Void>>() {
+                    @Override
+                    public void onResponse(Call<List<Void>> call, Response<List<Void>> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(InfoEventi.this, "Biglietto acquistato", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Void>> call, Throwable t) {
+                        Log.e("API_ERROR", "Errore: " + t.getMessage(), t);
+                        Toast.makeText(InfoEventi.this, "Errore di rete", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+
 
         ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
         int eventoId = getIntent().getIntExtra("evento_id", -1);
