@@ -41,6 +41,7 @@ public class InfoEventi extends AppCompatActivity {
     private TextView infoEvento;
     private ImageView immagineEvento;
     private TextView prezzoEvento;
+    private Button invitamico;
     private EventiBiglietti biglietti;
 
     @Override
@@ -59,6 +60,14 @@ public class InfoEventi extends AppCompatActivity {
         infoEvento = findViewById(R.id.infoEvento);
         immagineEvento = findViewById(R.id.immagineEvento);
         prezzoEvento = findViewById(R.id.textPrezzo);
+
+        invitamico = findViewById(R.id.invAmiciBtn);
+        invitamico.setOnClickListener(v -> {
+            Intent amici = new Intent(InfoEventi.this, InvitaAmiciActivity.class);
+            startActivity(amici);
+        });
+
+
         ImageButton indietro = findViewById(R.id.btnBack);
         ImageButton iconaPreferiti = findViewById(R.id.iconapreferitiInfoEvento);
         Button btnbiglietti = findViewById(R.id.compraBtn);
