@@ -22,12 +22,9 @@ public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteView
     private boolean showCheckbox;
     public UtentiAdapter(List<Utente> utenti, boolean showCheckbox) {
         this.utenti = utenti;
-        this.showCheckbox = showCheckbox;
-    }
-
-    public UtentiAdapter(List<Utente> utenti) {
-        this.utenti = utenti;
         this.utentiFull = new ArrayList<>(utenti);
+        this.showCheckbox = showCheckbox;
+
     }
 
     public List<Utente> getSelezionati() {
@@ -41,20 +38,31 @@ public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteView
     }
 
     public void filter(String testo) {
-        List<Utente> filtrata = new ArrayList<>();
+
         if (testo.isEmpty()) {
-            filtrata.addAll(utentiFull);
+            utenti.clear();
+            utenti.addAll(utentiFull);
         } else {
+
+            List<Utente> filtrata = new ArrayList<>();
             for (Utente u : utentiFull) {
-                if (u.getNome().toLowerCase().contains(testo.toLowerCase())) {
+
+                String nomeLower = u.getNome().toLowerCase();
+                String cognomeLower = u.getCognome().toLowerCase();
+                String testoLower = testo.toLowerCase();
+
+                if (nomeLower.contains(testoLower) || cognomeLower.contains(testoLower)) {
                     filtrata.add(u);
                 }
             }
+
+            utenti.clear();
+            utenti.addAll(filtrata);
         }
-        utenti.clear();
-        utenti.addAll(filtrata);
+
         notifyDataSetChanged();
     }
+
 
     @NonNull
     @Override
