@@ -35,15 +35,7 @@
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"
             android:padding="8dp" />
-
-        <!-- Data -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Data evento:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp" />
+        
 
 
 
