@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class InfoEventi extends AppCompatActivity {
     private TextView infoEvento;
     private ImageView immagineEvento;
     private TextView prezzoEvento;
+    private Button invitamico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,13 @@ public class InfoEventi extends AppCompatActivity {
         infoEvento = findViewById(R.id.infoEvento);
         immagineEvento = findViewById(R.id.immagineEvento);
         prezzoEvento = findViewById(R.id.textPrezzo);
+
+        invitamico = findViewById(R.id.invAmiciBtn);
+        invitamico.setOnClickListener(v -> {
+            Intent amici = new Intent(InfoEventi.this, InvitaAmiciActivity.class);
+            startActivity(amici);
+        });
+
 
         ImageButton indietro = findViewById(R.id.btnBack);
         ImageButton iconaPreferiti = findViewById(R.id.iconapreferitiInfoEvento);
