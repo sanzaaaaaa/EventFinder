@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home); // Mantieni lo stesso layout del fragment
+        setContentView(R.layout.activity_home);
 
         WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
@@ -114,7 +114,8 @@ public class HomeActivity extends AppCompatActivity {
 
         btnFiltro.setOnClickListener(v -> {
             Intent filtro = new Intent(HomeActivity.this, Filtri.class);
-            startActivity(filtro);
+            startActivityForResult(filtro, 1);
+
         });
 
         loginButtonHome.setOnClickListener(view -> {
@@ -179,6 +180,54 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            String categoria = data.getStringExtra("filtro_categoria");
+            int prezzoMax = data.getIntExtra("filtro_prezzo", 0);
+            String luogo = data.getStringExtra("filtro_luogo");
+            String dataEvento = data.getStringExtra("filtro_data");
+            String artista = data.getStringExtra("filtro_artista");
+
+            if (categoria == null) categoria = "";
+            if (luogo == null) luogo = "";
+            if (dataEvento == null) dataEvento = "";
+            if (artista == null) artista = "";
+
+            applicaFiltri(categoria, artista, prezzoMax, luogo, dataEvento);
+
+        }
+    }
+
+    private void applicaFiltri(String categoria, String artista, int prezzoMax, String luogo, String dataEvento) {
+        eventiListFiltered.clear();
+
+        for (Eventi evento : eventiList) {
+            boolean matchPrezzo = true;
+            try {
+                matchPrezzo = Integer.parseInt(evento.getPrezzo()) <= prezzoMax;
+            } catch (NumberFormatException e) {
+                matchPrezzo = false;
+            }
+            boolean matchLuogo = evento.getLuogo().toLowerCase().contains(luogo.toLowerCase());
+            boolean matchInfo_artista = evento.getInfo_artista().toLowerCase().contains(artista.toLowerCase());
+            boolean matchData = evento.getData().startsWith(dataEvento);
+
+            if (matchPrezzo && matchLuogo && matchData && matchInfo_artista ) {
+                eventiListFiltered.add(evento);
+            }
+        }
+
+        eventiAdapter.notifyDataSetChanged();
+
+        if (eventiListFiltered.isEmpty()) {
+            Toast.makeText(this, "Nessun evento trovato con questi filtri", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     private void filterList(String query) {
         eventiListFiltered.clear();

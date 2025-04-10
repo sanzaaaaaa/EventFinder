@@ -1,95 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleziona la categoria: "
-        android:textSize="20sp"
-        android:textStyle="bold"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <Spinner
-        android:id="@+id/spinner_categoria"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:spinnerMode="dialog"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FILTRO"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#D32F2F"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="16dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleziona la data desiderata: "
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        />
 
-    <DatePicker
-        android:id="@+id/date_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:calendarTextColor="@android:color/holo_red_dark"
-        android:calendarViewShown="true"
-        android:datePickerMode="calendar"
-        android:headerBackground="@android:color/holo_red_dark" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categoria:"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleziona la città: "
-        android:textSize="20sp"
-        android:textStyle="bold"
-        />
+        <Spinner
+            android:id="@+id/spinner_categoria"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:padding="8dp" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autocomplete_luogo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Inserisci città" />
-
-    <TextView
-        android:id="@+id/txt_prezzo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleziona il prezzo massimo: 350"
-        android:layout_marginTop="25dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        />
-
-    <SeekBar
-        android:id="@+id/seekbar_prezzo"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"/>
+        <!-- Data -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data evento:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp" />
 
 
 
-    <Button
-        android:id="@+id/btn_applica"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Applica Filtri"
-        android:backgroundTint="@android:color/holo_red_dark"
-        />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Città:"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btn_reset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Reset Filtri"
-        android:backgroundTint="@android:color/holo_red_dark"
-        />
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_luogo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Es. Roma, Milano..."
+            android:background="@android:drawable/edit_text"
+            android:padding="10dp"/>
 
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Artista:"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_artista"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Es. Roma, Milano..."
+            android:background="@android:drawable/edit_text"
+            android:padding="10dp"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/txt_prezzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prezzo massimo: 350€"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/seekbar_prezzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:max="500"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_applica"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="Applica"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D32F2F"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:text="Reset"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#757575"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,8 +1,11 @@
 package com.example.eventfinder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,7 +21,7 @@ public class Filtri extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filtri); // Usa lo stesso layout
+        setContentView(R.layout.activity_filtri);
 
         WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
@@ -52,9 +55,24 @@ public class Filtri extends AppCompatActivity {
         categoriaSpinner.setAdapter(adapter);
 
         btnApplica.setOnClickListener(v -> {
-            String prezzo = txtPrezzo.getText().toString(); // Leggi il prezzo
-            finish(); // Chiudi l'activity dopo l'applicazione dei filtri
+            String categoria = categoriaSpinner.getSelectedItem().toString();
+            int prezzo = seekBar.getProgress();
+            AutoCompleteTextView luogoText = findViewById(R.id.autocomplete_luogo);
+            String luogo = luogoText.getText().toString();
+            AutoCompleteTextView artistaText = findViewById(R.id.autocomplete_artista);
+            String artista = artistaText.getText().toString();
+
+
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("filtro_categoria", categoria);
+            resultIntent.putExtra("filtro_prezzo", prezzo);
+            resultIntent.putExtra("filtro_luogo", luogo);
+            resultIntent.putExtra("filtro_artista", artista);
+
+            setResult(RESULT_OK, resultIntent);
+            finish();
         });
+
 
         btnReset.setOnClickListener(v -> {
             seekBar.setProgress(0);
