@@ -3,6 +3,8 @@ package com.example.eventfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 import com.example.eventfinder.modelli.ApiService;
 import com.example.eventfinder.modelli.Eventi;
 import com.example.eventfinder.modelli.EventiAdapter;
+import com.example.eventfinder.modelli.EventiPreferiti;
 import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
@@ -105,6 +108,32 @@ public class Preferiti extends AppCompatActivity {
             public void onFailure(Call<List<Eventi>> call, Throwable t) {
                 Toast.makeText(Preferiti.this, "Errore durante il recupero dei preferiti", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        preferitiListView.setOnItemClickListener((parent, view, position, id) -> {
+            Eventi eventoSelezionato = preferitiList.get(position);
+            int eventoId = eventoSelezionato.getId();
+
+            EventiPreferiti preferitoDaRimuovere = new EventiPreferiti(utenteId, eventoId);
+
+            apiService.deleteEvents(preferitoDaRimuovere).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(Preferiti.this, "Evento rimosso dai preferiti", Toast.LENGTH_SHORT).show();
+
+                        preferitiList.remove(position);
+                        eventiAdapter.notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(Preferiti.this, "Errore nella rimozione", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Toast.makeText(Preferiti.this, "Errore di rete", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
 

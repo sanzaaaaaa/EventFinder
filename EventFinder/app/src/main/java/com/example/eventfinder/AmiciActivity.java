@@ -46,7 +46,7 @@ public class AmiciActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewAmici);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        utentiAdapter = new UtentiAdapter(utentiList);
+        utentiAdapter = new UtentiAdapter(utentiList,false);
         recyclerView.setAdapter(utentiAdapter);
 
         ImageButton indietro = findViewById(R.id.btnBack);
@@ -77,11 +77,6 @@ public class AmiciActivity extends AppCompatActivity {
         });
 
 
-        ImageButton btnAmici = findViewById(R.id.btnHomeAmici3);
-        btnAmici.setOnClickListener(v -> {
-            Intent amici = new Intent(AmiciActivity.this, AmiciActivity.class);
-            startActivity(amici);
-        });
 
 
         ImageButton btnProfilo = findViewById(R.id.btnProfilo3);
@@ -110,7 +105,6 @@ public class AmiciActivity extends AppCompatActivity {
                 return true;
             }
         });
-
         getUtenti = RetrofitClient.getApiService().create(ApiService.class);
 
 
@@ -121,8 +115,10 @@ public class AmiciActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Utente>> call, Response<List<Utente>> response) {
                 if (response.isSuccessful()) {
+
                     utentiList.clear();
                     utentiList.addAll(response.body());
+                    utentiAdapter.setData(utentiList);
                     utentiAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(AmiciActivity.this, "Errore nel recupero degli utenti", Toast.LENGTH_SHORT).show();
@@ -134,5 +130,6 @@ public class AmiciActivity extends AppCompatActivity {
                 Toast.makeText(AmiciActivity.this, "Errore di rete", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

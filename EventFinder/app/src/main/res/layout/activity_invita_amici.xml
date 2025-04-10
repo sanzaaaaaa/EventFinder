@@ -5,6 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:id="@+id/invAmicoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Invita amico"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAmici"
         android:layout_width="match_parent"
@@ -14,6 +26,8 @@
     <Button
         android:id="@+id/btnInvita"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Invita selezionati"/>
+        android:layout_height="55dp"
+        android:text="Invita selezionati"
+        android:backgroundTint="@android:color/holo_red_dark"
+        />
 </LinearLayout>

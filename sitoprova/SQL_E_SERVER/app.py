@@ -303,6 +303,49 @@ def get_preferiti(utente_id):
 
     return jsonify(preferiti) 
 
+@app.route("/rimuovi_preferiti", methods=["POST"])
+def rimuovi_preferiti():
+    data = request.get_json()
+    utente_id = data.get("utente_id")
+    evento_id = data.get("evento_id")
+
+    if not utente_id or not evento_id:
+        return jsonify({"error": "Dati mancanti"}), 400
+
+    query = "DELETE FROM preferiti WHERE utente_id = %s AND evento_id = %s"
+    with connection.cursor() as cursor:
+        cursor.execute(query, (utente_id, evento_id))
+        dropPreferiti = cursor.fetchone()
+
+        return jsonify(dropPreferiti)
+    
+@app.route("/aggiungi_biglietti", methods=["POST"])
+def aggiungi_biglietti():
+    data = request.json
+    utente_id = data.get('utente_id')
+    evento_id = data.get('evento_id')
+
+    query = "INSERT INTO acquista (utente_id, evento_id) VALUES(%s, %s)"
+    with connection.cursor() as cursor:
+        cursor.execute(query, (utente_id, evento_id))
+        postBiglietti = cursor.fetchone()
+
+        return jsonify(postBiglietti)
+    
+@app.route("/get_biglietti/<int:utente_id>")
+def get_biglietti(utente_id):
+    
+    if utente_id is None:
+        return jsonify({"error": "utente_id mancante"}), 400
+
+    query = "SELECT eventi.* FROM eventi JOIN acquista ON eventi.id = acquista.evento_id WHERE acquista.utente_id = %s"
+    with connection.cursor() as cursor:
+        cursor.execute(query, (utente_id,))
+        getBiglietti = cursor.fetchall() 
+
+    return jsonify(getBiglietti) 
+
+
 
 # Avvio
 if __name__ == '__main__':

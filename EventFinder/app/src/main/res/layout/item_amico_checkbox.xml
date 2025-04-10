@@ -1,5 +1,49 @@
-<CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/checkboxAmico"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"/>
+    android:background="?android:selectableItemBackground"
+    android:backgroundTint="#950909"
+    android:padding="12dp">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgProfilo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/icons8_account_di_prova_100" />
+
+    <TextView
+        android:id="@+id/nomeUtente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/imgProfilo"
+        android:text="Nome"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/cognomeUtente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nomeUtente"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/imgProfilo"
+        android:text="Cognome"
+        android:textSize="15sp" />
+
+
+    <CheckBox
+        android:id="@+id/checkboxAmico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+         />
+</RelativeLayout>
+

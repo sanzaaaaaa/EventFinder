@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,10 +17,15 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.eventfinder.modelli.ApiService;
+import com.example.eventfinder.modelli.Eventi;
+import com.example.eventfinder.modelli.EventiBiglietti;
 import com.example.eventfinder.modelli.EventiPreferiti;
 import com.example.eventfinder.modelli.RetrofitClient;
 import com.example.eventfinder.modelli.SharedPreference;
 import com.example.eventfinder.modelli.Utente;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +41,8 @@ public class InfoEventi extends AppCompatActivity {
     private TextView infoEvento;
     private ImageView immagineEvento;
     private TextView prezzoEvento;
+    private Button invitamico;
+    private EventiBiglietti biglietti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +61,16 @@ public class InfoEventi extends AppCompatActivity {
         immagineEvento = findViewById(R.id.immagineEvento);
         prezzoEvento = findViewById(R.id.textPrezzo);
 
+        invitamico = findViewById(R.id.invAmiciBtn);
+        invitamico.setOnClickListener(v -> {
+            Intent amici = new Intent(InfoEventi.this, InvitaAmiciActivity.class);
+            startActivity(amici);
+        });
+
+
         ImageButton indietro = findViewById(R.id.btnBack);
         ImageButton iconaPreferiti = findViewById(R.id.iconapreferitiInfoEvento);
+        Button btnbiglietti = findViewById(R.id.compraBtn);
 
         Intent intent = getIntent();
         String titolo = intent.getStringExtra("titolo");
@@ -82,7 +98,7 @@ public class InfoEventi extends AppCompatActivity {
                     .centerCrop()
                     .into(immagineEvento);
         } else {
-            immagineEvento.setImageResource(R.drawable.barraricerca); // Immagine di fallback
+            immagineEvento.setImageResource(R.drawable.barraricerca);
         }
 
         indietro.setOnClickListener(v -> {
@@ -90,36 +106,115 @@ public class InfoEventi extends AppCompatActivity {
             startActivity(amici);
         });
 
-        iconaPreferiti.setOnClickListener(v -> {
-            if (isFilled) {
-                int eventoId = getIntent().getIntExtra("evento_id", -1);
-                int utenteId = sharedPreference.getId();
+        biglietti = new EventiBiglietti(sharedPreference.getId(), intent.getIntExtra("evento_id", -1));
+        btnbiglietti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
+                apiService.postBiglietti(biglietti).enqueue(new Callback<List<Void>>() {
+                    @Override
+                    public void onResponse(Call<List<Void>> call, Response<List<Void>> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(InfoEventi.this, "Biglietto acquistato", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<List<Void>> call, Throwable t) {
+                        Log.e("API_ERROR", "Errore: " + t.getMessage(), t);
+                        Toast.makeText(InfoEventi.this, "Errore di rete", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+
+
+        ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
+        int eventoId = getIntent().getIntExtra("evento_id", -1);
+        int utenteId = sharedPreference.getId();
+
+        if (eventoId != -1) {
+            apiService.getPreferiti(utenteId).enqueue(new Callback<List<Eventi>>() {
+                @Override
+                public void onResponse(Call<List<Eventi>> call, Response<List<Eventi>> response) {
+                    if (response.isSuccessful()) {
+                        List<Eventi> preferiti = response.body();
+                        boolean isEventInFavorites = false;
+                        for (Eventi evento : preferiti) {
+                            if (evento.getId() == eventoId) {
+                                iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
+                                isFilled = true;
+                                isEventInFavorites = true;
+                                break;
+                            }
+                        }
+
+                        if (!isEventInFavorites) {
+                            iconaPreferiti.setImageResource(R.drawable.ic_pref_not_filled);
+                            isFilled = false;
+                        }
+                    } else {
+                        Toast.makeText(InfoEventi.this, "Errore nel recupero dei preferiti", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Eventi>> call, Throwable t) {
+                    Toast.makeText(InfoEventi.this, "Errore di rete", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+
+
+        iconaPreferiti.setOnClickListener(v -> {
+            EventiPreferiti preferiti = new EventiPreferiti(utenteId, eventoId);
+
+            if (!isFilled){
                 if (eventoId == -1) {
                     Toast.makeText(InfoEventi.this, "Errore: ID evento mancante", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                EventiPreferiti preferiti = new EventiPreferiti(utenteId, eventoId);
-
-                ApiService apiService = RetrofitClient.getApiService().create(ApiService.class);
                 apiService.getEvents(preferiti).enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Toast.makeText(InfoEventi.this, "Evento aggiunto ai preferiti", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful()) {
+                            iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
+                            isFilled = true;
+                            Toast.makeText(InfoEventi.this, "Evento aggiunto ai preferiti", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(InfoEventi.this, "Errore durante l'aggiunta' dell'evento ai preferiti", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(InfoEventi.this, "Errore durante l'aggiunta dell'evento ai preferiti", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InfoEventi.this, "Errore di rete", Toast.LENGTH_SHORT).show();
                     }
                 });
-                iconaPreferiti.setImageResource(R.drawable.ic_pref_filled);
+
             } else {
-                iconaPreferiti.setImageResource(R.drawable.ic_pref_not_filled);
+
+                apiService.deleteEvents(preferiti).enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            iconaPreferiti.setImageResource(R.drawable.ic_pref_not_filled);
+                            isFilled = false;
+                            Toast.makeText(InfoEventi.this, "Evento rimosso dai preferiti", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(InfoEventi.this, "Errore durante la rimozione dai preferiti", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
-            isFilled = !isFilled;
+
+
         });
     }
 }
