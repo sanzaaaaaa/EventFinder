@@ -26,6 +26,9 @@ public interface ApiService {
     @POST("/aggiungi_preferiti")
     Call<Void> getEvents(@Body EventiPreferiti preferiti);
 
+    @POST("/rimuovi_preferiti")
+    Call<Void> deleteEvents(@Body EventiPreferiti preferiti);
+
 
     @GET("/get_preferiti/{utente_id}")
     Call<List<Eventi>> getPreferiti(@Path("utente_id") int idUtente);

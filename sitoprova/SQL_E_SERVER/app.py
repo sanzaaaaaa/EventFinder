@@ -303,6 +303,22 @@ def get_preferiti(utente_id):
 
     return jsonify(preferiti) 
 
+@app.route("/rimuovi_preferiti", methods=["POST"])
+def rimuovi_preferiti():
+    data = request.get_json()
+    utente_id = data.get("utente_id")
+    evento_id = data.get("evento_id")
+
+    if not utente_id or not evento_id:
+        return jsonify({"error": "Dati mancanti"}), 400
+
+    query = "DELETE FROM preferiti WHERE utente_id = %s AND evento_id = %s"
+    with connection.cursor() as cursor:
+        cursor.execute(query, (utente_id, evento_id))
+        dropPreferiti = cursor.fetchone()
+
+        return jsonify(dropPreferiti)
+
 
 # Avvio
 if __name__ == '__main__':
