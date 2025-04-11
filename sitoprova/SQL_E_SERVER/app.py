@@ -47,7 +47,7 @@ def login():
             session["username"]=user["id"]
             session["nome"]=user["nome"]
             session['logged'] = True
-            return redirect('/')
+            return redirect('/home')
         else:
             return "utente non trovato"
     else:
