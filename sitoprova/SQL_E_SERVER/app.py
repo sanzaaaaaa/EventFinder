@@ -21,10 +21,14 @@ cursorclass=pymysql.cursors.DictCursor
 
 
 # Home page
-@app.route('/')
+@app.route("/home")
 def home():
-    return render_template('index.html')
+     with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM eventi")
+        eventi = cursor.fetchall()
 
+        return render_template("index.html", eventi=eventi)
+ 
 # Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -51,14 +55,6 @@ def login():
         
 
         
-
-        """if user and password(user[5], password):  # password al 6° campo
-            session['loggedin'] = True
-            session['id'] = user[0]
-            session['username'] = user[1]  # nome
-            return redirect(url_for('home'))
-        else:
-            flash('Email o password errati', 'danger') """
 
     
 

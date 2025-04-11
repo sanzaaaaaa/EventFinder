@@ -35,6 +35,34 @@
         <h1>Benvenuto su EventFinder</h1>
     </section>
 
+    <section id="eventi">
+        <div class="eventi-evidenza">
+            <h3>Eventi in evidenza</h3>
+        </div>
+        
+        <!-- Lista eventi -->
+        <div class="event-list">
+            
+            <a href="{{url_for('info_evento')}}" class="eventi">
+                {% for evento in eventi %}
+                <div class="event-card">
+                    <img src="{{ evento.urlimage }}" alt="immagine del film {{ evento.titolo }}">
+                    <h3>{{ evento.titolo }}</h3>
+                    <h4>{{ evento.luogo }}</h4>
+                    <h5>{{ evento.data_evento }}</h5>
+                    <p>{{ evento.info_evento }}</p>
+                    <p>{{ evento.info_artista }}</p>
+                    <p>{{ evento.prezzo }}</p>
+
+                    <form action="{{ url_for('elimina_evento', evento_id=evento['id']) }}" method="POST">
+                        <button type="submit" class="Elimina">Elimina Evento</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </a>      
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="footer">
         <p>&copy; 2025 EventFinder - Tutti i diritti riservati.</p>

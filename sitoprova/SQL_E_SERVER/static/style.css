@@ -92,17 +92,20 @@ header .menu li input::placeholder {
     margin: 50px 0;
 }
 
+
+
+
 h1 {
     font-size: 3rem;
     color: black;
 }
 
-/* css per lista eventi */
+
 .event-list img {
     width: 200px;
 }
 
-/* Profilo e logout */
+
 .btn-logout {
     text-align: center;
     margin-top: 50px;
