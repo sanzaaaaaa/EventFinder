@@ -8,6 +8,17 @@
     android:layout_height="match_parent"
     tools:context=".AmiciActivity">
 
+
+
+    <ImageView
+        android:id="@+id/sideBarImageView"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/barraricerca"
+        />
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="30dp"
@@ -22,6 +33,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="20dp"
+        android:id="@+id/amicitext"
         android:layout_marginTop="27dp"
         android:layout_marginEnd="99dp"
         android:fontFamily="sans-serif-black"
@@ -42,11 +54,11 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewAmici"
-        android:layout_width="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_width="350dp"
+        android:layout_marginTop="102dp"
         android:layout_height="45dp"
         android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="30dp"
         android:queryHint="Cerca qui gli utenti"
         app:iconifiedByDefault="false"
         android:background="@android:color/holo_red_dark"
