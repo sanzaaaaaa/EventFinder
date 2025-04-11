@@ -35,10 +35,11 @@
         <h1>Benvenuto su EventFinder</h1>
     </section>
 
+    <section class="evidenza">
+        <h3>Eventi in evidenza</h3>
+    </section>
+
     <section id="eventi">
-        <div class="eventi-evidenza">
-            <h3>Eventi in evidenza</h3>
-        </div>
         
         <!-- Lista eventi -->
         <div class="event-list">
@@ -52,10 +53,7 @@
                     <h5>{{ evento.data_evento }}</h5>
                     <p>{{ evento.info_evento }}</p>
                     <p>{{ evento.info_artista }}</p>
-                    <p>{{ evento.prezzo }}</p>
-
-                    <form action="{{ url_for('elimina_evento', evento_id=evento['id']) }}" method="POST">
-                        <button type="submit" class="Elimina">Elimina Evento</button>
+                    <p>{{ evento.prezzo }}</p>     
                     </form>
                 </div>
                 {% endfor %}
